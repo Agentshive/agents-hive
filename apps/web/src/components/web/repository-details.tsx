@@ -19,7 +19,7 @@ type RepositoryDetailsProps = ComponentProps<"div"> & {
 
 export const RepositoryDetails = ({ className, tool, ...props }: RepositoryDetailsProps) => {
   const insights = [
-    { label: "Stars", value: formatNumber(tool.stars, "standard"), icon: <StarIcon /> },
+    { label: "Starsv", value: formatNumber(tool.stars, "standard"), icon: <StarIcon /> },
     { label: "Forks", value: formatNumber(tool.forks, "standard"), icon: <GitForkIcon /> },
     ...(tool.lastCommitDate
       ? [

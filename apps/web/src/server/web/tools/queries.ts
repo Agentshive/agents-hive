@@ -41,14 +41,14 @@ export const searchTools = async (
         FROM "Tool", plainto_tsquery('english', ${q}) query
         WHERE "searchVector" @@ query
       `
-
+ 
     whereQuery.id = { in: searchQuery.map(r => r.id) }
   }
 
   const [tools, totalCount] = await db.$transaction([
     db.tool.findMany({
       ...args,
-      orderBy: sortBy ? { [sortBy]: sortOrder } : [{ isFeatured: "desc" }, { score: "desc" }],
+      orderBy: sortBy ? { [sortBy]: sortOrder } : [{ isFeatured: "desc" }, { category: "desc" }],
       where: { ...whereQuery, ...where },
       select: toolManyPayload,
       take,
@@ -87,7 +87,7 @@ export const findRelatedTools = async ({
   const take = 3
   const itemCount = await db.tool.count({ where: relatedWhereClause })
   const skip = Math.max(0, Math.floor(Math.random() * itemCount) - take)
-  const properties = ["id", "name", "score"] satisfies (keyof Prisma.ToolOrderByWithRelationInput)[]
+  const properties = ["id", "name", "category"] satisfies (keyof Prisma.ToolOrderByWithRelationInput)[]
   const orderBy = getRandomElement(properties)
   const orderDir = getRandomElement(["asc", "desc"] as const)
 
@@ -110,7 +110,7 @@ export const findTools = async ({ where, orderBy, ...args }: Prisma.ToolFindMany
   return db.tool.findMany({
     ...args,
     where: { status: ToolStatus.Published, ...where },
-    orderBy: orderBy ?? [{ isFeatured: "desc" }, { score: "desc" }],
+    orderBy: orderBy ?? [{ isFeatured: "desc" }, { category: "desc" }],
     select: toolManyPayload,
   })
 }

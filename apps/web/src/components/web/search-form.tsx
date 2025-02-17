@@ -46,7 +46,7 @@ export const SearchForm = ({ className, ...props }: HTMLAttributes<HTMLFormEleme
           ref={inputRef}
           value={query}
           onChange={e => setQuery(e.target.value)}
-          placeholder="Search tools..."
+          placeholder="Search agents..."
           className={cx(
             "transition-[width,opacity,transform] duration-200 ease-in-out",
             isExpanded ? "w-28 opacity-100" : "w-0 opacity-0",

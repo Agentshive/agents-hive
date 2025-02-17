@@ -44,7 +44,7 @@ export const toggleBookmark = createServerAction()
     const session = await auth.api.getSession({ headers: await headers() })
 
     if (!session?.user) {
-      throw redirect(`/auth/login?callbackURL=${encodeURIComponent(input.callbackURL)}`)
+      throw redirect(`${encodeURIComponent(input.callbackURL)}`)
     }
 
     try {

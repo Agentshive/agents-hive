@@ -15,11 +15,11 @@ const ToolList = ({ tools, showAd = true, ...props }: ToolListProps) => {
     <Grid {...props}>
       {tools.map((tool, order) => (
         <Fragment key={tool.slug}>
-          {showAd && Math.min(2, tools.length - 1) === order && (
+          {/* {showAd && Math.min(2, tools.length - 1) === order && (
             <Suspense fallback={<AdCardSkeleton className="sm:order-2" />}>
               <AdCard type="Homepage" className="sm:order-2" />
             </Suspense>
-          )}
+          )} */}
 
           <ToolCard tool={tool} style={{ order }} />
         </Fragment>

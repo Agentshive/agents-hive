@@ -165,14 +165,24 @@ export default async function ToolPage(props: PageProps) {
             </div>
 
             {tool.screenshotUrl && (
-              <Image
+              // <Image
+              //   key={tool.screenshotUrl}
+              //   src={tool.screenshotUrl}
+              //   alt={`A screenshot of ${tool.name}`}
+              //   width={1280}
+              //   height={1024}
+              //   loading="lazy"
+              //   className="aspect-video h-auto w-full rounded-md border object-cover object-top max-md:order-2"
+              // />
+              <iframe
                 key={tool.screenshotUrl}
-                src={tool.screenshotUrl}
-                alt={`A screenshot of ${tool.name}`}
-                width={1280}
-                height={1024}
+                src={tool.screenshotUrl.replace("watch?v=", "embed/")}
+                title={`Video of ${tool.name}`}
+                width="1280"
+                height="720"
                 loading="lazy"
-                className="aspect-video h-auto w-full rounded-md border object-cover object-top max-md:order-2"
+                className="aspect-video h-auto w-full rounded-md border object-cover max-md:order-2"
+                allowFullScreen
               />
             )}
 
@@ -221,12 +231,12 @@ export default async function ToolPage(props: PageProps) {
           </Section.Content>
 
           <Section.Sidebar className="max-md:contents">
-            <RepositoryDetails tool={tool} className="max-md:order-3" />
+            {/* <RepositoryDetails tool={tool} className="max-md:order-3" /> */}
 
             {/* Advertisement */}
-            <Suspense fallback={<AdCardSkeleton className="max-md:order-4" />}>
+            {/* <Suspense fallback={<AdCardSkeleton className="max-md:order-4" />}>
               <AdCard type="ToolPage" className="max-md:order-4" />
-            </Suspense>
+            </Suspense> */}
 
             {/* Featured */}
             <Suspense>

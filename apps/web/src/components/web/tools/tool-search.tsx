@@ -33,17 +33,18 @@ export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
 
   return (
     <Stack size="lg" direction="column" className="w-full">
-      <Stack className="w-full">
-        <div className="relative grow min-w-0">
-          <div className="absolute left-4 top-1/2 -translate-y-1/2 opacity-50 pointer-events-none">
-            {isLoading ? <LoaderIcon className="animate-spin" /> : <SearchIcon />}
-          </div>
+  <Stack className="w-full flex justify-center items-center">
+    <div className="w-full flex justify-center">
+      <div className="relative mb-[2vh] w-1/2 min-w-0">
+        <div className="absolute left-4 top-1/2 -translate-y-1/2 opacity-50 pointer-events-none">
+          {isLoading ? <LoaderIcon className="animate-spin" /> : <SearchIcon />}
+        </div>
 
           <Input
             size="lg"
             value={filters.q || ""}
             onChange={e => updateFilters({ q: e.target.value })}
-            placeholder={isLoading ? "Loading..." : placeholder || "Search tools..."}
+            placeholder={isLoading ? "Loading..." : placeholder || "Search agents..."}
             className="w-full truncate px-10"
           />
 
@@ -60,7 +61,7 @@ export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
             <ListFilterIcon className="size-4" />
             <span className="text-sm leading-none max-sm:sr-only">Filters</span>
           </button>
-        </div>
+        </div></div>
 
         <Select
           size="lg"
@@ -68,7 +69,49 @@ export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
           value={filters.sort}
           onChange={e => updateFilters({ sort: e.target.value })}
         >
-          <option value="">Order by</option>
+          <option value="">Industries</option>
+
+          {sortOptions.map(option => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </Select>
+        <Select
+          size="lg"
+          className="min-w-36 max-sm:flex-1"
+          value={filters.sort}
+          onChange={e => updateFilters({ sort: e.target.value })}
+        >
+          <option value="">PricingModels</option>
+
+          {sortOptions.map(option => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </Select>
+        <Select
+          size="lg"
+          className="min-w-36 max-sm:flex-1"
+          value={filters.sort}
+          onChange={e => updateFilters({ sort: e.target.value })}
+        >
+          <option value="">AccessModels</option>
+
+          {sortOptions.map(option => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </Select>
+        <Select
+          size="lg"
+          className="min-w-36 max-sm:flex-1"
+          value={filters.sort}
+          onChange={e => updateFilters({ sort: e.target.value })}
+        >
+          <option value="">Sort by: Popular</option>
 
           {sortOptions.map(option => (
             <option key={option.value} value={option.value}>
