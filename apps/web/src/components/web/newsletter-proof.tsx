@@ -13,7 +13,7 @@ export const NewsletterProof = ({ className, ...props }: HTMLAttributes<HTMLElem
       )}
       {...props}
     >
-      {Array.from({ length: 5 }).map((_, index) => (
+      {/* {Array.from({ length: 5 }).map((_, index) => (
         <Image
           key={index}
           src={`/users/${index + 1}.webp`}
@@ -23,7 +23,7 @@ export const NewsletterProof = ({ className, ...props }: HTMLAttributes<HTMLElem
           loading="lazy"
           className="size-7 border-2 border-card rounded-full"
         />
-      ))}
+      ))} */}
 
       <p className="w-full text-xs text-muted">
         Join {formatNumber(config.stats.subscribers + config.stats.stars, "standard")}+ open source

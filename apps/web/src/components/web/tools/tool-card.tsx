@@ -24,16 +24,16 @@ type ToolCardProps = ComponentProps<typeof Card> & {
 
 const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
   const insights = [
-    { label: "Stars", value: formatNumber(tool.stars, "standard"), icon: <StarIcon /> },
-    { label: "Forks", value: formatNumber(tool.forks, "standard"), icon: <GitForkIcon /> },
-    {
-      label: "Last commit",
-      value:
-        tool.lastCommitDate && formatDistanceToNowStrict(tool.lastCommitDate, { addSuffix: true }),
-      icon: <TimerIcon />,
-    },
+    { label: "Category", value: tool.category, icon: "" },
+    { label: "Features", value: tool.features, icon: "" },
+    // {
+    //   label: "Last commit",
+    //   value:
+    //     tool.lastCommitDate && formatDistanceToNowStrict(tool.lastCommitDate, { addSuffix: true }),
+    //   icon: <TimerIcon />,
+    // },
   ]
-
+console.log("tools", tool)
   return (
     <Card asChild {...props}>
       <Link href={`/${tool.slug}`} className="group">

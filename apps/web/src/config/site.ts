@@ -1,10 +1,10 @@
 import { env } from "~/env"
 
 export const siteConfig = {
-  name: "OpenAlternative",
-  tagline: "Open Source Alternatives to Popular Software",
+  name: "Agentshive",
+  tagline: "The Largest AI Agent Marketplace.",
   description:
-    "A curated collection of the best open source alternatives to everyday SaaS products. Save money with reliable tools hand-picked for you.",
+    "AI SDR agents are artificial intelligence-driven tools designed to assist in sales development. They automate lead generation, engage with potential customers through personalized communication, qualify leads, and schedule appointments, allowing human sales teams to focus on closing deals and building relationships.",
   email: env.NEXT_PUBLIC_SITE_EMAIL,
   url: env.NEXT_PUBLIC_SITE_URL,
 

@@ -158,7 +158,7 @@ export const Footer = ({ children, className, hideNewsletter, ...props }: Footer
       </div>
 
       <div className="flex flex-row flex-wrap items-end justify-between gap-x-4 gap-y-2 w-full">
-        <NavLink
+        {/* <NavLink
           href={config.links.author}
           className="text-xs"
           target="_blank"
@@ -174,7 +174,7 @@ export const Footer = ({ children, className, hideNewsletter, ...props }: Footer
             className="max-sm:hidden size-4 rounded-full"
           />
           Made by Piotr Kulpinski
-        </NavLink>
+        </NavLink> */}
 
         <p className="text-xs text-muted">This website may contain affiliate links</p>
       </div>
