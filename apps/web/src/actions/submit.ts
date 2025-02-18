@@ -77,7 +77,7 @@ export const submitTool = createServerAction()
     })
 
     // Send an event to the Inngest pipeline
-    isProd && (await inngest.send({ name: "tool.submitted", data: { slug } }))
+    // isProd && (await inngest.send({ name: "tool.submitted", data: { slug } }))
 
     return tool
   })
