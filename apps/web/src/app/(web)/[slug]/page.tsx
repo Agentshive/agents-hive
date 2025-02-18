@@ -102,7 +102,11 @@ export default async function ToolPage(props: PageProps) {
               items={[
                 {
                   href: "/#tools",
-                  name: "Open Source Tools",
+                  name: "Categories",
+                },
+                {
+                  href: "/#tools",
+                  name: "Sales AI Agent",
                 },
                 {
                   href: `/${tool.slug}`,

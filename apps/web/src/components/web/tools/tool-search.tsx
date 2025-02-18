@@ -23,45 +23,42 @@ export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
 
   const sortOptions = [
     { value: "publishedAt.desc", label: "Latest" },
-    { value: "name.asc", label: "Name (A to Z)" },
-    { value: "name.desc", label: "Name (Z to A)" },
-    { value: "stars.desc", label: "Most Stars" },
-    { value: "forks.desc", label: "Most Forks" },
-    { value: "lastCommitDate.desc", label: "Last Commit" },
-    { value: "firstCommitDate.desc", label: "Repository Age" },
+    { value: "category.asc", label: "Category (A to Z)" },
+    { value: "category.desc", label: "Category (Z to A)" },
+    { value: "features.desc", label: "Features (Z to A)" },
+    { value: "features.asc", label: "Features (Z to A)" },
   ]
 
   return (
     <Stack size="lg" direction="column" className="w-full">
-  <Stack className="w-full flex justify-center items-center">
-    <div className="w-full flex justify-center">
-      <div className="relative mb-[2vh] w-1/2 min-w-0">
+    <Stack className="w-full">
+      <div className="relative grow min-w-0">
         <div className="absolute left-4 top-1/2 -translate-y-1/2 opacity-50 pointer-events-none">
           {isLoading ? <LoaderIcon className="animate-spin" /> : <SearchIcon />}
         </div>
 
-          <Input
-            size="lg"
-            value={filters.q || ""}
-            onChange={e => updateFilters({ q: e.target.value })}
-            placeholder={isLoading ? "Loading..." : placeholder || "Search agents..."}
-            className="w-full truncate px-10"
-          />
+        <Input
+          size="lg"
+          value={filters.q || ""}
+          onChange={e => updateFilters({ q: e.target.value })}
+          placeholder={isLoading ? "Loading..." : placeholder || "Search tools..."}
+          className="w-full truncate px-10"
+        />
 
-          <button
-            type="button"
-            className={cx(
-              "absolute right-1.5 top-1/2 -translate-y-1/2 flex items-center gap-2 py-1.5 px-2.5 rounded-md",
-              isFiltersOpen
-                ? "bg-card-dark text-foreground"
-                : "text-muted hover:bg-card-dark hover:text-foreground",
-            )}
-            onClick={() => setIsFiltersOpen(prev => !prev)}
-          >
-            <ListFilterIcon className="size-4" />
-            <span className="text-sm leading-none max-sm:sr-only">Filters</span>
-          </button>
-        </div></div>
+        <button
+          type="button"
+          className={cx(
+            "absolute right-1.5 top-1/2 -translate-y-1/2 flex items-center gap-2 py-1.5 px-2.5 rounded-md",
+            isFiltersOpen
+              ? "bg-card-dark text-foreground"
+              : "text-muted hover:bg-card-dark hover:text-foreground",
+          )}
+          onClick={() => setIsFiltersOpen(prev => !prev)}
+        >
+          <ListFilterIcon className="size-4" />
+          <span className="text-sm leading-none max-sm:sr-only">Filters</span>
+        </button>
+      </div>
 
         <Select
           size="lg"
@@ -69,7 +66,7 @@ export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
           value={filters.sort}
           onChange={e => updateFilters({ sort: e.target.value })}
         >
-          <option value="">Industries</option>
+          <option value="">Order by</option>
 
           {sortOptions.map(option => (
             <option key={option.value} value={option.value}>
@@ -77,7 +74,7 @@ export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
             </option>
           ))}
         </Select>
-        <Select
+        {/* <Select
           size="lg"
           className="min-w-36 max-sm:flex-1"
           value={filters.sort}
@@ -118,7 +115,7 @@ export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
               {option.label}
             </option>
           ))}
-        </Select>
+        </Select> */}
       </Stack>
 
       {isFiltersOpen && <ToolFilters />}
