@@ -1,4 +1,4 @@
-![OpenAlternative](https://openalternative.co/opengraph.png)
+![AgentsHive](https://agentshive.ai/opengraph.png)
 
 <p align="center"></p>
 
