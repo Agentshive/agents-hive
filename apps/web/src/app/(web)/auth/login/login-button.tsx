@@ -15,7 +15,7 @@ export const LoginButton = ({ provider, ...props }: LoginButtonProps) => {
   const searchParams = useSearchParams()
   const [isPending, setIsPending] = useState(false)
   const callbackURL = searchParams.get("callbackURL") || undefined
-
+console.log("callbackURL",callbackURL)
   const handleSignIn = () => {
     signIn.social({
       provider,

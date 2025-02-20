@@ -106,7 +106,7 @@ export default async function ToolPage(props: PageProps) {
                 },
                 {
                   href: "/#tools",
-                  name: "Sales AI Agent",
+                  name: tool.category,
                 },
                 {
                   href: `/${tool.slug}`,
@@ -243,9 +243,9 @@ export default async function ToolPage(props: PageProps) {
             </Suspense> */}
 
             {/* Featured */}
-            <Suspense>
+            {/* <Suspense>
               <FeaturedTools className="max-md:order-10" />
-            </Suspense>
+            </Suspense> */}
           </Section.Sidebar>
         </Section>
 

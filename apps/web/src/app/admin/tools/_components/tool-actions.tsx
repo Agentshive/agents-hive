@@ -14,7 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "~/components/admin/ui/dropdown-menu"
 import { Link } from "~/components/common/link"
-import { analyzeToolStack, reuploadToolAssets } from "~/server/admin/tools/actions"
+import { analyzeToolStack, reuploadToolAssets } from "~/server/admin/agents/actions"
 import type { DataTableRowAction } from "~/types"
 import { cx } from "~/utils/cva"
 

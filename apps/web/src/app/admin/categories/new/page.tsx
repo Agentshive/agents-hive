@@ -1,7 +1,7 @@
 import { CategoryForm } from "~/app/admin/categories/_components/category-form"
 import { Wrapper } from "~/components/admin/ui/wrapper"
 import { H3 } from "~/components/common/heading"
-import { findToolList } from "~/server/admin/tools/queries"
+import { findToolList } from "~/server/admin/agents/queries"
 
 export default function CreateCategoryPage() {
   return (

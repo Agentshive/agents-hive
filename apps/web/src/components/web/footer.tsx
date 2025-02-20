@@ -47,7 +47,7 @@ export const Footer = ({ children, className, hideNewsletter, ...props }: Footer
 
             <p className="-mt-2 px-0.5 text-sm text-muted first:mt-0">
               Join {formatNumber(config.stats.subscribers, "standard")}+ other members and get
-              updates on new open source tools.
+              updates on new AI agents.
             </p>
 
             <NewsletterForm medium="footer_form" />
@@ -55,7 +55,7 @@ export const Footer = ({ children, className, hideNewsletter, ...props }: Footer
 
           <Stack className="text-sm/normal">
             <TooltipProvider delayDuration={500} disableHoverableContent>
-              <DropdownMenu modal={false}>
+              {/* <DropdownMenu modal={false}>
                 <Tooltip tooltip="RSS Feeds">
                   <DropdownMenuTrigger aria-label="RSS Feeds" {...props}>
                     <RssIcon className="size-[1.44em] stroke-[1.25] text-muted hover:text-foreground" />
@@ -71,7 +71,7 @@ export const Footer = ({ children, className, hideNewsletter, ...props }: Footer
                     </DropdownMenuItem>
                   ))}
                 </DropdownMenuContent>
-              </DropdownMenu>
+              </DropdownMenu> */}
 
               <Tooltip tooltip="Contact us">
                 <NavLink
@@ -84,23 +84,23 @@ export const Footer = ({ children, className, hideNewsletter, ...props }: Footer
                 </NavLink>
               </Tooltip>
 
-              <Tooltip tooltip="View source code">
+              {/* <Tooltip tooltip="View source code">
                 <NavLink href={config.links.github} target="_blank" rel="nofollow noreferrer">
                   <BrandGitHubIcon className="size-[1.44em] stroke-[1.25]" />
                 </NavLink>
-              </Tooltip>
+              </Tooltip> */}
 
-              <Tooltip tooltip="Follow us on X/Twitter">
+              {/* <Tooltip tooltip="Follow us on X/Twitter">
                 <NavLink href={config.links.twitter} target="_blank" rel="nofollow noreferrer">
                   <BrandXIcon className="size-[1.44em] stroke-[1.25]" />
                 </NavLink>
-              </Tooltip>
+              </Tooltip> */}
 
-              <Tooltip tooltip="Follow us on Bluesky">
+              {/* <Tooltip tooltip="Follow us on Bluesky">
                 <NavLink href={config.links.bluesky} target="_blank" rel="nofollow noreferrer">
                   <BrandBlueskyIcon className="size-[1.44em] stroke-[1.25]" />
                 </NavLink>
-              </Tooltip>
+              </Tooltip> */}
 
               <Tooltip tooltip="Follow us on LinkedIn">
                 <NavLink href={config.links.linkedin} target="_blank" rel="nofollow noreferrer">
@@ -108,11 +108,11 @@ export const Footer = ({ children, className, hideNewsletter, ...props }: Footer
                 </NavLink>
               </Tooltip>
 
-              <Tooltip tooltip="Follow us on Medium">
+              {/* <Tooltip tooltip="Follow us on Medium">
                 <NavLink href={config.links.medium} target="_blank" rel="nofollow noreferrer">
                   <BrandMediumIcon className="size-[1.44em] stroke-[1.25]" />
                 </NavLink>
-              </Tooltip>
+              </Tooltip> */}
             </TooltipProvider>
           </Stack>
         </Stack>
@@ -120,25 +120,25 @@ export const Footer = ({ children, className, hideNewsletter, ...props }: Footer
         <Stack direction="column" className="text-sm/normal md:col-span-3 md:col-start-8">
           <H6 as="strong">Browse:</H6>
 
-          <NavLink href="/alternatives">Alternatives</NavLink>
+          {/* <NavLink href="/alternatives">Alternatives</NavLink> */}
           <NavLink href="/categories">Categories</NavLink>
           <NavLink href="/self-hosted">Self-hosted</NavLink>
-          <NavLink href="/stacks">Tech Stacks</NavLink>
-          <NavLink href="/topics">Topics</NavLink>
-          <NavLink href="/licenses">Licenses</NavLink>
+          {/* <NavLink href="/stacks">Tech Stacks</NavLink> */}
+          {/* <NavLink href="/topics">Topics</NavLink> */}
+          {/* <NavLink href="/licenses">Licenses</NavLink> */}
         </Stack>
 
         <Stack direction="column" className="text-sm/normal md:col-span-3">
           <H6 as="strong">Quick Links:</H6>
 
           <NavLink href="/about">About Us</NavLink>
-          <NavLink href="/blog">Blog</NavLink>
-          <NavLink href="/advertise">Advertise</NavLink>
+          {/* <NavLink href="/blog">Blog</NavLink> */}
+          {/* <NavLink href="/advertise">Advertise</NavLink> */}
           <NavLink href="/submit">Add a Free Listing</NavLink>
-          <NavLink href="/tools/github-stack-analyzer">Stack Analyzer</NavLink>
+          {/* <NavLink href="/tools/github-stack-analyzer">Stack Analyzer</NavLink> */}
         </Stack>
 
-        <Stack direction="column" className="text-sm/normal md:col-span-3">
+        {/* <Stack direction="column" className="text-sm/normal md:col-span-3">
           <Stack direction="column">
             <H6 as="strong">Other Products:</H6>
 
@@ -154,7 +154,7 @@ export const Footer = ({ children, className, hideNewsletter, ...props }: Footer
               </NavLink>
             ))}
           </Stack>
-        </Stack>
+        </Stack> */}
       </div>
 
       <div className="flex flex-row flex-wrap items-end justify-between gap-x-4 gap-y-2 w-full">
@@ -176,7 +176,7 @@ export const Footer = ({ children, className, hideNewsletter, ...props }: Footer
           Made by Piotr Kulpinski
         </NavLink> */}
 
-        <p className="text-xs text-muted">This website may contain affiliate links</p>
+        {/* <p className="text-xs text-muted">This website may contain affiliate links</p> */}
       </div>
 
       {children}

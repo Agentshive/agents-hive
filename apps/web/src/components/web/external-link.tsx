@@ -21,7 +21,7 @@ export const ExternalLink = ({
 }: ExternalLinkProps) => {
   return (
     <Link
-      href={updateUrlWithSearchParams(href, { ref: "openalternative" })}
+      href={updateUrlWithSearchParams(href, { ref: "agentshive" })}
       target={target}
       rel={rel}
       onClick={() => eventName && posthog.capture(eventName, eventProps)}

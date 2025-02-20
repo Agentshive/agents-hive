@@ -9,7 +9,7 @@ import {
 } from "~/components/admin/ui/card"
 import { ScrollArea } from "~/components/admin/ui/scroll-area"
 import { Link } from "~/components/common/link"
-import { findScheduledTools } from "~/server/admin/tools/queries"
+import { findScheduledTools } from "~/server/admin/agents/queries"
 
 const ScheduledCard = async ({ ...props }: ComponentProps<typeof Card>) => {
   const tools = await findScheduledTools()

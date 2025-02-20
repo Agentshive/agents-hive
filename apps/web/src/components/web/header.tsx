@@ -103,7 +103,7 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
             <DropdownMenuContent align="start">
               <DropdownMenuItem asChild>
                 <NavLink href="/?sort=publishedAt.desc">
-                  <CalendarDaysIcon className="shrink-0 size-4 opacity-75" /> Latest tools
+                  <CalendarDaysIcon className="shrink-0 size-4 opacity-75" /> Latest agents
                 </NavLink>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
@@ -116,12 +116,12 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
                   <ServerIcon className="shrink-0 size-4 opacity-75" /> Self-hosted
                 </NavLink>
               </DropdownMenuItem>
-              <DropdownMenuItem asChild>
+              {/* <DropdownMenuItem asChild>
                 <NavLink href="/stacks">
                   <BlocksIcon className="shrink-0 size-4 opacity-75" /> Tech Stacks
                 </NavLink>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
+              </DropdownMenuItem> */}
+              {/* <DropdownMenuItem asChild>
                 <NavLink href="/topics">
                   <TagIcon className="shrink-0 size-4 opacity-75" /> Topics
                 </NavLink>
@@ -130,12 +130,12 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
                 <NavLink href="/licenses">
                   <CopyrightIcon className="shrink-0 size-4 opacity-75" /> Licenses
                 </NavLink>
-              </DropdownMenuItem>
+              </DropdownMenuItem> */}
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <NavLink href="/alternatives">Alternatives</NavLink>
-          <NavLink href="/advertise">Advertise</NavLink>
+          {/* <NavLink href="/alternatives">Alternatives</NavLink> */}
+          {/* <NavLink href="/advertise">Advertise</NavLink> */}
         </nav>
 
         <Stack size="sm" className="max-sm:hidden">
@@ -143,32 +143,32 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
             <SearchForm />
           </Suspense>
 
-          <NavLink
+          {/* <NavLink
             href={config.links.bluesky}
             target="_blank"
             rel="nofollow noreferrer"
             title="Follow us on Bluesky"
           >
             <BrandBlueskyIcon className="size-4" />
-          </NavLink>
+          </NavLink> */}
 
-          <NavLink
+          {/* <NavLink
             href={config.links.twitter}
             target="_blank"
             rel="nofollow noreferrer"
             title="Follow us on X"
           >
             <BrandXIcon className="size-4" />
-          </NavLink>
+          </NavLink> */}
 
-          <NavLink
+          {/* <NavLink
             href={config.links.github}
             target="_blank"
             rel="nofollow noreferrer"
             title="View source code"
           >
             <BrandGitHubIcon className="size-4" />
-          </NavLink>
+          </NavLink> */}
         </Stack>
 
         <Stack size="sm">

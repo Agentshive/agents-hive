@@ -23,7 +23,7 @@ import { Link } from "~/components/common/link"
 import { createAlternative, updateAlternative } from "~/server/admin/alternatives/actions"
 import type { findAlternativeBySlug } from "~/server/admin/alternatives/queries"
 import { type AlternativeSchema, alternativeSchema } from "~/server/admin/alternatives/validations"
-import type { findToolList } from "~/server/admin/tools/queries"
+import type { findToolList } from "~/server/admin/agents/queries"
 import { cx } from "~/utils/cva"
 import { nullsToUndefined } from "~/utils/helpers"
 

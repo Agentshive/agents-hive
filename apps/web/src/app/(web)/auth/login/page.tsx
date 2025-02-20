@@ -10,7 +10,7 @@ import { metadataConfig } from "~/config/metadata"
 
 export const metadata: Metadata = {
   title: "Sign in",
-  description: `Login to ${config.site.name} to access your dashboard and manage your tools (soon).`,
+  description: `Login to ${config.site.name} to access your dashboard and manage your agents.`,
   openGraph: { ...metadataConfig.openGraph, url: "/auth/login" },
   alternates: { ...metadataConfig.alternates, canonical: "/auth/login" },
 }
@@ -24,14 +24,14 @@ export default function LoginPage() {
       </Intro>
 
       <Stack direction="column" className="items-stretch w-full gap-4">
-        {/* <LoginForm />
+        {/* <LoginForm /> */}
 
         <div className="flex items-center justify-center gap-3 text-sm text-muted before:flex-1 before:border-t after:flex-1 after:border-t">
           or
-        </div> */}
+        </div>
         <Suspense>
           <LoginButton provider="google" suffix={<BrandGoogleIcon />} />
-          <LoginButton provider="github" suffix={<BrandGitHubIcon />} />
+          {/* <LoginButton provider="github" suffix={<BrandGitHubIcon />} /> */}
         </Suspense>
       </Stack>
     </>

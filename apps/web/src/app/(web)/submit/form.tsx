@@ -39,6 +39,8 @@ export const SubmitForm = ({ className, ...props }: HTMLAttributes<HTMLFormEleme
       submitterEmail: session?.user.email || "",
       submitterNote: "",
       newsletterOptIn: true,
+      category: "",
+      features: "",
     },
   })
 
@@ -169,6 +171,42 @@ export const SubmitForm = ({ className, ...props }: HTMLAttributes<HTMLFormEleme
                   type="text"
                   size="lg"
                   placeholder="Which well-known tool is this an alternative to?"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="category"
+          render={({ field }) => (
+            <FormItem className="col-span-full">
+              <FormLabel>Category:</FormLabel>
+              <FormControl>
+                <Input
+                  type="text"
+                  size="lg"
+                  placeholder="category"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="features"
+          render={({ field }) => (
+            <FormItem className="col-span-full">
+              <FormLabel>Features:</FormLabel>
+              <FormControl>
+                <Input
+                  type="text"
+                  size="lg"
+                  placeholder="features"
                   {...field}
                 />
               </FormControl>

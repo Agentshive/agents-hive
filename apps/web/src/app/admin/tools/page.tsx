@@ -1,8 +1,8 @@
 import type { SearchParams } from "nuqs/server"
 import { Suspense } from "react"
 import { DataTableSkeleton } from "~/components/admin/data-table/data-table-skeleton"
-import { findTools } from "~/server/admin/tools/queries"
-import { searchParamsCache } from "~/server/admin/tools/validations"
+import { findTools } from "~/server/admin/agents/queries"
+import { searchParamsCache } from "~/server/admin/agents/validations"
 import { ToolsTable } from "./_components/tools-table"
 
 type ToolsPageProps = {
@@ -18,7 +18,7 @@ export default async function ToolsPage(props: ToolsPageProps) {
     <Suspense
       fallback={
         <DataTableSkeleton
-          title="Tools"
+          title="AI agents"
           columnCount={5}
           rowCount={15}
           searchableColumnCount={1}

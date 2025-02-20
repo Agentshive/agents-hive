@@ -5,7 +5,7 @@ import { Wrapper } from "~/components/admin/ui/wrapper"
 import { H3 } from "~/components/common/heading"
 import { findAlternativeList } from "~/server/admin/alternatives/queries"
 import { findCategoryList } from "~/server/admin/categories/queries"
-import { findToolBySlug } from "~/server/admin/tools/queries"
+import { findToolBySlug } from "~/server/admin/agents/queries"
 
 type PageProps = {
   params: Promise<{ slug: string }>

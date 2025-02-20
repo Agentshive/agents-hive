@@ -21,7 +21,7 @@ import { Link } from "~/components/common/link"
 import { createCategory, updateCategory } from "~/server/admin/categories/actions"
 import type { findCategoryBySlug } from "~/server/admin/categories/queries"
 import { type CategorySchema, categorySchema } from "~/server/admin/categories/validations"
-import type { findToolList } from "~/server/admin/tools/queries"
+import type { findToolList } from "~/server/admin/agents/queries"
 import { cx } from "~/utils/cva"
 import { nullsToUndefined } from "~/utils/helpers"
 
@@ -138,7 +138,7 @@ export function CategoryForm({
           name="tools"
           render={({ field }) => (
             <FormItem className="col-span-full">
-              <FormLabel>Tools</FormLabel>
+              <FormLabel>AI agents</FormLabel>
               <RelationSelector
                 promise={tools}
                 selectedIds={field.value ?? []}

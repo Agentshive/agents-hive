@@ -45,6 +45,8 @@ export const toolSchema = z.object({
   status: z.nativeEnum(ToolStatus).default("Draft"),
   alternatives: z.array(z.string()).optional(),
   categories: z.array(z.string()).optional(),
+  category: z.string(),
+  features: z.string(),
 })
 
 export type ToolSchema = z.infer<typeof toolSchema>

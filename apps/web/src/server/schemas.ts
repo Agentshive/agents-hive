@@ -19,6 +19,8 @@ export const submitToolSchema = z.object({
     .min(1, "Your email is required")
     .email("Invalid email address, please use a correct format."),
   submitterNote: z.string().max(200),
+  category: z.string().max(200),
+  features: z.string().max(200),
   newsletterOptIn: z.boolean().optional().default(true),
 })
 

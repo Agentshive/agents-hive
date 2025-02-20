@@ -16,7 +16,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "~/components/admin/ui/dialog"
-import { deleteTools } from "~/server/admin/tools/actions"
+import { deleteTools } from "~/server/admin/agents/actions"
 
 interface ToolsDeleteDialogProps extends React.ComponentPropsWithoutRef<typeof Dialog> {
   tools: Tool[]

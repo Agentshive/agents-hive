@@ -12,5 +12,5 @@ export const siteConfig = {
   toolsPerPage: 35,
   alternativesPerPage: 54,
 
-  affiliateUrl: "https://go.openalternative.co",
+  affiliateUrl: "https://agentshive.io",
 }

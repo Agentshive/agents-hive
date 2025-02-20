@@ -31,9 +31,9 @@ import {
 import { Link } from "~/components/common/link"
 import type { findAlternativeList } from "~/server/admin/alternatives/queries"
 import type { findCategoryList } from "~/server/admin/categories/queries"
-import { createTool, updateTool } from "~/server/admin/tools/actions"
-import type { findToolBySlug } from "~/server/admin/tools/queries"
-import { type ToolSchema, toolSchema } from "~/server/admin/tools/validations"
+import { createTool, updateTool } from "~/server/admin/agents/actions"
+import type { findToolBySlug } from "~/server/admin/agents/queries"
+import { type ToolSchema, toolSchema } from "~/server/admin/agents/validations"
 import { cx } from "~/utils/cva"
 import { nullsToUndefined } from "~/utils/helpers"
 
@@ -54,9 +54,9 @@ export function ToolForm({
   const form = useForm<ToolSchema>({
     resolver: zodResolver(toolSchema),
     defaultValues: {
-      ...nullsToUndefined(tool),
-      alternatives: tool?.alternatives.map(({ id }) => id),
-      categories: tool?.categories.map(({ id }) => id),
+      ...nullsToUndefined(tool) ?? {},
+      alternatives: tool?.alternatives?.map(({ id }) => id) ?? [],
+      categories: tool?.categories?.map(({ id }) => id) ?? [],
     },
   })
 
@@ -278,7 +278,7 @@ export function ToolForm({
           />
         </div>
 
-        <FormField
+        {/* <FormField
           control={form.control}
           name="submitterName"
           render={({ field }) => (
@@ -290,9 +290,35 @@ export function ToolForm({
               <FormMessage />
             </FormItem>
           )}
+        /> */}
+        <FormField
+          control={form.control}
+          name="category"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Category</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="features"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Features</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
 
-        <FormField
+        {/* <FormField
           control={form.control}
           name="submitterEmail"
           render={({ field }) => (
@@ -304,7 +330,7 @@ export function ToolForm({
               <FormMessage />
             </FormItem>
           )}
-        />
+        /> */}
 
         <FormField
           control={form.control}

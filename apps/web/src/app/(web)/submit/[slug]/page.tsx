@@ -102,9 +102,17 @@ export default async function SubmitPackages(props: PageProps) {
         />
       ) : (
         <div className="flex flex-wrap justify-center gap-5">
-          <Suspense fallback={[...Array(3)].map((_, index) => <PlanSkeleton key={index} />)}>
+          {/* <Suspense fallback={[...Array(3)].map((_, index) => <PlanSkeleton key={index} />)}>
             <SubmitProducts tool={tool} />
-          </Suspense>
+          </Suspense> */}
+           <Image
+          src={"/3d-heart.webp"}
+          alt=""
+          className="max-w-64 w-2/3 h-auto mx-auto"
+          width={256}
+          height={228}
+          unoptimized
+        />
         </div>
       )}
 

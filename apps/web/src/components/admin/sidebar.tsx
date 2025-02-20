@@ -58,25 +58,25 @@ export const Sidebar = () => {
           isCollapsed={!!isMobile}
           links={[
             {
-              title: "Tools",
+              title: "AI agents",
               href: "/admin/tools",
               prefix: <GemIcon />,
             },
-            {
-              title: "Alternatives",
-              href: "/admin/alternatives",
-              prefix: <ReplaceIcon />,
-            },
+            // {
+            //   title: "Alternatives",
+            //   href: "/admin/alternatives",
+            //   prefix: <ReplaceIcon />,
+            // },
             {
               title: "Categories",
               href: "/admin/categories",
               prefix: <GalleryHorizontalEndIcon />,
             },
-            {
-              title: "Licenses",
-              href: "/admin/licenses",
-              prefix: <CopyrightIcon />,
-            },
+            // {
+            //   title: "Licenses",
+            //   href: "/admin/licenses",
+            //   prefix: <CopyrightIcon />,
+            // },
           ]}
         />
       </Nav>

@@ -4,7 +4,7 @@ export const linksConfig = {
   author: "https://kulpinski.pl",
   twitter: "https://x.com/ossalternative",
   bluesky: "https://bsky.app/profile/openalternative.co",
-  linkedin: "https://linkedin.com/company/openalternative",
+  linkedin: "https://www.linkedin.com/company/agentshive",
   github: "https://github.com/piotrkulpinski/openalternative",
   medium: "https://medium.com/openalternative",
   analytics: "https://go.openalternative.co/analytics",

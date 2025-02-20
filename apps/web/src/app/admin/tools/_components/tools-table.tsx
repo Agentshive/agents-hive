@@ -12,7 +12,7 @@ import { DateRangePicker } from "~/components/admin/date-range-picker"
 import { Button } from "~/components/admin/ui/button"
 import { Link } from "~/components/common/link"
 import { useDataTable } from "~/hooks/use-data-table"
-import type { findTools } from "~/server/admin/tools/queries"
+import type { findTools } from "~/server/admin/agents/queries"
 import type { DataTableFilterField, DataTableRowAction } from "~/types"
 import { getColumns } from "./tools-table-columns"
 import { ToolsTableToolbarActions } from "./tools-table-toolbar-actions"
@@ -81,12 +81,12 @@ export function ToolsTable({ toolsPromise }: ToolsTableProps) {
     <>
       <DataTable table={table}>
         <DataTableHeader
-          title="Tools"
+          title="AI agents"
           total={toolsTotal}
           callToAction={
             <Button prefix={<PlusIcon />} asChild>
               <Link href="/admin/tools/new">
-                <span className="max-sm:sr-only">New tool</span>
+                <span className="max-sm:sr-only">New AI agent</span>
               </Link>
             </Button>
           }

@@ -9,7 +9,7 @@ import { isProd } from "~/env"
 import { uploadFavicon, uploadScreenshot } from "~/lib/media"
 import { authedProcedure } from "~/lib/safe-actions"
 import { analyzeRepositoryStack } from "~/lib/stack-analysis"
-import { toolSchema } from "~/server/admin/tools/validations"
+import { toolSchema } from "~/server/admin/agents/validations"
 import { inngest } from "~/services/inngest"
 
 export const createTool = authedProcedure

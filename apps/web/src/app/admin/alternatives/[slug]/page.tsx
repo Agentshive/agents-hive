@@ -4,7 +4,7 @@ import { AlternativeForm } from "~/app/admin/alternatives/_components/alternativ
 import { Wrapper } from "~/components/admin/ui/wrapper"
 import { H3 } from "~/components/common/heading"
 import { findAlternativeBySlug } from "~/server/admin/alternatives/queries"
-import { findToolList } from "~/server/admin/tools/queries"
+import { findToolList } from "~/server/admin/agents/queries"
 
 type PageProps = {
   params: Promise<{ slug: string }>

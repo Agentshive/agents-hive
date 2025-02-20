@@ -22,7 +22,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "~/components/admin/ui/dialog"
-import { scheduleTool } from "~/server/admin/tools/actions"
+import { scheduleTool } from "~/server/admin/agents/actions"
 
 type ToolScheduleDialogProps = ComponentProps<typeof Dialog> & {
   tool?: Tool
