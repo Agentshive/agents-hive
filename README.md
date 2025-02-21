@@ -10,7 +10,7 @@
   <br />
   <a href="https://agentshive.ai">Website</a>
   ·
-  <a href="https://github.com/piotrkulpinski/openalternative/issues">Issues</a>
+  <a href="https://github.com/piotrkulpinski/agentshive/issues">Issues</a>
 </p>
 
 <p align="center">
