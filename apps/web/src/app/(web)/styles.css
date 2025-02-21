@@ -101,7 +101,7 @@
 }
 
 @layer base {
-  @media (prefers-color-scheme: dark) {
+  /* @media (prefers-color-scheme: dark) {
     :root {
       --color-primary: hsl(15 63% 50%);
       --color-background: hsl(0 0% 8%);
@@ -115,7 +115,7 @@
       --color-border: hsl(0 0% 18%);
       --color-border-dark: hsl(0 0% 20%);
     }
-  }
+  } */
 
   @media (prefers-reduced-motion) {
     * {
