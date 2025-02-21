@@ -3,12 +3,12 @@
 <p align="center"></p>
 
 <p align="center">
-  Discover open source alternatives to popular software.
+  Discover The Largest AI Agent Marketplace.
   <br>
-  <a href="https://openalternative.co"><strong>Learn more »</strong></a>
+  <a href="https://agentshive.ai"><strong>Learn more »</strong></a>
   <br />
   <br />
-  <a href="https://openalternative.co">Website</a>
+  <a href="https://agentshive.ai">Website</a>
   ·
   <a href="https://github.com/piotrkulpinski/openalternative/issues">Issues</a>
 </p>
