@@ -6,7 +6,7 @@ import { H4 } from "~/components/common/heading"
 import { Link } from "~/components/common/link"
 import { Skeleton } from "~/components/common/skeleton"
 import { Stack } from "~/components/common/stack"
-import { ToolBadges } from "~/components/web/tools/tool-badges"
+import { ToolBadges } from "~/components/web/agents/agents-badges"
 import { Badge } from "~/components/web/ui/badge"
 import { Card, CardDescription, CardHeader } from "~/components/web/ui/card"
 import { Favicon } from "~/components/web/ui/favicon"
@@ -33,7 +33,7 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
     //   icon: <TimerIcon />,
     // },
   ]
-console.log("tools", tool)
+// console.log("tools", tool)
   return (
     <Card asChild {...props}>
       <Link href={`/${tool.slug}`} className="group">
@@ -111,9 +111,9 @@ const ToolCardSkeleton = () => {
         <Skeleton className="h-5 w-1/2">&nbsp;</Skeleton>
       </CardDescription>
 
-      <Stack size="sm">
+      {/* <Stack size="sm">
         <Insights insights={insights} className="mt-auto animate-pulse" />
-      </Stack>
+      </Stack> */}
     </Card>
   )
 }

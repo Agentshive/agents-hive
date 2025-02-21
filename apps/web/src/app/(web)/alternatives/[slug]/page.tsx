@@ -14,7 +14,7 @@ import {
 } from "~/components/web/alternatives/alternative-preview"
 import { InlineMenu } from "~/components/web/inline-menu"
 import { ShareButtons } from "~/components/web/share-buttons"
-import { ToolEntry } from "~/components/web/tools/tool-entry"
+import { ToolEntry } from "~/components/web/agents/agents-entry"
 import { BackButton } from "~/components/web/ui/back-button"
 import { Breadcrumbs } from "~/components/web/ui/breadcrumbs"
 import { Button } from "~/components/web/ui/button"

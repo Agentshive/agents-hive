@@ -64,7 +64,7 @@ export function ToolForm({
   const { execute: createToolAction, isPending: isCreatingTool } = useServerAction(createTool, {
     onSuccess: ({ data }) => {
       toast.success("Tool successfully created")
-      redirect(`/admin/tools/${data.slug}`)
+      redirect(`/admin/agents/${data.slug}`)
     },
 
     onError: ({ err }) => {
@@ -76,7 +76,7 @@ export function ToolForm({
   const { execute: updateToolAction, isPending: isUpdatingTool } = useServerAction(updateTool, {
     onSuccess: ({ data }) => {
       toast.success("Tool successfully updated")
-      redirect(`/admin/tools/${data.slug}`)
+      redirect(`/admin/agents/${data.slug}`)
     },
 
     onError: ({ err }) => {
@@ -448,11 +448,11 @@ export function ToolForm({
 
         <div className="flex justify-between gap-4 col-span-full">
           <Button variant="outline" asChild>
-            <Link href="/admin/tools">Cancel</Link>
+            <Link href="/admin/agents">Cancel</Link>
           </Button>
 
           <Button isPending={isPending} disabled={isPending}>
-            {tool ? "Update tool" : "Create tool"}
+            {tool ? "Update AI agent" : "Create AI agent"}
           </Button>
         </div>
       </form>

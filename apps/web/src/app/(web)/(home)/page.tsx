@@ -8,9 +8,11 @@ import {
 } from "~/components/web/alternatives/alternative-preview"
 import { NewsletterForm } from "~/components/web/newsletter-form"
 import { NewsletterProof } from "~/components/web/newsletter-proof"
-import { ToolQuerySkeleton } from "~/components/web/tools/tool-query"
+import { ToolQuerySkeleton } from "~/components/web/agents/agents-query"
 import { Intro, IntroDescription, IntroTitle } from "~/components/web/ui/intro"
 import { config } from "~/config"
+import { CategoryListing } from "../categories/(categories)/listing"
+import { ToolSearch } from "~/components/web/agents/agents-search"
 
 type PageProps = {
   searchParams: Promise<SearchParams>
@@ -22,27 +24,33 @@ export default function Home({ searchParams }: PageProps) {
       <section className="flex flex-col gap-y-6 w-full mb-[2vh]">
         <Intro alignment="center">
           <IntroTitle className="max-w-[45rem] lg:text-5xl/[1.1]!">
-            Discover {config.site.tagline}
+            {/* Discover {config.site.tagline} */}
+            Discover, Hire, Deploy AI Agents
           </IntroTitle>
 
-          <IntroDescription className="lg:mt-2">{config.site.description}</IntroDescription>
+          {/* <IntroDescription className="lg:mt-2">{config.site.description}</IntroDescription> */}
+          <IntroDescription className="lg:mt-2">Tap into agentic workforce, available all day, every day, to keep things moving forward</IntroDescription>
 
           <Suspense fallback={<CountBadgeSkeleton />}>
             <CountBadge />
           </Suspense>
         </Intro>
 
-        <NewsletterForm
+        {/* <NewsletterForm
           size="lg"
           className="max-w-sm mx-auto items-center text-center"
           buttonProps={{ children: "Join our community", size: "md", variant: "fancy" }}
         >
           <NewsletterProof />
-        </NewsletterForm>
+        </NewsletterForm> */}
       </section>
 
       <Suspense fallback={<ToolQuerySkeleton />}>
-        <HomeToolListing searchParams={searchParams} />
+        {/* <HomeToolListing searchParams={searchParams} /> */}
+                {/* <ToolSearch  /> */}
+        
+                <CategoryListing />
+        
       </Suspense>
 
       <Suspense fallback={<AlternativePreviewSkeleton />}>

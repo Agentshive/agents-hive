@@ -1,5 +1,5 @@
 import { Listing } from "~/components/web/listing"
-import { ToolList } from "~/components/web/tools/tool-list"
+import { ToolList } from "~/components/web/agents/agents-list"
 import type { ToolOne } from "~/server/web/tools/payloads"
 import { findRelatedTools } from "~/server/web/tools/queries"
 

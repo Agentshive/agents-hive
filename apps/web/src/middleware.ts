@@ -13,22 +13,22 @@ export default async function ({ nextUrl, headers }: NextRequest) {
     headers: { cookie: headers.get("cookie") || "" },
   })
 
-  if (session && nextUrl.pathname.startsWith("/auth")) {
-    return NextResponse.redirect(new URL("/", nextUrl.toString()))
-  }
+  // if (session && nextUrl.pathname.startsWith("/auth")) {
+  //   return NextResponse.redirect(new URL("/", nextUrl.toString()))
+  // }
 
-  if (nextUrl.pathname.startsWith("/admin")) {
-    if (!session) {
-      const callbackURL = nextUrl.pathname + nextUrl.search
-      const signInUrl = new URL(`/auth/login?callbackURL=${callbackURL}`, nextUrl.toString())
+  // if (nextUrl.pathname.startsWith("/admin")) {
+  //   if (!session) {
+  //     const callbackURL = nextUrl.pathname + nextUrl.search
+  //     const signInUrl = new URL(`/auth/login?callbackURL=${callbackURL}`, nextUrl.toString())
 
-      return NextResponse.redirect(signInUrl)
-    }
+  //     return NextResponse.redirect(signInUrl)
+  //   }
 
-    if (!isAllowedEmail(session.user.email)) {
-      return NextResponse.redirect(new URL("/", nextUrl.toString()))
-    }
-  }
+  //   if (!isAllowedEmail(session.user.email)) {
+  //     return NextResponse.redirect(new URL("/", nextUrl.toString()))
+  //   }
+  // }
 
   return NextResponse.next()
 }

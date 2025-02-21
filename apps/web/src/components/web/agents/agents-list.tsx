@@ -1,7 +1,7 @@
 import { type ComponentProps, Fragment, Suspense } from "react"
 import { AdCard, AdCardSkeleton } from "~/components/web/ads/ad-card"
 import { EmptyList } from "~/components/web/empty-list"
-import { ToolCard, ToolCardSkeleton } from "~/components/web/tools/tool-card"
+import { ToolCard, ToolCardSkeleton } from "~/components/web/agents/agents-card"
 import { Grid } from "~/components/web/ui/grid"
 import type { ToolMany } from "~/server/web/tools/payloads"
 
@@ -25,7 +25,7 @@ const ToolList = ({ tools, showAd = true, ...props }: ToolListProps) => {
         </Fragment>
       ))}
 
-      {!tools.length && <EmptyList>No tools found for the given filters.</EmptyList>}
+      {!tools.length && <EmptyList>No AI agents found for the given filters.</EmptyList>}
     </Grid>
   )
 }

@@ -3,7 +3,7 @@
 import { formatDate } from "@curiousleaf/utils"
 import type { Tool } from "@openalternative/db/client"
 import type { ColumnDef } from "@tanstack/react-table"
-import { ToolActions } from "~/app/admin/tools/_components/tool-actions"
+import { ToolActions } from "~/app/admin/agents/_components/agents-actions"
 import { DataTableColumnHeader } from "~/components/admin/data-table/data-table-column-header"
 import { DataTableLink } from "~/components/admin/data-table/data-table-link"
 import { DataTableThumbnail } from "~/components/admin/data-table/data-table-thumbnail"
