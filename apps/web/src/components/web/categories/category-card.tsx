@@ -53,9 +53,7 @@ const CategoryCard = ({ category, ...props }: CategoryCardProps) => {
             )}`}
           </CardDescription>
         )}
-        <CardDescription>
-          Platforms and tools for creating custom AI solutions
-        </CardDescription>
+        <CardDescription>{category.description}</CardDescription>
       </Link>
     </Card>
   );

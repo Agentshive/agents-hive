@@ -24,6 +24,7 @@ import { type CategorySchema, categorySchema } from "~/server/admin/categories/v
 import type { findToolList } from "~/server/admin/agents/queries"
 import { cx } from "~/utils/cva"
 import { nullsToUndefined } from "~/utils/helpers"
+import { Textarea } from "~/components/admin/ui/textarea"
 
 type CategoryFormProps = React.HTMLAttributes<HTMLFormElement> & {
   category?: Awaited<ReturnType<typeof findCategoryBySlug>>
@@ -121,12 +122,12 @@ export function CategoryForm({
 
         <FormField
           control={form.control}
-          name="label"
+          name="description"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Label</FormLabel>
+            <FormItem className="col-span-full">
+              <FormLabel>Description</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Textarea {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
