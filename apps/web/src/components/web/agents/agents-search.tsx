@@ -41,7 +41,7 @@ export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
           size="lg"
           value={filters.q || ""}
           onChange={e => updateFilters({ q: e.target.value })}
-          placeholder={isLoading ? "Loading..." : placeholder || "Search tools..."}
+          placeholder={isLoading ? "Loading..." : placeholder || "Search agents..."}
           className="w-full truncate px-10"
         />
 

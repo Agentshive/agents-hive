@@ -36,8 +36,10 @@ const CategoryCard = ({ category, ...props }: CategoryCardProps) => {
     <Card asChild {...props}>
       <Link href={`/categories/${category.slug}`}>
         <CardHeader>
-          {/* <Favicon src={category.faviconUrl} title={alternative.name} /> */}
-
+          <Favicon
+            src={`/categories/${category.slug}.webp`}
+            title={category.name}
+          />
           <H4 as="h3" className="truncate">
             {category.name}
           </H4>
@@ -51,22 +53,9 @@ const CategoryCard = ({ category, ...props }: CategoryCardProps) => {
             )}`}
           </CardDescription>
         )}
-        {/* <Button suffix={<ArrowUpRightIcon />} asChild>
-          <ExternalLink
-            href={`/categories/${category.slug}`}
-            // rel={tool.isFeatured ? "noopener noreferrer" : undefined}
-            eventName="click_website"
-            // eventProps={{ url: tool.website }}
-          >
-            View
-          </ExternalLink>
-        </Button> */}
-        {/* 
-        {showCount && (
-          <CardFooter>
-            {alternative._count.tools} {plur("alternative", alternative._count.tools)}
-          </CardFooter>
-        )} */}
+        <CardDescription>
+          Platforms and tools for creating custom AI solutions
+        </CardDescription>
       </Link>
     </Card>
   );

@@ -1,22 +1,23 @@
-import type { SearchParams } from "nuqs/server"
-import { Suspense } from "react"
-import { CountBadge, CountBadgeSkeleton } from "~/app/(web)/(home)/count-badge"
-import { HomeToolListing } from "~/app/(web)/(home)/listing"
+import type { SearchParams } from "nuqs/server";
+import { Suspense } from "react";
+import { CountBadge, CountBadgeSkeleton } from "~/app/(web)/(home)/count-badge";
+import { HomeToolListing } from "~/app/(web)/(home)/listing";
 import {
   AlternativePreview,
   AlternativePreviewSkeleton,
-} from "~/components/web/alternatives/alternative-preview"
-import { NewsletterForm } from "~/components/web/newsletter-form"
-import { NewsletterProof } from "~/components/web/newsletter-proof"
-import { ToolQuerySkeleton } from "~/components/web/agents/agents-query"
-import { Intro, IntroDescription, IntroTitle } from "~/components/web/ui/intro"
-import { config } from "~/config"
-import { CategoryListing } from "../categories/(categories)/listing"
-import { ToolSearch } from "~/components/web/agents/agents-search"
+} from "~/components/web/alternatives/alternative-preview";
+import { NewsletterForm } from "~/components/web/newsletter-form";
+import { NewsletterProof } from "~/components/web/newsletter-proof";
+import { ToolQuerySkeleton } from "~/components/web/agents/agents-query";
+import { Intro, IntroDescription, IntroTitle } from "~/components/web/ui/intro";
+import { config } from "~/config";
+import { CategoryListing } from "../categories/(categories)/listing";
+import { ToolSearch } from "~/components/web/agents/agents-search";
+import { ToolFiltersProvider } from "~/contexts/tool-filter-context";
 
 type PageProps = {
-  searchParams: Promise<SearchParams>
-}
+  searchParams: Promise<SearchParams>;
+};
 
 export default function Home({ searchParams }: PageProps) {
   return (
@@ -29,11 +30,14 @@ export default function Home({ searchParams }: PageProps) {
           </IntroTitle>
 
           {/* <IntroDescription className="lg:mt-2">{config.site.description}</IntroDescription> */}
-          <IntroDescription className="lg:mt-2">Tap into agentic workforce, available all day, every day, to keep things moving forward</IntroDescription>
+          <IntroDescription className="lg:mt-2">
+            Tap into agentic workforce, available all day, every day, to keep
+            things moving forward
+          </IntroDescription>
 
-          <Suspense fallback={<CountBadgeSkeleton />}>
+          {/* <Suspense fallback={<CountBadgeSkeleton />}>
             <CountBadge />
-          </Suspense>
+          </Suspense> */}
         </Intro>
 
         {/* <NewsletterForm
@@ -47,15 +51,16 @@ export default function Home({ searchParams }: PageProps) {
 
       <Suspense fallback={<ToolQuerySkeleton />}>
         {/* <HomeToolListing searchParams={searchParams} /> */}
-                {/* <ToolSearch  /> */}
-        
-                <CategoryListing />
-        
+        <ToolFiltersProvider>
+          <ToolSearch />
+
+          <CategoryListing />
+        </ToolFiltersProvider>
       </Suspense>
 
       <Suspense fallback={<AlternativePreviewSkeleton />}>
         <AlternativePreview />
       </Suspense>
     </>
-  )
+  );
 }
