@@ -36,6 +36,5 @@ export const FaviconImage = ({ className, src, title, ...props }: FaviconProps) 
       className={cx("aspect-square size-9 rounded-sm", className)}
       {...props}
     />
-    // <></>
   )
 }

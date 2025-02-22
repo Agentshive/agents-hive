@@ -51,11 +51,8 @@ export default function Home({ searchParams }: PageProps) {
 
       <Suspense fallback={<ToolQuerySkeleton />}>
         {/* <HomeToolListing searchParams={searchParams} /> */}
-        <ToolFiltersProvider>
-          <ToolSearch />
 
-          <CategoryListing />
-        </ToolFiltersProvider>
+        <CategoryListing />
       </Suspense>
 
       <Suspense fallback={<AlternativePreviewSkeleton />}>

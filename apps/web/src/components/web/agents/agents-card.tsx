@@ -33,7 +33,6 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
     //   icon: <TimerIcon />,
     // },
   ]
-// console.log("tools", tool)
   return (
     <Card asChild {...props}>
       <Link href={`/${tool.slug}`} className="group">
@@ -90,11 +89,11 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
 }
 
 const ToolCardSkeleton = () => {
-  const insights = [
-    { label: "Stars", value: <Skeleton className="h-4 w-16" />, icon: <StarIcon /> },
-    { label: "Forks", value: <Skeleton className="h-4 w-14" />, icon: <GitForkIcon /> },
-    { label: "Last commit", value: <Skeleton className="h-4 w-20" />, icon: <TimerIcon /> },
-  ]
+  // const insights = [
+  //   { label: "Stars", value: <Skeleton className="h-4 w-16" />, icon: <StarIcon /> },
+  //   { label: "Forks", value: <Skeleton className="h-4 w-14" />, icon: <GitForkIcon /> },
+  //   { label: "Last commit", value: <Skeleton className="h-4 w-20" />, icon: <TimerIcon /> },
+  // ]
 
   return (
     <Card hover={false} className="items-stretch select-none">

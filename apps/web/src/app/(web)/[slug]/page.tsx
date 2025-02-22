@@ -27,6 +27,7 @@ import { metadataConfig } from "~/config/metadata"
 import { getToolSuffix } from "~/lib/tools"
 import type { ToolOne } from "~/server/web/tools/payloads"
 import { findTool, findToolSlugs } from "~/server/web/tools/queries"
+import { slugify } from "@curiousleaf/utils"
 
 type PageProps = {
   params: Promise<{ slug: string }>
@@ -101,11 +102,11 @@ export default async function ToolPage(props: PageProps) {
             <Breadcrumbs
               items={[
                 {
-                  href: "/#tools",
+                  href: "/categories",
                   name: "Categories",
                 },
                 {
-                  href: "/#tools",
+                  href: `/categories/${slugify(tool.category)}`,
                   name: tool.category,
                 },
                 {

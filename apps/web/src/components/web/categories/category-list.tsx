@@ -1,4 +1,7 @@
+"use client";
+
 import type { ComponentProps } from "react";
+import { useState } from "react";
 import {
   CategoryCard,
   CategoryCardSkeleton,
@@ -7,6 +10,8 @@ import { EmptyList } from "~/components/web/empty-list";
 import { Grid } from "~/components/web/ui/grid";
 import type { CategoryMany } from "~/server/web/categories/payloads";
 import { cx } from "~/utils/cva";
+import { Input } from "../ui/input";
+import { SearchIcon } from "lucide-react";
 
 type CategoryListProps = ComponentProps<typeof Grid> & {
   categories: CategoryMany[];
@@ -17,14 +22,43 @@ const CategoryList = ({
   className,
   ...props
 }: CategoryListProps) => {
-  return (
-    <Grid className={cx("gap-8", className)} {...props}>
-      {categories.map((category) => (
-        <CategoryCard key={category.slug} category={category} />
-      ))}
+  const [searchQuery, setSearchQuery] = useState("");
 
-      {!categories.length && <EmptyList>No categories found.</EmptyList>}
-    </Grid>
+  const filteredCategories = categories.filter((category) =>
+    category.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  return (
+    <div className="space-y-6">
+      <div className="relative grow min-w-0">
+        <div className="absolute left-4 top-1/2 -translate-y-1/2 opacity-50 pointer-events-none">
+          <SearchIcon />
+        </div>
+
+        <Input
+          size="lg"
+          type="search"
+          placeholder="Search categories..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full truncate px-10"
+        />
+      </div>
+
+      <Grid className={cx("gap-8", className)} {...props}>
+        {filteredCategories.map((category) => (
+          <CategoryCard key={category.slug} category={category} />
+        ))}
+
+        {!filteredCategories.length && (
+          <EmptyList>
+            {searchQuery
+              ? "No matching categories found."
+              : "No categories found."}
+          </EmptyList>
+        )}
+      </Grid>
+    </div>
   );
 };
 
