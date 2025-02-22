@@ -59,7 +59,7 @@ export const ToolActions = ({ className, tool, setRowAction, ...props }: ToolAct
 
       <DropdownMenuContent align="end">
         <DropdownMenuItem asChild>
-          <Link href={`/admin/tools/${tool.slug}`}>Edit</Link>
+          <Link href={`/admin/agents/${tool.slug}`}>Edit</Link>
         </DropdownMenuItem>
 
         <DropdownMenuItem asChild>

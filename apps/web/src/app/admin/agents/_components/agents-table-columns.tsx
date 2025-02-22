@@ -49,7 +49,7 @@ export const getColumns = ({ setRowAction }: GetColumnsProps): ColumnDef<Tool>[]
       accessorKey: "name",
       header: ({ column }) => <DataTableColumnHeader column={column} title="Name" />,
       cell: ({ row }) => (
-        <DataTableLink href={`/admin/tools/${row.original.slug}`}>
+        <DataTableLink href={`/admin/agents/${row.original.slug}`}>
           {row.original.faviconUrl && <DataTableThumbnail src={row.original.faviconUrl} />}
           {row.getValue("name")}
         </DataTableLink>

@@ -27,7 +27,7 @@ const ScheduledCard = async ({ ...props }: ComponentProps<typeof Card>) => {
             {tools.map(tool => (
               <Link
                 key={tool.slug}
-                href={`/admin/tools/${tool.slug}`}
+                href={`/admin/agents/${tool.slug}`}
                 className="group flex items-center gap-3 py-1"
               >
                 <span className="font-medium truncate">{tool.name}</span>

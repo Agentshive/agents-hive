@@ -130,7 +130,7 @@ export const CommandMenu = () => {
               <CommandItem
                 key={tool.id}
                 value={`tool:${tool.name}`}
-                onSelect={() => handleSelect(`/admin/tools/${tool.slug}`)}
+                onSelect={() => handleSelect(`/admin/agents/${tool.slug}`)}
               >
                 {tool.name}
               </CommandItem>
