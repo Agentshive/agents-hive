@@ -179,7 +179,7 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
           <Button size="sm" variant="secondary" asChild>
             <Link href="/submit">Submit</Link>
           </Button>
-          <Button size="sm" variant="secondary" asChild>
+          <Button size="sm"  asChild>
             <Link href="/auth/login">Signup</Link>
           </Button>
 
