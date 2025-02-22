@@ -139,6 +139,8 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
 
           {/* <NavLink href="/alternatives">Alternatives</NavLink> */}
           {/* <NavLink href="/advertise">Advertise</NavLink> */}
+          <NavLink href="/">Home</NavLink>
+          <NavLink href="/agents-list">AI Agents</NavLink>
           <NavLink href="/categories">Categories</NavLink>
         </nav>
 
