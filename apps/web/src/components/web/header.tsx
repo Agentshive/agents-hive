@@ -139,9 +139,9 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
 
           {/* <NavLink href="/alternatives">Alternatives</NavLink> */}
           {/* <NavLink href="/advertise">Advertise</NavLink> */}
-          <NavLink href="/">Home</NavLink>
+          {/* <NavLink href="/">Home</NavLink>
           <NavLink href="/agents-list">AI Agents</NavLink>
-          <NavLink href="/categories">Categories</NavLink>
+          <NavLink href="/categories">Categories</NavLink> */}
         </nav>
 
         <Stack size="sm" className="max-sm:hidden">
@@ -179,10 +179,10 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
 
         <Stack size="sm">
           <Button size="sm" variant="secondary" asChild>
-            <Link href="/submit">Submit</Link>
+            <Link href="/submit">Launch</Link>
           </Button>
           <Button size="sm"  asChild>
-            <Link href="/auth/login">Signup</Link>
+            <Link href="/auth/login">Login</Link>
           </Button>
 
           {/* <UserMenu /> */}

@@ -41,7 +41,7 @@ const getMetadata = (category: CategoryOne): Metadata => {
 
   return {
     title: `${name}`,
-    description: `A curated collection of the ${category._count.tools} best open source ${name} for inspiration and reference. Each listing includes a website screenshot along with a detailed review of its features.`,
+    description: ``,
   };
 };
 
@@ -64,7 +64,7 @@ export const generateMetadata = async (props: PageProps) => {
 export default async function CategoryPage(props: PageProps) {
   const category = await getCategory(props);
   const { title, description } = getMetadata(category);
-  console.log("category", category);
+  // console.log("category", category);
   return (
     <>
       <div className="flex flex-col gap-12">
