@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   description: config.site.description,
   icons: {
-    icon: [{ type: "image/png", url: "/favicon.png" }],
+    icon: [{ type: "image/png", url: "/agents-hive-favicon.png" }],
   },
   robots: {
     index: true,

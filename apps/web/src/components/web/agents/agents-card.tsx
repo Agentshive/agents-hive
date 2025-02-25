@@ -98,7 +98,7 @@ const ToolCardSkeleton = () => {
   return (
     <Card hover={false} className="items-stretch select-none">
       <CardHeader>
-        <Favicon src="/favicon.png" className="animate-pulse opacity-50" />
+        <Favicon src="/agents-hive-favicon.png" className="animate-pulse opacity-50" />
 
         <H4 className="w-2/3">
           <Skeleton>&nbsp;</Skeleton>
