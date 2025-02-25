@@ -22,7 +22,7 @@ export default async function UpdateToolPage({ params }: PageProps) {
   return (
     <Wrapper size="md">
       <div className="flex items-center justify-between gap-4">
-        <H3>Update tool</H3>
+        <H3>Update AI agent</H3>
 
         <UpdateToolActions tool={tool} />
       </div>

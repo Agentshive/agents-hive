@@ -191,6 +191,12 @@ model Category {
   name      String   @db.Citext
   slug      String   @unique
   description String?
+  whoIsItFor String?
+  toBudget String?
+  benefits String?
+  dominantFeatures String?
+  costSavings String?
+  categoryNews String[] @default([])
   label     String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
