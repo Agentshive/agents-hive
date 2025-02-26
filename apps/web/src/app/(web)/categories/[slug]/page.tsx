@@ -19,6 +19,7 @@ import { Stack } from "~/components/common/stack";
 import { ArrowUpRightIcon } from "lucide-react";
 import { InternalLink } from "~/components/web/internalLink";
 import { BrandLink } from "~/components/web/ui/brand-link";
+import { Input } from "~/components/web/ui/input";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -98,8 +99,6 @@ export default async function CategoryPage(props: PageProps) {
             </Button>
 
             <div className="flex flex-1 flex-col items-start gap-4 max-md:order-1 md:gap-6">
-              
-
               <div className="w-full flex flex-col ">
                 {category.description && (
                   <div className="space-y-2 py-6 first:pt-0 last:pb-0">
@@ -152,7 +151,7 @@ export default async function CategoryPage(props: PageProps) {
                           <BrandLink
                             key={index}
                             href="#"
-                            name={feature.trim()} 
+                            name={feature.trim()}
                             faviconUrl=""
                           />
                         ))}
@@ -176,6 +175,17 @@ export default async function CategoryPage(props: PageProps) {
                   <hr className="border-t border-muted-foreground/20" />
                 </div>
               ))}
+            </div>
+            <div className="space-y-2 py-6">
+              <h2 className="text-2xl font-semibold tracking-tight">
+                Conversations
+              </h2>
+              {/* {category.conversations?.map((convo, index) => (
+                <div key={index} className="space-y-2 py-4">
+                  <p className="text-muted-foreground">{convo}</p>
+                  <hr className="border-t border-muted-foreground/20" />
+                </div>
+              ))} */}
             </div>
 
             {/* Advertisement */}
@@ -206,6 +216,13 @@ export default async function CategoryPage(props: PageProps) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         /> */}
+      </div>
+      <div className="space-y-2 py-6">
+        <h2 className="text-2xl font-semibold tracking-tight">Contribute</h2>
+        <h3>Request a new feature.</h3>
+        <p>What's missing?</p>
+        {/* <Input type="text" placeholder="What's missing?" />
+        <Button>Submit</Button> */}
       </div>
     </>
   );

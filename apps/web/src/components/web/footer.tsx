@@ -122,7 +122,7 @@ export const Footer = ({ children, className, hideNewsletter, ...props }: Footer
 
           {/* <NavLink href="/alternatives">Alternatives</NavLink> */}
           <NavLink href="/categories">Categories</NavLink>
-          <NavLink href="/self-hosted">Self-hosted</NavLink>
+          {/* <NavLink href="/self-hosted">Self-hosted</NavLink> */}
           {/* <NavLink href="/stacks">Tech Stacks</NavLink> */}
           {/* <NavLink href="/topics">Topics</NavLink> */}
           {/* <NavLink href="/licenses">Licenses</NavLink> */}

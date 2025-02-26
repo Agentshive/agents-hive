@@ -160,7 +160,7 @@ export const SubmitForm = ({ className, ...props }: HTMLAttributes<HTMLFormEleme
           )}
         />
 
-        <FormField
+        {/* <FormField
           control={form.control}
           name="submitterNote"
           render={({ field }) => (
@@ -177,7 +177,7 @@ export const SubmitForm = ({ className, ...props }: HTMLAttributes<HTMLFormEleme
               <FormMessage />
             </FormItem>
           )}
-        />
+        /> */}
         <FormField
           control={form.control}
           name="category"
