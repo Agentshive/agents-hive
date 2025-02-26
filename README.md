@@ -31,7 +31,7 @@
 
 ## About this project
 
-OpenAlternative is a community driven list of **open source alternatives to proprietary software** and applications.
+AgentsHive is a community driven list of **AI Agents** and applications.
 
 Our goal is to be your first stop when researching for a new open source service to help you grow your business. We will help you **find alternatives** of the products you already use.
 
