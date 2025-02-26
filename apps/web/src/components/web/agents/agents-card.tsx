@@ -26,6 +26,7 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
   const insights = [
     { label: "Category", value: tool.category, icon: "" },
     { label: "Features", value: tool.features, icon: "" },
+    { label: "Price", value: `₹${tool.price}`, icon: "" },
     // {
     //   label: "Last commit",
     //   value:

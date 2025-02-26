@@ -47,6 +47,7 @@ export const toolSchema = z.object({
   categories: z.array(z.string()).optional(),
   category: z.string(),
   features: z.string(),
+  price: z.number().optional(),
 })
 
 export type ToolSchema = z.infer<typeof toolSchema>

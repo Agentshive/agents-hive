@@ -53,11 +53,38 @@ export function ToolForm({
 }: ToolFormProps) {
   const form = useForm<ToolSchema>({
     resolver: zodResolver(toolSchema),
+    // defaultValues: {
+    //   ...nullsToUndefined(tool) ?? {},
+    //   alternatives: tool?.alternatives?.map(({ id }) => id) ?? [],
+    //   categories: tool?.categories?.map(({ id }) => id) ?? [],
+    // },
     defaultValues: {
       ...nullsToUndefined(tool) ?? {},
       alternatives: tool?.alternatives?.map(({ id }) => id) ?? [],
       categories: tool?.categories?.map(({ id }) => id) ?? [],
-    },
+      name: tool?.name ?? "",
+      slug: tool?.slug ?? "",
+      website: tool?.website ?? "",
+      repository: tool?.repository ?? "",
+      tagline: tool?.tagline ?? "",
+      description: tool?.description ?? "",
+      content: tool?.content ?? "",
+      isFeatured: tool?.isFeatured ?? false,
+      isSelfHosted: tool?.isSelfHosted ?? false,
+      publishedAt: tool?.publishedAt ?? null,
+      status: tool?.status ?? "",
+      price: tool?.price ?? "",
+      submitterName: tool?.submitterName ?? "",
+      category: tool?.category ?? "",
+      features: tool?.features ?? "",
+      submitterNote: tool?.submitterNote ?? "",
+      hostingUrl: tool?.hostingUrl ?? "",
+      faviconUrl: tool?.faviconUrl ?? "",
+      screenshotUrl: tool?.screenshotUrl ?? "",
+      discountCode: tool?.discountCode ?? "",
+      discountAmount: tool?.discountAmount ?? "",
+    }
+    
   })
 
   // Create tool
@@ -278,7 +305,20 @@ export function ToolForm({
           />
         </div>
 
-        {/* <FormField
+        <FormField
+          control={form.control}
+          name="price"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Price</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
           control={form.control}
           name="submitterName"
           render={({ field }) => (
@@ -290,7 +330,7 @@ export function ToolForm({
               <FormMessage />
             </FormItem>
           )}
-        /> */}
+        />
         <FormField
           control={form.control}
           name="category"
@@ -416,7 +456,7 @@ export function ToolForm({
           )}
         />
 
-        <FormField
+        {/* <FormField
           control={form.control}
           name="alternatives"
           render={({ field }) => (
@@ -429,7 +469,7 @@ export function ToolForm({
               />
             </FormItem>
           )}
-        />
+        /> */}
 
         <FormField
           control={form.control}
