@@ -63,7 +63,7 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
     >
       <div className="absolute top-0 inset-x-0 h-[calc(var(--header-top)+var(--header-height)+2rem)] pointer-events-none bg-linear-to-b from-background via-background to-transparent lg:h-[calc(var(--header-top)+var(--header-height)+3rem)]" />
 
-      <div className="relative flex flex-nowrap items-center py-3.5 gap-x-3 text-sm h-[var(--header-height)] isolate duration-300 lg:gap-4">
+      <div className="relative flex flex-nowrap items-center py-3.5 gap-x-3 text-base h-[var(--header-height)] isolate duration-300 lg:gap-4">
         <button
           type="button"
           onClick={() => setNavOpen(!isNavOpen)}
@@ -94,13 +94,16 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
         <Logo className="mr-auto" />
 
         <nav className="contents max-lg:hidden">
-          <DropdownMenu>
-            <DropdownMenuTrigger className={cx(navLinkVariants({ className: "gap-1" }))}>
+          {/* <DropdownMenu>
+            <DropdownMenuTrigger className={cx(navLinkVariants({ className: "gap-1 text-base" }))}>
               Browse{" "}
               <ChevronDownIcon className="group-data-[state=open]:-rotate-180 duration-200" />
             </DropdownMenuTrigger>
+            <Button size="sm" variant="secondary" asChild>
+            <Link href="/submit">Submit</Link>
+          </Button> */}
 
-            <DropdownMenuContent align="start">
+            {/* <DropdownMenuContent align="start">
               <DropdownMenuItem asChild>
                 <NavLink href="/?sort=publishedAt.desc">
                   <CalendarDaysIcon className="shrink-0 size-4 opacity-75" /> Latest agents
@@ -115,7 +118,7 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
                 <NavLink href="/self-hosted">
                   <ServerIcon className="shrink-0 size-4 opacity-75" /> Self-hosted
                 </NavLink>
-              </DropdownMenuItem>
+              </DropdownMenuItem> */}
               {/* <DropdownMenuItem asChild>
                 <NavLink href="/stacks">
                   <BlocksIcon className="shrink-0 size-4 opacity-75" /> Tech Stacks
@@ -131,11 +134,14 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
                   <CopyrightIcon className="shrink-0 size-4 opacity-75" /> Licenses
                 </NavLink>
               </DropdownMenuItem> */}
-            </DropdownMenuContent>
-          </DropdownMenu>
+            {/* </DropdownMenuContent> */}
+          {/* </DropdownMenu> */}
 
           {/* <NavLink href="/alternatives">Alternatives</NavLink> */}
           {/* <NavLink href="/advertise">Advertise</NavLink> */}
+          {/* <NavLink href="/">Home</NavLink>
+          <NavLink href="/agents-list">AI Agents</NavLink>
+          <NavLink href="/categories">Categories</NavLink> */}
         </nav>
 
         <Stack size="sm" className="max-sm:hidden">
@@ -173,10 +179,10 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
 
         <Stack size="sm">
           <Button size="sm" variant="secondary" asChild>
-            <Link href="/submit">Submit</Link>
+            <Link href="/submit">Launch</Link>
           </Button>
-          <Button size="sm" variant="secondary" asChild>
-            <Link href="/auth/login">Signup</Link>
+          <Button size="sm"  asChild>
+            <Link href="/auth/login">Login</Link>
           </Button>
 
           {/* <UserMenu /> */}
@@ -189,31 +195,31 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
           isNavOpen ? "opacity-100" : "opacity-0 pointer-events-none",
         )}
       >
-        <NavLink href="/?sort=publishedAt.desc" className="text-base">
+        <NavLink href="/?sort=publishedAt.desc" className="text-lg">
           Latest
         </NavLink>
-        <NavLink href="/alternatives" className="text-base">
+        <NavLink href="/alternatives" className="text-lg">
           Alternatives
         </NavLink>
-        <NavLink href="/categories" className="text-base">
+        <NavLink href="/categories" className="text-lg">
           Categories
         </NavLink>
-        <NavLink href="/self-hosted" className="text-base">
+        <NavLink href="/self-hosted" className="text-lg">
           Self-hosted
         </NavLink>
-        <NavLink href="/stacks" className="text-base">
+        <NavLink href="/stacks" className="text-lg">
           Tech Stacks
         </NavLink>
-        <NavLink href="/topics" className="text-base">
+        <NavLink href="/topics" className="text-lg">
           Topics
         </NavLink>
-        <NavLink href="/submit" className="text-base">
+        <NavLink href="/submit" className="text-lg">
           Submit
         </NavLink>
-        <NavLink href="/advertise" className="text-base">
+        <NavLink href="/advertise" className="text-lg">
           Advertise
         </NavLink>
-        <NavLink href="/about" className="text-base">
+        <NavLink href="/about" className="text-lg">
           About
         </NavLink>
 

@@ -15,8 +15,8 @@ import { Markdown } from "~/components/web/markdown"
 import { RepositoryDetails } from "~/components/web/repository-details"
 import { ShareButtons } from "~/components/web/share-buttons"
 import { StackList } from "~/components/web/stacks/stack-list"
-import { ToolAlternatives } from "~/components/web/tools/tool-alternatives"
-import { ToolListSkeleton } from "~/components/web/tools/tool-list"
+import { ToolAlternatives } from "~/components/web/agents/agents-alternatives"
+import { ToolListSkeleton } from "~/components/web/agents/agents-list"
 import { Breadcrumbs } from "~/components/web/ui/breadcrumbs"
 import { Button } from "~/components/web/ui/button"
 import { FaviconImage } from "~/components/web/ui/favicon"
@@ -27,6 +27,7 @@ import { metadataConfig } from "~/config/metadata"
 import { getToolSuffix } from "~/lib/tools"
 import type { ToolOne } from "~/server/web/tools/payloads"
 import { findTool, findToolSlugs } from "~/server/web/tools/queries"
+import { slugify } from "@curiousleaf/utils"
 
 type PageProps = {
   params: Promise<{ slug: string }>
@@ -101,11 +102,11 @@ export default async function ToolPage(props: PageProps) {
             <Breadcrumbs
               items={[
                 {
-                  href: "/#tools",
+                  href: "/categories",
                   name: "Categories",
                 },
                 {
-                  href: "/#tools",
+                  href: `/categories/${slugify(tool.category)}`,
                   name: tool.category,
                 },
                 {

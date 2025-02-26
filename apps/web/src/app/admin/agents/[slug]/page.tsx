@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation"
-import { UpdateToolActions } from "~/app/admin/tools/[slug]/actions"
-import { ToolForm } from "~/app/admin/tools/_components/tool-form"
+import { UpdateToolActions } from "~/app/admin/agents/[slug]/actions"
+import { ToolForm } from "~/app/admin/agents/_components/agents-form"
 import { Wrapper } from "~/components/admin/ui/wrapper"
 import { H3 } from "~/components/common/heading"
 import { findAlternativeList } from "~/server/admin/alternatives/queries"
@@ -22,7 +22,7 @@ export default async function UpdateToolPage({ params }: PageProps) {
   return (
     <Wrapper size="md">
       <div className="flex items-center justify-between gap-4">
-        <H3>Update tool</H3>
+        <H3>Update AI agent</H3>
 
         <UpdateToolActions tool={tool} />
       </div>

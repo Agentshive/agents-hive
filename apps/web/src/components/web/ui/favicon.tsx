@@ -27,15 +27,14 @@ export const FaviconImage = ({ className, src, title, ...props }: FaviconProps) 
   if (!src) return null
 
   return (
-    // <Image
-    //   src={src}
-    //   alt={title ? `A favicon of ${title}` : ""}
-    //   // loading="lazy"
-    //   width="64"
-    //   height="64"
-    //   className={cx("aspect-square size-9 rounded-sm", className)}
-    //   {...props}
-    // />
-    <></>
+    <Image
+      src={src}
+      alt={title ? `A favicon of ${title}` : ""}
+      // loading="lazy"
+      width="64"
+      height="64"
+      className={cx("aspect-square size-9 rounded-sm", className)}
+      {...props}
+    />
   )
 }

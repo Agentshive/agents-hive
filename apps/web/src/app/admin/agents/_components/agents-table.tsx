@@ -3,8 +3,8 @@
 import { type Tool, ToolStatus } from "@openalternative/db/client"
 import { CircleDashedIcon, CircleDotDashedIcon, CircleIcon, PlusIcon } from "lucide-react"
 import { use, useMemo, useState } from "react"
-import { ToolScheduleDialog } from "~/app/admin/tools/_components/tool-schedule-dialog"
-import { ToolsDeleteDialog } from "~/app/admin/tools/_components/tools-delete-dialog"
+import { ToolScheduleDialog } from "~/app/admin/agents/_components/agents-schedule-dialog"
+import { ToolsDeleteDialog } from "~/app/admin/agents/_components/agents-delete-dialog"
 import { DataTable } from "~/components/admin/data-table/data-table"
 import { DataTableHeader } from "~/components/admin/data-table/data-table-header"
 import { DataTableToolbar } from "~/components/admin/data-table/data-table-toolbar"
@@ -14,8 +14,8 @@ import { Link } from "~/components/common/link"
 import { useDataTable } from "~/hooks/use-data-table"
 import type { findTools } from "~/server/admin/agents/queries"
 import type { DataTableFilterField, DataTableRowAction } from "~/types"
-import { getColumns } from "./tools-table-columns"
-import { ToolsTableToolbarActions } from "./tools-table-toolbar-actions"
+import { getColumns } from "./agents-table-columns"
+import { ToolsTableToolbarActions } from "./agents-table-toolbar-actions"
 
 type ToolsTableProps = {
   toolsPromise: ReturnType<typeof findTools>
@@ -85,7 +85,7 @@ export function ToolsTable({ toolsPromise }: ToolsTableProps) {
           total={toolsTotal}
           callToAction={
             <Button prefix={<PlusIcon />} asChild>
-              <Link href="/admin/tools/new">
+              <Link href="/admin/agents/new">
                 <span className="max-sm:sr-only">New AI agent</span>
               </Link>
             </Button>

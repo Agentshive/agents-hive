@@ -1,25 +1,82 @@
-import type { ComponentProps } from "react"
-import { CategoryCard, CategoryCardSkeleton } from "~/components/web/categories/category-card"
-import { EmptyList } from "~/components/web/empty-list"
-import { Grid } from "~/components/web/ui/grid"
-import type { CategoryMany } from "~/server/web/categories/payloads"
-import { cx } from "~/utils/cva"
+"use client";
+
+import type { ComponentProps } from "react";
+import { useState } from "react";
+import {
+  CategoryCard,
+  CategoryCardSkeleton,
+} from "~/components/web/categories/category-card";
+import { EmptyList } from "~/components/web/empty-list";
+import { Grid } from "~/components/web/ui/grid";
+import type { CategoryMany } from "~/server/web/categories/payloads";
+import { cx } from "~/utils/cva";
+import { Input } from "../ui/input";
+import { ArrowUpRightIcon, SearchIcon } from "lucide-react";
+import { Button } from "~/components/web/ui/button";
+import { InternalLink } from "../internalLink";
+
 
 type CategoryListProps = ComponentProps<typeof Grid> & {
-  categories: CategoryMany[]
-}
+  categories: CategoryMany[];
+};
 
-const CategoryList = ({ categories, className, ...props }: CategoryListProps) => {
+const CategoryList = ({
+  categories,
+  className,
+  ...props
+}: CategoryListProps) => {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredCategories = categories.filter((category) =>
+    category.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <Grid className={cx("md:gap-8", className)} {...props}>
-      {categories.map(category => (
-        <CategoryCard key={category.slug} category={category} />
-      ))}
+    <div className="space-y-6">
+      <div className="flex justify-center">
+        <Button suffix={<ArrowUpRightIcon />} asChild>
+          <InternalLink
+            href={`/agents-list`}
+            // rel={category.isFeatured ? "noopener noreferrer" : undefined}
+            eventName="click_website"
+            // eventProps={{ url: category.website }}
+          >
+            Find agents
+          </InternalLink>
+        </Button>
+      </div>
+      <div className="relative grow min-w-0">
+        <div className="absolute left-4 top-1/2 -translate-y-1/2 opacity-50 pointer-events-none">
+          <SearchIcon />
+        </div>
 
-      {!categories.length && <EmptyList>No categories found.</EmptyList>}
-    </Grid>
-  )
-}
+        <Input
+          size="lg"
+          type="search"
+          placeholder="Search categories..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full truncate px-10"
+        />
+      </div>
+      
+
+      <Grid className={cx("gap-8", className)} {...props}>
+        {filteredCategories.map((category) => (
+          <CategoryCard key={category.slug} category={category} />
+        ))}
+
+        {!filteredCategories.length && (
+          <EmptyList>
+            {searchQuery
+              ? "No matching categories found."
+              : "No categories found."}
+          </EmptyList>
+        )}
+      </Grid>
+    </div>
+  );
+};
 
 const CategoryListSkeleton = () => {
   return (
@@ -28,7 +85,7 @@ const CategoryListSkeleton = () => {
         <CategoryCardSkeleton key={index} />
       ))}
     </Grid>
-  )
-}
+  );
+};
 
-export { CategoryList, CategoryListSkeleton }
+export { CategoryList, CategoryListSkeleton };

@@ -31,7 +31,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         logo: {
           "@type": "ImageObject",
           "@id": `${url}/#/schema/image/1`,
-          url: `${url}/favicon.png`,
+          url: `${url}/agents-hive-favicon.png`,
           width: "480",
           height: "480",
           caption: `${config.site.name} Logo`,

@@ -3,7 +3,7 @@
 import { formatDate } from "@curiousleaf/utils"
 import type { Tool } from "@openalternative/db/client"
 import type { ColumnDef } from "@tanstack/react-table"
-import { ToolActions } from "~/app/admin/tools/_components/tool-actions"
+import { ToolActions } from "~/app/admin/agents/_components/agents-actions"
 import { DataTableColumnHeader } from "~/components/admin/data-table/data-table-column-header"
 import { DataTableLink } from "~/components/admin/data-table/data-table-link"
 import { DataTableThumbnail } from "~/components/admin/data-table/data-table-thumbnail"
@@ -49,7 +49,7 @@ export const getColumns = ({ setRowAction }: GetColumnsProps): ColumnDef<Tool>[]
       accessorKey: "name",
       header: ({ column }) => <DataTableColumnHeader column={column} title="Name" />,
       cell: ({ row }) => (
-        <DataTableLink href={`/admin/tools/${row.original.slug}`}>
+        <DataTableLink href={`/admin/agents/${row.original.slug}`}>
           {row.original.faviconUrl && <DataTableThumbnail src={row.original.faviconUrl} />}
           {row.getValue("name")}
         </DataTableLink>

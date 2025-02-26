@@ -4,6 +4,12 @@ export const categoryOnePayload = Prisma.validator<Prisma.CategorySelect>()({
   name: true,
   slug: true,
   label: true,
+  description: true,
+  whoIsItFor: true,
+  toBudget: true,
+  benefits: true,
+  dominantFeatures: true,
+  categoryNews: true,
   _count: { select: { tools: { where: { status: ToolStatus.Published } } } },
 })
 
@@ -11,6 +17,12 @@ export const categoryManyPayload = Prisma.validator<Prisma.CategorySelect>()({
   name: true,
   slug: true,
   label: true,
+  whoIsItFor: true,
+  toBudget: true,
+  benefits: true,
+  dominantFeatures: true,
+  categoryNews: true,
+  description: true,
   _count: { select: { tools: { where: { status: ToolStatus.Published } } } },
 })
 

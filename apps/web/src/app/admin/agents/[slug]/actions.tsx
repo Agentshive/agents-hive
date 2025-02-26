@@ -3,9 +3,9 @@
 import type { Tool } from "@openalternative/db/client"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import { ToolActions } from "~/app/admin/tools/_components/tool-actions"
-import { ToolScheduleDialog } from "~/app/admin/tools/_components/tool-schedule-dialog"
-import { ToolsDeleteDialog } from "~/app/admin/tools/_components/tools-delete-dialog"
+import { ToolActions } from "~/app/admin/agents/_components/agents-actions"
+import { ToolScheduleDialog } from "~/app/admin/agents/_components/agents-schedule-dialog"
+import { ToolsDeleteDialog } from "~/app/admin/agents/_components/agents-delete-dialog"
 import type { DataTableRowAction } from "~/types"
 
 type UpdateToolActionProps = {
@@ -32,7 +32,7 @@ export const UpdateToolActions = ({ tool }: UpdateToolActionProps) => {
         onOpenChange={() => setRowAction(null)}
         tools={rowAction?.data ? [rowAction?.data] : []}
         showTrigger={false}
-        onSuccess={() => router.push("/admin/tools")}
+        onSuccess={() => router.push("/admin/agents")}
       />
     </>
   )

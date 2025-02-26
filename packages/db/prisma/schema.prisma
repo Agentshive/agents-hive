@@ -126,11 +126,12 @@ model Tool {
   name            String                   @db.Citext
   slug            String                   @unique
   website         String                   @unique
-  repository      String                   @unique
+  repository      String?                  @unique
   tagline         String?
   description     String?
   content         String?
   category        String
+  price           Float?                   @default(0)
   features        String
   faviconUrl      String?
   screenshotUrl   String?
@@ -190,6 +191,13 @@ model Category {
   id        String   @id @default(cuid())
   name      String   @db.Citext
   slug      String   @unique
+  description String?
+  whoIsItFor String?
+  toBudget String?
+  benefits String?
+  dominantFeatures String?
+  costSavings String?
+  categoryNews String[] @default([])
   label     String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

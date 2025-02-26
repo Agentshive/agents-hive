@@ -1,6 +1,6 @@
 import { Link } from "~/components/common/link"
 import { Listing } from "~/components/web/listing"
-import { ToolList } from "~/components/web/tools/tool-list"
+import { ToolList } from "~/components/web/agents/agents-list"
 import type { LicenseOne } from "~/server/web/licenses/payloads"
 import { findTools } from "~/server/web/tools/queries"
 

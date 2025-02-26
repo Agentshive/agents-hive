@@ -9,8 +9,8 @@ import { config } from "~/config"
 import { metadataConfig } from "~/config/metadata"
 
 export const metadata: Metadata = {
-  title: "Submit your Open Source Software",
-  description: `Help us grow the list of open source alternatives to proprietary software. Contribute to ${config.site.name} by submitting a new open source alternative.`,
+  title: "Submit your AI agent",
+  description: `Help us grow the list of AI agents. Contribute to ${config.site.name} by submitting an AI agent.`,
   openGraph: { ...metadataConfig.openGraph, url: "/submit" },
   alternates: { ...metadataConfig.alternates, canonical: "/submit" },
 }
@@ -40,9 +40,9 @@ export default async function SubmitPage() {
                 <li>Open source</li>
                 <li>Free to use or can be self-hosted</li>
                 <li>Actively maintained</li>
-                <li>
+                {/* <li>
                   An <Link href="/alternatives">alternative to popular software</Link>
-                </li>
+                </li> */}
               </ul>
             </Prose>
           </Card>

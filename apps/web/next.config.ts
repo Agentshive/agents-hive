@@ -1,5 +1,5 @@
-import { withContentCollections } from "@content-collections/next"
-import type { NextConfig } from "next"
+import { withContentCollections } from "@content-collections/next";
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   experimental: {
@@ -16,18 +16,21 @@ const nextConfig: NextConfig = {
   },
 
   images: {
-    loader: "custom",
-    loaderFile: "./src/lib/image-loader.ts",
+    loader: "default",
     minimumCacheTTL: 31536000,
     deviceSizes: [640, 768, 1024],
     remotePatterns: [
-      { hostname: `${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com` },
+      {
+        hostname: `${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com`,
+      },
+      { protocol: "https", hostname: "**" },
+      { protocol: "http", hostname: "localhost" },
     ],
   },
 
   async rewrites() {
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
-    const posthogUrl = process.env.NEXT_PUBLIC_POSTHOG_HOST
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+    const posthogUrl = process.env.NEXT_PUBLIC_POSTHOG_HOST;
 
     return [
       // RSS rewrites
@@ -53,7 +56,7 @@ const nextConfig: NextConfig = {
         source: "/_proxy/posthog/ingest/decide",
         destination: `${posthogUrl}/decide`,
       },
-    ]
+    ];
   },
 
   async redirects() {
@@ -88,9 +91,9 @@ const nextConfig: NextConfig = {
         destination: "/scira",
         permanent: true,
       },
-    ]
+    ];
   },
-}
+};
 
 // @ts-expect-error
-export default withContentCollections(nextConfig)
+export default withContentCollections(nextConfig);

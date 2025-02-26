@@ -108,7 +108,7 @@ export const CommandMenu = () => {
         <CommandEmpty>No results found.</CommandEmpty>
 
         <CommandGroup heading="Create">
-          <CommandItem onSelect={() => handleSelect("/admin/tools/new")}>New AI agent</CommandItem>
+          <CommandItem onSelect={() => handleSelect("/admin/agents/new")}>New AI agent</CommandItem>
           <CommandItem onSelect={() => handleSelect("/admin/alternatives/new")}>
             New Alternative
           </CommandItem>
@@ -130,7 +130,7 @@ export const CommandMenu = () => {
               <CommandItem
                 key={tool.id}
                 value={`tool:${tool.name}`}
-                onSelect={() => handleSelect(`/admin/tools/${tool.slug}`)}
+                onSelect={() => handleSelect(`/admin/agents/${tool.slug}`)}
               >
                 {tool.name}
               </CommandItem>

@@ -59,7 +59,7 @@ export const Sidebar = () => {
           links={[
             {
               title: "AI agents",
-              href: "/admin/tools",
+              href: "/admin/agents",
               prefix: <GemIcon />,
             },
             // {

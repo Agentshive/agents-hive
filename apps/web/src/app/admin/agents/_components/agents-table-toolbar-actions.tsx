@@ -2,7 +2,7 @@
 
 import type { Tool } from "@openalternative/db/client"
 import type { Table } from "@tanstack/react-table"
-import { ToolsDeleteDialog } from "./tools-delete-dialog"
+import { ToolsDeleteDialog } from "./agents-delete-dialog"
 
 interface ToolsTableToolbarActionsProps {
   table: Table<Tool>

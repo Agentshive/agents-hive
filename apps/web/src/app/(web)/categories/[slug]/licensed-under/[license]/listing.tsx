@@ -1,5 +1,5 @@
 import type { SearchParams } from "nuqs/server"
-import { ToolQuery } from "~/components/web/tools/tool-query"
+import { ToolQuery } from "~/components/web/agents/agents-query"
 import type { CategoryOne } from "~/server/web/categories/payloads"
 import type { LicenseOne } from "~/server/web/licenses/payloads"
 import { searchTools } from "~/server/web/tools/queries"

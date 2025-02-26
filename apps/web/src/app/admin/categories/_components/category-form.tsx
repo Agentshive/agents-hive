@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { redirect } from "next/navigation"
-import type React from "react"
-import { useForm } from "react-hook-form"
-import { toast } from "sonner"
-import { useServerAction } from "zsa-react"
-import { RelationSelector } from "~/components/admin/relation-selector"
-import { Button } from "~/components/admin/ui/button"
-import { Input } from "~/components/admin/ui/input"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { redirect } from "next/navigation";
+import type React from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { useServerAction } from "zsa-react";
+import { RelationSelector } from "~/components/admin/relation-selector";
+import { Button } from "~/components/admin/ui/button";
+import { Input } from "~/components/admin/ui/input";
 import {
   Form,
   FormControl,
@@ -16,19 +16,26 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "~/components/common/form"
-import { Link } from "~/components/common/link"
-import { createCategory, updateCategory } from "~/server/admin/categories/actions"
-import type { findCategoryBySlug } from "~/server/admin/categories/queries"
-import { type CategorySchema, categorySchema } from "~/server/admin/categories/validations"
-import type { findToolList } from "~/server/admin/agents/queries"
-import { cx } from "~/utils/cva"
-import { nullsToUndefined } from "~/utils/helpers"
+} from "~/components/common/form";
+import { Link } from "~/components/common/link";
+import {
+  createCategory,
+  updateCategory,
+} from "~/server/admin/categories/actions";
+import type { findCategoryBySlug } from "~/server/admin/categories/queries";
+import {
+  type CategorySchema,
+  categorySchema,
+} from "~/server/admin/categories/validations";
+import type { findToolList } from "~/server/admin/agents/queries";
+import { cx } from "~/utils/cva";
+import { nullsToUndefined } from "~/utils/helpers";
+import { Textarea } from "~/components/admin/ui/textarea";
 
 type CategoryFormProps = React.HTMLAttributes<HTMLFormElement> & {
-  category?: Awaited<ReturnType<typeof findCategoryBySlug>>
-  tools: ReturnType<typeof findToolList>
-}
+  category?: Awaited<ReturnType<typeof findCategoryBySlug>>;
+  tools: ReturnType<typeof findToolList>;
+};
 
 export function CategoryForm({
   children,
@@ -40,52 +47,59 @@ export function CategoryForm({
   const form = useForm<CategorySchema>({
     resolver: zodResolver(categorySchema),
     defaultValues: {
+      name: '',
+      slug: '',
+      description: '',
+      whatIsItFor: '',
+      benefits: '',
+      dominantFeatures: '',
       ...nullsToUndefined(category),
-      tools: category?.tools.map(({ id }) => id),
+      tools: category?.tools.map(({ id }) => id) ?? [],
     },
-  })
+  });
 
   // Create category
-  const { execute: createCategoryAction, isPending: isCreatingCategory } = useServerAction(
-    createCategory,
-    {
+  const { execute: createCategoryAction, isPending: isCreatingCategory } =
+    useServerAction(createCategory, {
       onSuccess: ({ data }) => {
-        toast.success("Category successfully created")
-        redirect(`/admin/categories/${data.slug}`)
+        toast.success("Category successfully created");
+        redirect(`/admin/categories/${data.slug}`);
       },
 
       onError: ({ err }) => {
-        toast.error(err.message)
+        toast.error(err.message);
       },
-    },
-  )
+    });
 
   // Update category
-  const { execute: updateCategoryAction, isPending: isUpdatingCategory } = useServerAction(
-    updateCategory,
-    {
+  const { execute: updateCategoryAction, isPending: isUpdatingCategory } =
+    useServerAction(updateCategory, {
       onSuccess: ({ data }) => {
-        toast.success("Category successfully updated")
-        redirect(`/admin/categories/${data.slug}`)
+        toast.success("Category successfully updated");
+        redirect(`/admin/categories/${data.slug}`);
       },
 
       onError: ({ err }) => {
-        toast.error(err.message)
+        toast.error(err.message);
       },
-    },
-  )
+    });
 
-  const onSubmit = form.handleSubmit(data => {
-    category ? updateCategoryAction({ id: category.id, ...data }) : createCategoryAction(data)
-  })
+  const onSubmit = form.handleSubmit((data) => {
+    category
+      ? updateCategoryAction({ id: category.id, ...data })
+      : createCategoryAction(data);
+  });
 
-  const isPending = isCreatingCategory || isUpdatingCategory
+  const isPending = isCreatingCategory || isUpdatingCategory;
 
   return (
     <Form {...form}>
       <form
         onSubmit={onSubmit}
-        className={cx("grid grid-cols-1 gap-4 max-w-3xl sm:grid-cols-2", className)}
+        className={cx(
+          "grid grid-cols-1 gap-4 max-w-3xl sm:grid-cols-2",
+          className
+        )}
         noValidate
         {...props}
       >
@@ -121,12 +135,38 @@ export function CategoryForm({
 
         <FormField
           control={form.control}
-          name="label"
+          name="description"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Label</FormLabel>
+            <FormItem className="col-span-full">
+              <FormLabel>Description</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Textarea {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="whatIsItFor"
+          render={({ field }) => (
+            <FormItem className="col-span-full">
+              <FormLabel>What is it for?</FormLabel>
+              <FormControl>
+                <Textarea {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="benefits"
+          render={({ field }) => (
+            <FormItem className="col-span-full">
+              <FormLabel>Benefits</FormLabel>
+              <FormControl>
+                <Textarea {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -147,6 +187,22 @@ export function CategoryForm({
             </FormItem>
           )}
         />
+        <FormField
+          control={form.control}
+          name="dominantFeatures"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Dominant Features</FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  placeholder="Enter dominant features, separated by commas"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         <div className="flex justify-between gap-4 col-span-full">
           <Button variant="outline" asChild>
@@ -159,5 +215,5 @@ export function CategoryForm({
         </div>
       </form>
     </Form>
-  )
+  );
 }

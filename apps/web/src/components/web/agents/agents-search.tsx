@@ -4,7 +4,7 @@ import { useLocalStorage } from "@mantine/hooks"
 import { cx } from "cva"
 import { ListFilterIcon, LoaderIcon, SearchIcon } from "lucide-react"
 import { Stack } from "~/components/common/stack"
-import { ToolFilters } from "~/components/web/tools/tool-filters"
+import { ToolFilters } from "~/components/web/agents/agents-filters"
 import { Input } from "~/components/web/ui/input"
 import { Select } from "~/components/web/ui/select"
 import { useToolFilters } from "~/contexts/tool-filter-context"
@@ -41,7 +41,7 @@ export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
           size="lg"
           value={filters.q || ""}
           onChange={e => updateFilters({ q: e.target.value })}
-          placeholder={isLoading ? "Loading..." : placeholder || "Search tools..."}
+          placeholder={isLoading ? "Loading..." : placeholder || "Search agents..."}
           className="w-full truncate px-10"
         />
 

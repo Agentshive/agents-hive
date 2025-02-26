@@ -6,7 +6,7 @@ import { H4 } from "~/components/common/heading"
 import { Link } from "~/components/common/link"
 import { Skeleton } from "~/components/common/skeleton"
 import { Stack } from "~/components/common/stack"
-import { ToolBadges } from "~/components/web/tools/tool-badges"
+import { ToolBadges } from "~/components/web/agents/agents-badges"
 import { Badge } from "~/components/web/ui/badge"
 import { Card, CardDescription, CardHeader } from "~/components/web/ui/card"
 import { Favicon } from "~/components/web/ui/favicon"
@@ -26,6 +26,7 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
   const insights = [
     { label: "Category", value: tool.category, icon: "" },
     { label: "Features", value: tool.features, icon: "" },
+    { label: "Price", value: `₹${tool.price}`, icon: "" },
     // {
     //   label: "Last commit",
     //   value:
@@ -33,7 +34,6 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
     //   icon: <TimerIcon />,
     // },
   ]
-console.log("tools", tool)
   return (
     <Card asChild {...props}>
       <Link href={`/${tool.slug}`} className="group">
@@ -90,16 +90,16 @@ console.log("tools", tool)
 }
 
 const ToolCardSkeleton = () => {
-  const insights = [
-    { label: "Stars", value: <Skeleton className="h-4 w-16" />, icon: <StarIcon /> },
-    { label: "Forks", value: <Skeleton className="h-4 w-14" />, icon: <GitForkIcon /> },
-    { label: "Last commit", value: <Skeleton className="h-4 w-20" />, icon: <TimerIcon /> },
-  ]
+  // const insights = [
+  //   { label: "Stars", value: <Skeleton className="h-4 w-16" />, icon: <StarIcon /> },
+  //   { label: "Forks", value: <Skeleton className="h-4 w-14" />, icon: <GitForkIcon /> },
+  //   { label: "Last commit", value: <Skeleton className="h-4 w-20" />, icon: <TimerIcon /> },
+  // ]
 
   return (
     <Card hover={false} className="items-stretch select-none">
       <CardHeader>
-        <Favicon src="/favicon.png" className="animate-pulse opacity-50" />
+        <Favicon src="/agents-hive-favicon.png" className="animate-pulse opacity-50" />
 
         <H4 className="w-2/3">
           <Skeleton>&nbsp;</Skeleton>
@@ -111,9 +111,9 @@ const ToolCardSkeleton = () => {
         <Skeleton className="h-5 w-1/2">&nbsp;</Skeleton>
       </CardDescription>
 
-      <Stack size="sm">
+      {/* <Stack size="sm">
         <Insights insights={insights} className="mt-auto animate-pulse" />
-      </Stack>
+      </Stack> */}
     </Card>
   )
 }
