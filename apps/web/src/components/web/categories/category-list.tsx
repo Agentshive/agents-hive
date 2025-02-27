@@ -33,7 +33,7 @@ const CategoryList = ({
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-center">
+      {/* <div className="flex justify-center">
         <Button suffix={<ArrowUpRightIcon />} asChild>
           <InternalLink
             href={`/agents-list`}
@@ -44,7 +44,7 @@ const CategoryList = ({
             Find agents
           </InternalLink>
         </Button>
-      </div>
+      </div> */}
       <div className="relative grow min-w-0">
         <div className="absolute left-4 top-1/2 -translate-y-1/2 opacity-50 pointer-events-none">
           <SearchIcon />

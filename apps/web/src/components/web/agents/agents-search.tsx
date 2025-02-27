@@ -19,7 +19,10 @@ export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
   const [isFiltersOpen, setIsFiltersOpen] = useLocalStorage({
     key: "filtersOpen",
     defaultValue: false,
+    getInitialValueInEffect: true,
   })
+
+  console.log(isFiltersOpen, "isFiltersOpen")
 
   const sortOptions = [
     { value: "publishedAt.desc", label: "Latest" },
