@@ -3,7 +3,11 @@
 import { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import * as XLSX from "xlsx";
+import { customAlphabet } from "nanoid";
 import { Button } from "~/components/web/ui/button";
+
+// Generate a custom Nano ID with 26-character length
+const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz0123456789", 26);
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -31,24 +35,19 @@ export default function XLSXUploader() {
     setMessage("Processing file...");
 
     try {
-      // Read the XLSX file
       const data = await file.arrayBuffer();
       const workbook = XLSX.read(data);
-
-      // Get all sheet names
       const sheetNames = workbook.SheetNames;
 
       for (const sheetName of sheetNames) {
         setMessage(`Processing sheet: ${sheetName}...`);
 
-        // Convert sheet to JSON
         const worksheet = workbook.Sheets[sheetName];
         const jsonData =
           XLSX.utils.sheet_to_json<Record<string, any>>(worksheet);
 
-        // Clean data - convert empty strings to null
         const cleanedData = jsonData.map((row) => {
-          const cleanRow = { ...row };
+          const cleanRow: { [key: string]: any } = { id: nanoid(), ...row };
           Object.keys(cleanRow).forEach((key) => {
             if (cleanRow[key] === "") {
               cleanRow[key] = null;
@@ -73,7 +72,7 @@ export default function XLSXUploader() {
         const { data, error } = await supabase
           .from(sheetName)
           .upsert(cleanedData, {
-            onConflict: "id",
+            onConflict: "slug",
           });
 
         if (error) {
@@ -83,7 +82,6 @@ export default function XLSXUploader() {
               `${prev}\nError inserting data into ${sheetName}: ${error.message}`
           );
         } else {
-          console.log(`Data inserted successfully into ${sheetName}:`, data);
           setMessage(
             (prev) => `${prev}\nData inserted successfully into ${sheetName}!`
           );
