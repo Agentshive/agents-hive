@@ -14,7 +14,7 @@ export const Logo = ({ className, ...props }: ComponentProps<typeof Stack>) => {
         <Favicon src="/agents-hive-favicon.png" className="animate-pulse opacity-50" />
 
 
-        <span className="font-medium text-2xl">{config.site.name}</span>
+        <span className="font-medium text-lg">{config.site.name}</span>
       </Link>
     </Stack>
   )
