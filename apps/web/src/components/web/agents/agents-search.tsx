@@ -3,6 +3,7 @@
 import { useLocalStorage } from "@mantine/hooks"
 import { cx } from "cva"
 import { ListFilterIcon, LoaderIcon, SearchIcon } from "lucide-react"
+import { useState } from "react"
 import { Stack } from "~/components/common/stack"
 import { ToolFilters } from "~/components/web/agents/agents-filters"
 import { Input } from "~/components/web/ui/input"
@@ -16,13 +17,11 @@ export type ToolSearchProps = {
 export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
   const { filters, isLoading, updateFilters } = useToolFilters()
 
-  const [isFiltersOpen, setIsFiltersOpen] = useLocalStorage({
-    key: "filtersOpen",
-    defaultValue: false,
-    getInitialValueInEffect: true,
-  })
-
-  console.log(isFiltersOpen, "isFiltersOpen")
+  // const [isFiltersOpen, setIsFiltersOpen] = useLocalStorage({
+  //   key: "filtersOpen",
+  //   defaultValue: false,
+  // })
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false)
 
   const sortOptions = [
     { value: "publishedAt.desc", label: "Latest" },
