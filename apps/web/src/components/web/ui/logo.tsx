@@ -11,10 +11,10 @@ export const Logo = ({ className, ...props }: ComponentProps<typeof Stack>) => {
     <Stack size="lg" className={cx("group/logo text-foreground", className)} asChild {...props}>
       <Link href="/">
         {/* <LogoSymbol className="duration-300! ease-in-out! will-change-transform group-hover/logo:rotate-90" /> */}
-        <Favicon src="/agents-hive-favicon.png" className="animate-pulse opacity-50" />
+        <Favicon src="/agents-hive-favicon.png" className=" opacity-500 w-12 h-12 " />
+        {/* className="animate-pulse opacity-50 */}
 
-
-        <span className="font-medium text-2xl">{config.site.name}</span>
+        <span className="font-normal text-2xl">{config.site.name}</span>
       </Link>
     </Stack>
   )

@@ -13,12 +13,13 @@ const buttonVariants = cva({
     "disabled:opacity-60 disabled:pointer-events-none",
   ],
 
-  variants: {
+  variants: { 
     variant: {
       fancy: "border-transparent! bg-primary text-white hover:opacity-90",
       primary: "border-transparent! text-background bg-foreground hover:opacity-90",
       secondary: "bg-background text-secondary hover:bg-card hover:border-border-dark",
       ghost: "border-transparent! text-foreground hover:bg-card-dark",
+      
     },
     size: {
       sm: "gap-[0.66ch] py-1 px-2 leading-none",

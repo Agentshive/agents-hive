@@ -20,6 +20,7 @@ import { NavLink } from "~/components/web/ui/nav-link"
 import { Tooltip, TooltipProvider } from "~/components/web/ui/tooltip"
 import { config } from "~/config"
 import { cx } from "~/utils/cva"
+
 import { updateUrlWithSearchParams } from "~/utils/queryString"
 
 type FooterProps = HTMLAttributes<HTMLElement> & {
@@ -28,7 +29,7 @@ type FooterProps = HTMLAttributes<HTMLElement> & {
 
 export const Footer = ({ children, className, hideNewsletter, ...props }: FooterProps) => {
   return (
-    <footer className="flex flex-col gap-y-8 mt-auto pt-8 border-t border-foreground/10 md:pt-10 lg:pt-12">
+    <footer className="flex flex-col gap-y-8 mt-auto pt-8 border-t border-foreground/10 md:pt-10 lg:pt-12 ">
       <div
         className={cx(
           "grid grid-cols-3 gap-y-8 gap-x-4 md:gap-x-6 md:grid-cols-[repeat(16,minmax(0,1fr))]",
@@ -41,16 +42,17 @@ export const Footer = ({ children, className, hideNewsletter, ...props }: Footer
           className="flex flex-col items-start gap-4 col-span-full md:col-span-6"
         >
           <Stack size="lg" direction="column" className="min-w-0 max-w-64">
-            <H5 as="strong" className="px-0.5 font-medium">
+            {/* <H5 as="strong" className="px-0.5 font-medium">
               Subscribe to our newsletter
-            </H5>
+            </H5> */}
 
             <p className="-mt-2 px-0.5 text-sm text-muted first:mt-0">
-              Join {formatNumber(config.stats.subscribers, "standard")}+ other members and get
-              updates on new AI agents.
+              {/* Join {formatNumber(config.stats.subscribers, "standard")}+ other members and get
+              updates on new AI agents. */}
+              Discover the best AI agents from across the internet.
             </p>
 
-            <NewsletterForm medium="footer_form" />
+            {/* <NewsletterForm medium="footer_form" /> */}
           </Stack>
 
           <Stack className="text-sm/normal">
@@ -90,11 +92,11 @@ export const Footer = ({ children, className, hideNewsletter, ...props }: Footer
                 </NavLink>
               </Tooltip> */}
 
-              {/* <Tooltip tooltip="Follow us on X/Twitter">
+               <Tooltip tooltip="Follow us on X/Twitter">
                 <NavLink href={config.links.twitter} target="_blank" rel="nofollow noreferrer">
                   <BrandXIcon className="size-[1.44em] stroke-[1.25]" />
                 </NavLink>
-              </Tooltip> */}
+              </Tooltip> 
 
               {/* <Tooltip tooltip="Follow us on Bluesky">
                 <NavLink href={config.links.bluesky} target="_blank" rel="nofollow noreferrer">
@@ -116,27 +118,63 @@ export const Footer = ({ children, className, hideNewsletter, ...props }: Footer
             </TooltipProvider>
           </Stack>
         </Stack>
-
-        <Stack direction="column" className="text-sm/normal md:col-span-3 md:col-start-8">
-          <H6 as="strong">Browse:</H6>
+        <Stack direction={{ base: "column", md: "row" }} className="text-sm gap-16 ">
+          {/* //new ab line */}
+        <Stack direction="column" className="text-sm/normal md:col-span-3 md:col-start-8 whitespace-nowrap">
+          <H6 as="strong">Categories</H6>
 
           {/* <NavLink href="/alternatives">Alternatives</NavLink> */}
-          <NavLink href="/categories">Categories</NavLink>
+          <NavLink href="/">Customer Service</NavLink>
+          <NavLink href="/">Hr</NavLink>
+          <NavLink href="/">Design</NavLink>
+          <NavLink href="/">Marketing</NavLink>
+          <NavLink href="/">Science</NavLink>
+          <NavLink href="/">Other</NavLink>
+          <NavLink href="/">Voice AI Agent</NavLink>
+          <NavLink href="/">Coding</NavLink>
           {/* <NavLink href="/self-hosted">Self-hosted</NavLink> */}
           {/* <NavLink href="/stacks">Tech Stacks</NavLink> */}
           {/* <NavLink href="/topics">Topics</NavLink> */}
           {/* <NavLink href="/licenses">Licenses</NavLink> */}
         </Stack>
+        <Stack direction="row" className="text-sm/normal md:col-span-3 md:col-start-8 whitespace-nowrap">
+          <NavLink href="/">Productivity</NavLink>
+          <NavLink href="/">Personal Assistant</NavLink>
+          <NavLink href="/">Data Analysis</NavLink>
+          <NavLink href="/">Finance</NavLink>
+          <NavLink href="/">Digital Workers</NavLink>
+          <NavLink href="/">Research</NavLink>
+          <NavLink href="/">Content Creation</NavLink>
+          <NavLink href="/">Business Intelligence</NavLink>
 
-        <Stack direction="column" className="text-sm/normal md:col-span-3">
-          <H6 as="strong">Quick Links:</H6>
-
-          <NavLink href="/about">About Us</NavLink>
-          {/* <NavLink href="/blog">Blog</NavLink> */}
-          {/* <NavLink href="/advertise">Advertise</NavLink> */}
-          <NavLink href="/submit">Add a Free Listing</NavLink>
-          {/* <NavLink href="/tools/github-stack-analyzer">Stack Analyzer</NavLink> */}
         </Stack>
+
+        <Stack direction="row" className="text-sm/normal md:col-span-3 items-end  ">
+          {/* <H6 as="strong">Quick Links:</H6> */}
+          <H6 as="strong">Navigation</H6>
+          <NavLink href="/submit" className="whitespace-nowrap">Submit an Agent</NavLink>
+          <NavLink href="/">Blog</NavLink>
+          <NavLink href="/" className="whitespace-nowrap">All Categories</NavLink>
+          <NavLink href="/">All tags</NavLink>
+          <NavLink href="/about">About</NavLink>
+          </Stack>
+          <Stack>
+            <H6 as="strong">Collaboration</H6>
+            <NavLink href="/">Sales@gaentshive.com</NavLink>
+          </Stack>
+
+        </Stack>
+
+        {/* <Stack direction="row" className="text-sm/normal md:col-span-3 items-end whitespace-nowrap "> */}
+          {/* <H6 as="strong">Quick Links:</H6> */}
+          {/* <H6 as="strong">Navigation</H6>
+          <NavLink href="/submit">Add a Free Listing</NavLink>
+          <NavLink href="/about">About Us</NavLink> */}
+          
+          {/* <NavLink href="/advertise">Advertise</NavLink> */}  
+          {/* <NavLink href="/blog">Blog</NavLink> */}
+          {/* <NavLink href="/tools/github-stack-analyzer">Stack Analyzer</NavLink> */}
+        {/* </Stack> */}
 
         {/* <Stack direction="column" className="text-sm/normal md:col-span-3">
           <Stack direction="column">

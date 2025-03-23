@@ -60,9 +60,10 @@ export const Bottom = async ({ className, ...props }: ComponentProps<"div">) => 
 
         {!!categories?.length && (
           <Stack className="gap-x-4 text-sm/normal">
-            <H6 as="strong">Popular Categories:</H6>
-
-            <div className="grid grid-cols-2xs gap-x-4 gap-y-2 w-full sm:grid-cols-xs">
+            <H6 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-lg ">&copy; 2025 Agentshivea.ai. All rights reserved</H6>
+            {/* <H6 as="strong">Popular Categories:</H6> */}
+            
+            {/* <div className="grid grid-cols-2xs gap-x-4 gap-y-2 w-full sm:grid-cols-xs">
               {categories.map(category => (
                 <CardSimple key={category.slug} className="gap-2" asChild>
                   <NavLink href={`/categories/${category.slug}`}>
@@ -76,7 +77,7 @@ export const Bottom = async ({ className, ...props }: ComponentProps<"div">) => 
                   </NavLink>
                 </CardSimple>
               ))}
-            </div>
+            </div> */}
           </Stack>
         )}
       </div>
