@@ -1,76 +1,103 @@
-import { ArrowUpRightIcon, HashIcon } from "lucide-react"
-import type { Metadata } from "next"
-import Image from "next/image"
-import { notFound } from "next/navigation"
-import { Suspense, cache } from "react"
-import type { ImageObject } from "schema-dts"
-import { FeaturedTools } from "~/app/(web)/[slug]/featured-tools"
-import { RelatedTools } from "~/app/(web)/[slug]/related-tools"
-import { H1, H4, H5 } from "~/components/common/heading"
-import { Stack } from "~/components/common/stack"
-import { AdCard, AdCardSkeleton } from "~/components/web/ads/ad-card"
-import { ExternalLink } from "~/components/web/external-link"
-import { Listing } from "~/components/web/listing"
-import { Markdown } from "~/components/web/markdown"
-import { RepositoryDetails } from "~/components/web/repository-details"
-import { ShareButtons } from "~/components/web/share-buttons"
-import { StackList } from "~/components/web/stacks/stack-list"
-import { ToolAlternatives } from "~/components/web/agents/agents-alternatives"
-import { ToolListSkeleton } from "~/components/web/agents/agents-list"
-import { Breadcrumbs } from "~/components/web/ui/breadcrumbs"
-import { Button } from "~/components/web/ui/button"
-import { FaviconImage } from "~/components/web/ui/favicon"
-import { IntroDescription } from "~/components/web/ui/intro"
-import { Section } from "~/components/web/ui/section"
-import { Tag } from "~/components/web/ui/tag"
-import { metadataConfig } from "~/config/metadata"
-import { getToolSuffix } from "~/lib/tools"
-import type { ToolOne } from "~/server/web/tools/payloads"
-import { findTool, findToolSlugs } from "~/server/web/tools/queries"
-import { slugify } from "@curiousleaf/utils"
+import {
+  ArrowUpRightIcon,
+  HashIcon,
+  Star,
+  Hash,
+  StarIcon,
+  GlobeIcon,
+} from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { Suspense, cache } from "react";
+import type { ImageObject } from "schema-dts";
+import { FeaturedTools } from "~/app/(web)/[slug]/featured-tools";
+import { RelatedTools } from "~/app/(web)/[slug]/related-tools";
+import { H1, H3, H4, H5 } from "~/components/common/heading";
+import { Stack } from "~/components/common/stack";
+import { AdCard, AdCardSkeleton } from "~/components/web/ads/ad-card";
+import { ExternalLink } from "~/components/web/external-link";
+import { Listing } from "~/components/web/listing";
+import { Markdown } from "~/components/web/markdown";
+import { RepositoryDetails } from "~/components/web/repository-details";
+import { ShareButtons } from "~/components/web/share-buttons";
+import { StackList } from "~/components/web/stacks/stack-list";
+import { ToolAlternatives } from "~/components/web/agents/agents-alternatives";
+import { ToolListSkeleton } from "~/components/web/agents/agents-list";
+import { Breadcrumbs } from "~/components/web/ui/breadcrumbs";
+import { Button } from "~/components/web/ui/button";
+import { FaviconImage } from "~/components/web/ui/favicon";
+import { IntroDescription } from "~/components/web/ui/intro";
+import { Section } from "~/components/web/ui/section";
+import { Tag } from "~/components/web/ui/tag";
+import { metadataConfig } from "~/config/metadata";
+import { getToolSuffix } from "~/lib/tools";
+import type { ToolOne } from "~/server/web/tools/payloads";
+import { findTool, findToolSlugs } from "~/server/web/tools/queries";
+import { slugify } from "@curiousleaf/utils";
+import { StarsIcon } from "~/components/common/icons/star";
+import { GlobesIcon } from "~/components/common/icons/globe";
+import { HashedIcon } from "~/components/common/icons/hash";
+import { ReviewIcon } from "~/components/common/icons/reviews";
 
 type PageProps = {
-  params: Promise<{ slug: string }>
-}
+  params: Promise<{ slug: string }>;
+};
+
+const tags = [
+  "multi-layer-security",
+  "secure-ai-computing",
+  "decentralized-ai",
+];
+
+const ratings = {
+  overall: 3.9,
+  count: 2033,
+  sources: [
+    { rating: 3.9, color: "text-red-500", icon: "🔴" },
+    { rating: 3.8, color: "text-blue-500", icon: "🔵" },
+    { rating: 3.8, color: "text-green-500", icon: "🟢" },
+  ],
+};
 
 const getTool = cache(async ({ params }: PageProps) => {
-  const { slug } = await params
-  const tool = await findTool({ where: { slug } })
+  const { slug } = await params;
+  const tool = await findTool({ where: { slug } });
 
   if (!tool) {
-    notFound()
+    notFound();
   }
 
-  return tool
-})
+  return tool;
+});
 
 const getMetadata = (tool: ToolOne): Metadata => {
   return {
     title: `${tool.name}: ${getToolSuffix(tool)}`,
     description: tool.description,
-  }
-}
+  };
+};
 
 export const generateStaticParams = async () => {
-  const tools = await findToolSlugs({})
-  return tools.map(({ slug }) => ({ slug }))
-}
+  const tools = await findToolSlugs({});
+  return tools.map(({ slug }) => ({ slug }));
+};
 
 export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
-  const tool = await getTool(props)
-  const url = `/${tool.slug}`
+  const tool = await getTool(props);
+  const url = `/${tool.slug}`;
 
   return {
     ...getMetadata(tool),
     alternates: { ...metadataConfig.alternates, canonical: url },
     openGraph: { url, type: "website" },
-  }
-}
+  };
+};
 
 export default async function ToolPage(props: PageProps) {
-  const tool = await getTool(props)
-  const { title } = getMetadata(tool)
-  const jsonLd: ImageObject[] = []
+  const tool = await getTool(props);
+  const { title } = getMetadata(tool);
+  const jsonLd: ImageObject[] = [];
 
   if (tool.screenshotUrl) {
     jsonLd.push({
@@ -80,7 +107,7 @@ export default async function ToolPage(props: PageProps) {
       width: "1280",
       height: "720",
       caption: `A screenshot of ${tool.name}`,
-    })
+    });
   }
 
   if (tool.faviconUrl) {
@@ -91,7 +118,7 @@ export default async function ToolPage(props: PageProps) {
       width: "144",
       height: "144",
       caption: `A favicon of ${tool.name}`,
-    })
+    });
   }
 
   return (
@@ -116,123 +143,8 @@ export default async function ToolPage(props: PageProps) {
               ]}
             />
 
-            <div className="flex flex-1 flex-col items-start gap-4 max-md:order-1 md:gap-6">
-              <div className="flex w-full flex-col items-start gap-y-4">
-                <Stack className="w-full">
-                  <FaviconImage src={tool.faviconUrl} title={tool.name} />
-
-                  <div className="flex flex-1">
-                    <H1 className="!leading-snug truncate">{tool.name}</H1>
-                  </div>
-
-                  {/* <ToolActions tool={tool} /> */}
-                </Stack>
-
-                {tool.description && <IntroDescription>{tool.description}</IntroDescription>}
-              </div>
-
-              <ToolAlternatives alternatives={tool.alternatives} />
-
-              <Stack size="sm" className="w-full">
-                {tool.website && (
-                  <Button suffix={<ArrowUpRightIcon />} asChild>
-                    <ExternalLink
-                      href={tool.website}
-                      rel={tool.isFeatured ? "noopener noreferrer" : undefined}
-                      eventName="click_website"
-                      eventProps={{ url: tool.website }}
-                    >
-                      Visit {tool.name}
-                    </ExternalLink>
-                  </Button>
-                )}
-
-                {tool.hostingUrl && (
-                  <Button variant="secondary" suffix={<ArrowUpRightIcon />} asChild>
-                    <ExternalLink
-                      href={tool.hostingUrl}
-                      eventName="click_ad"
-                      eventProps={{ url: tool.hostingUrl, type: "ToolPage" }}
-                    >
-                      Self-host with Easypanel
-                    </ExternalLink>
-                  </Button>
-                )}
-
-                {tool.discountAmount && (
-                  <p className="ml-auto flex-1 pl-2 text-sm text-end text-balance text-green-600 dark:text-green-400">
-                    {tool.discountCode
-                      ? `Use code ${tool.discountCode} for ${tool.discountAmount}!`
-                      : `Get ${tool.discountAmount} with our link!`}
-                  </p>
-                )}
-              </Stack>
-            </div>
-
-            {tool.screenshotUrl && (
-              // <Image
-              //   key={tool.screenshotUrl}
-              //   src={tool.screenshotUrl}
-              //   alt={`A screenshot of ${tool.name}`}
-              //   width={1280}
-              //   height={1024}
-              //   loading="lazy"
-              //   className="aspect-video h-auto w-full rounded-md border object-cover object-top max-md:order-2"
-              // />
-              <iframe
-                key={tool.screenshotUrl}
-                src={tool.screenshotUrl.replace("watch?v=", "embed/")}
-                title={`Video of ${tool.name}`}
-                width="1280"
-                height="720"
-                loading="lazy"
-                className="aspect-video h-auto w-full rounded-md border object-cover max-md:order-2"
-                allowFullScreen
-              />
-            )}
-
-            {tool.content && <Markdown code={tool.content} className="max-md:order-5" />}
-
-            {/* Stacks */}
-            {!!tool.stacks.length && (
-              <Stack size="lg" direction="column" className="w-full max-md:order-6 md:gap-y-6">
-                <H4 as="strong">Technical Stack:</H4>
-
-                <StackList stacks={tool.stacks} />
-              </Stack>
-            )}
-
-            {/* Categories */}
-            {!!tool.categories.length && (
-              <Stack size="lg" direction="column" className="w-full max-md:order-7">
-                <H5 as="strong">Categories:</H5>
-
-                <Stack>
-                  {tool.categories?.map(({ slug, name }) => (
-                    <Tag key={slug} href={`/categories/${slug}`} prefix={<HashIcon />}>
-                      {name}
-                    </Tag>
-                  ))}
-                </Stack>
-              </Stack>
-            )}
-
-            {/* Topics */}
-            {!!tool.topics.length && (
-              <Stack size="lg" direction="column" className="w-full max-md:order-8">
-                <H5 as="strong">Related topics:</H5>
-
-                <Stack>
-                  {tool.topics.map(({ slug }) => (
-                    <Tag key={slug} href={`/topics/${slug}`} prefix={<HashIcon />}>
-                      {slug}
-                    </Tag>
-                  ))}
-                </Stack>
-              </Stack>
-            )}
-
-            <ShareButtons title={`${title}`} className="max-md:order-9" />
+            {/* 
+            <ShareButtons title={`${title}`} className="max-md:order-9" /> */}
           </Section.Content>
 
           <Section.Sidebar className="max-md:contents">
@@ -253,7 +165,9 @@ export default async function ToolPage(props: PageProps) {
         {/* Related */}
         <Suspense
           fallback={
-            <Listing title={`Open source alternatives similar to ${tool.name}:`}>
+            <Listing
+              title={`Open source alternatives similar to ${tool.name}:`}
+            >
               <ToolListSkeleton count={3} />
             </Listing>
           }
@@ -266,7 +180,241 @@ export default async function ToolPage(props: PageProps) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+        <div>
+          <div></div>
+          <div className="text-white p-0 rounded-xl flex flex-col mb-10 md:flex-row gap-6 w-full">
+            <div
+              className="bg-[#1b1b1b] p-6 rounded-xl flex-grow"
+              style={{
+                clipPath:
+                  "polygon(0 0, calc(100% - 42px) 0, 100% 42px, 100% 100%, 0 100%)",
+              }}
+            >
+              <div className="flex flex-1 flex-col items-start gap-4 max-md:order-1 md:gap-6">
+                <div className="flex w-full flex-col items-start gap-y-4">
+                  <Stack className="w-full">
+                    <FaviconImage src={tool.faviconUrl} title={tool.name} />
+
+                    <div className="flex flex-1">
+                      <H4 className="!leading-snug truncate pr-2">
+                        {tool.name}
+                      </H4>
+                      <StarsIcon />
+                      <GlobesIcon />
+                    </div>
+                  </Stack>
+
+                  {tool.description && (
+                    <IntroDescription>{tool.description}</IntroDescription>
+                  )}
+                </div>
+              </div>
+              <div className="flex items-center gap-2 mt-3"></div>
+              <div className="mt-4 pt-4 border-t border-gray-700">
+                <div className="flex justify-between items-center mt-4">
+                  <ToolAlternatives alternatives={tool.alternatives} />
+
+                  <Stack size="sm" className="w-full">
+                    {tool.website && (
+                      <Button suffix={<ArrowUpRightIcon />} asChild>
+                        <ExternalLink
+                          href={tool.website}
+                          rel={
+                            tool.isFeatured ? "noopener noreferrer" : undefined
+                          }
+                          eventName="click_website"
+                          eventProps={{ url: tool.website }}
+                        >
+                          Visit {tool.name}
+                        </ExternalLink>
+                      </Button>
+                    )}
+
+                    {tool.hostingUrl && (
+                      <Button
+                        variant="secondary"
+                        suffix={<ArrowUpRightIcon />}
+                        asChild
+                      >
+                        <ExternalLink
+                          href={tool.hostingUrl}
+                          eventName="click_ad"
+                          eventProps={{
+                            url: tool.hostingUrl,
+                            type: "ToolPage",
+                          }}
+                        >
+                          Self-host with Easypanel
+                        </ExternalLink>
+                      </Button>
+                    )}
+
+                    {tool.discountAmount && (
+                      <p className="ml-auto flex-1 pl-2 text-sm text-end text-balance text-green-600 dark:text-green-400">
+                        {tool.discountCode
+                          ? `Use code ${tool.discountCode} for ${tool.discountAmount}!`
+                          : `Get ${tool.discountAmount} with our link!`}
+                      </p>
+                    )}
+                  </Stack>
+
+                  <span className="text-orange-400 font-bold">
+                    ${tool.price}/mon
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-[#1b1b1b] p-4 rounded-xl w-full md:w-80">
+              <h3 className="text-lg font-semibold">Skills</h3>
+              <div className="flex gap-2 mt-2 flex-wrap">
+                <span className="px-3 py-1 border border-gray-500 rounded-md text-sm">
+                  Prospecting
+                </span>{" "}
+                <span className="px-3 py-1 border border-gray-500 rounded-md text-sm">
+                  Personalization
+                </span>{" "}
+                <span className="px-3 py-1 border border-gray-500 rounded-md text-sm">
+                  Research
+                </span>
+              </div>
+
+              <h3 className="text-lg font-semibold mt-4">Integration</h3>
+              <div className="flex gap-3 mt-2">
+                <Image
+                  src="https://fastly.picsum.photos/id/973/200/300.jpg?hmac=gFjS6R63ZUmM9pkLFyPxuEmsxvZ_e8VJxB3mcXpvTUQ"
+                  width={24}
+                  height={24}
+                  alt="Salesforce"
+                />
+                <Image
+                  src="https://fastly.picsum.photos/id/973/200/300.jpg?hmac=gFjS6R63ZUmM9pkLFyPxuEmsxvZ_e8VJxB3mcXpvTUQ"
+                  width={24}
+                  height={24}
+                  alt="Salesforce"
+                />
+              </div>
+
+              <h3 className="text-lg font-semibold mt-4">Language</h3>
+              <div className="flex gap-2 mt-2 flex-wrap">
+                <span className="px-3 py-1 border border-gray-500 rounded-md text-sm">
+                  English
+                </span>
+                <span className="px-3 py-1 border border-gray-500 rounded-md text-sm">
+                  Spanish
+                </span>
+              </div>
+
+              <h3 className="text-lg font-semibold mt-4">Alternatives</h3>
+              <div className="flex gap-3 mt-2">
+                <Image
+                  src="https://fastly.picsum.photos/id/973/200/300.jpg?hmac=gFjS6R63ZUmM9pkLFyPxuEmsxvZ_e8VJxB3mcXpvTUQ"
+                  width={24}
+                  height={24}
+                  alt="Alternative"
+                />
+              </div>
+            </div>
+          </div>
+
+          {tool.screenshotUrl && (
+            // <Image
+            //   key={tool.screenshotUrl}
+            //   src={tool.screenshotUrl}
+            //   alt={`A screenshot of ${tool.name}`}
+            //   width={1280}
+            //   height={1024}
+            //   loading="lazy"
+            //   className="aspect-video h-auto w-full rounded-md border object-cover object-top max-md:order-2"
+            // />
+            <iframe
+              key={tool.screenshotUrl}
+              src={tool.screenshotUrl.replace("watch?v=", "embed/")}
+              title={`Video of ${tool.name}`}
+              width="1280"
+              height="720"
+              loading="lazy"
+              className="aspect-video h-auto w-full rounded-md border object-cover max-md:order-2"
+              allowFullScreen
+            />
+          )}
+
+          {tool.content && (
+            <Markdown code={tool.content} className="max-md:order-5 mt-10" />
+          )}
+
+          {/* Stacks */}
+          {!!tool.stacks.length && (
+            <Stack
+              size="lg"
+              direction="column"
+              className="w-full max-md:order-6 md:gap-y-6"
+            >
+              <H4 as="strong">Technical Stack:</H4>
+              <StackList stacks={tool.stacks} />
+            </Stack>
+          )}
+
+          <div className="text-white rounded-lg max-w-full mx-auto">
+            {/* Tags Section */}
+            <div className="flex items-center gap-3 mb-6">
+              <HashedIcon />
+              <h3 className="text-lg font-semibold">Tags</h3>
+            </div>
+            <div className="flex flex-wrap gap-2 mb-6">
+              {tags.map((tag, index) => (
+                <span
+                  key={index}
+                  className="px-3 py-1 border border-gray-500 rounded-md text-sm"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+
+            {/* Reviews Section */}
+            <div className="flex items-center gap-3 mb-6">
+              <ReviewIcon />
+              <h3 className="text-lg font-semibold">Reviews</h3>
+            </div>
+
+            <h2 className="text-2xl font-bold">
+              {ratings.overall} Ratings ({ratings.count})
+            </h2>
+            <p className="text-gray-400 text-sm mb-4">Overall Ratings</p>
+            <p className="text-gray-300 text-sm">{tool.description}</p>
+
+            {/* Ratings from different platforms */}
+            <div className="flex flex-wrap gap-4 mt-6">
+              {ratings.sources.map((source, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <span className={source.color}>{source.icon}</span>
+                  <p>
+                    {source.rating} Ratings ({ratings.count})
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Technical Stack Section */}
+          {!!tool.stacks.length && (
+            <div className="w-full max-md:order-6 space-y-4">
+              <h4 className="text-lg font-bold">Technical Stack:</h4>
+              <div className="flex flex-wrap gap-2">
+                {tool.stacks.map((stack, index) => (
+                  <span
+                    key={index}
+                    className="bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full text-sm"
+                  ></span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </>
-  )
+  );
 }

@@ -22,18 +22,15 @@ type CategoryCardProps = ComponentProps<typeof CardSimple> & {
 
 const CategoryCard = ({ category, ...props }: CategoryCardProps) => {
   return (
-    // <CardSimple asChild {...props}>
-    //   <Link href={`/categories/${category.slug}`}>
-    //     <CardSimpleTitle>{category.name}</CardSimpleTitle>
-
-    //     <CardSimpleDivider />
-
-    //     <CardSimpleCaption>
-    //       {`${category._count.tools} ${plur("AI agent", category._count.tools)}`}
-    //     </CardSimpleCaption>
-    //   </Link>
-    // </CardSimple>
-    <Card asChild {...props}>
+    <Card
+      asChild
+      {...props}
+      style={{
+        clipPath:
+          "polygon(0 0, calc(100% - 42px) 0, 100% 42px, 100% 100%, 0 100%)",
+      }}
+      className="group hover:bg-orange-500/20 transition-colors duration-200"
+    >
       <Link href={`/categories/${category.slug}`}>
         <CardHeader>
           <Favicon
@@ -43,17 +40,24 @@ const CategoryCard = ({ category, ...props }: CategoryCardProps) => {
           <H4 as="h3" className="truncate">
             {category.name}
           </H4>
+          <div className="flex items-center gap-3 ml-auto">
+            <button className="bg-black/50 p-2 rounded-full">
+              <ArrowUpRightIcon className="text-white w-4 h-4 " />
+            </button>
+          </div>
         </CardHeader>
 
         {category && (
-          <CardDescription>
+           <CardDescription className="line-clamp-4 text-white group-hover:text-black">
             {`${category._count.tools} ${plur(
               "AI agent",
               category._count.tools
             )}`}
           </CardDescription>
         )}
-        <CardDescription>{category.description}</CardDescription>
+        <CardDescription className="line-clamp-4 text-white group-hover:text-black">
+           
+        {category.description}</CardDescription>
       </Link>
     </Card>
   );
