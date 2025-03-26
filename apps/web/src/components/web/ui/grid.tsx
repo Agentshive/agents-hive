@@ -18,6 +18,7 @@ const gridVariants = cva({
   defaultVariants: {
     size: "lg",
   },
+  
 })
 
 type GridProps = Omit<ComponentProps<"div">, "size"> & VariantProps<typeof gridVariants>

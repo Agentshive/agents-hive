@@ -1,29 +1,38 @@
-import { formatNumber } from "@curiousleaf/utils"
-import { formatDistanceToNowStrict } from "date-fns"
-import { GitForkIcon, StarIcon, TimerIcon } from "lucide-react"
-import type { ComponentProps } from "react"
-import { H4 } from "~/components/common/heading"
-import { Link } from "~/components/common/link"
-import { Skeleton } from "~/components/common/skeleton"
-import { Stack } from "~/components/common/stack"
-import { ToolBadges } from "~/components/web/agents/agents-badges"
-import { Badge } from "~/components/web/ui/badge"
-import { Card, CardDescription, CardHeader } from "~/components/web/ui/card"
-import { Favicon } from "~/components/web/ui/favicon"
-import { Insights } from "~/components/web/ui/insights"
-import type { ToolMany } from "~/server/web/tools/payloads"
+import { formatNumber } from "@curiousleaf/utils";
+import { formatDistanceToNowStrict } from "date-fns";
+import {
+  ArrowUpRightIcon,
+  GitForkIcon,
+  StarIcon,
+  TimerIcon,
+} from "lucide-react";
+import type { ComponentProps } from "react";
+import { H4 } from "~/components/common/heading";
+import { GtwosIcon } from "~/components/common/icons/gtwos";
+import { Link } from "~/components/common/link";
+import { Skeleton } from "~/components/common/skeleton";
+import { Stack } from "~/components/common/stack";
+import { ToolBadges } from "~/components/web/agents/agents-badges";
+import { Badge } from "~/components/web/ui/badge";
+import { Card, CardDescription, CardHeader } from "~/components/web/ui/card";
+import { Favicon } from "~/components/web/ui/favicon";
+import { Insights } from "~/components/web/ui/insights";
+import type { ToolMany } from "~/server/web/tools/payloads";
 
 type ToolCardProps = ComponentProps<typeof Card> & {
-  tool: ToolMany
+  tool: ToolMany;
 
   /**
    * Disables the view transition.
    */
-  isRelated?: boolean
-}
+  isRelated?: boolean;
+};
 
 const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
   const insights = [
+    // { label: "Rating", value: `${tool.rating}/5`, icon: <StarIcon className="w-3 h-3" /> },
+    // { label: "Reviews", value: formatNumber(tool.reviews), icon: "" },
+
     { label: "Category", value: tool.category, icon: "" },
     { label: "Features", value: tool.features, icon: "" },
     { label: "Price", value: `₹${tool.price}`, icon: "" },
@@ -33,30 +42,49 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
     //     tool.lastCommitDate && formatDistanceToNowStrict(tool.lastCommitDate, { addSuffix: true }),
     //   icon: <TimerIcon />,
     // },
-  ]
+  ];
   return (
-    <Card asChild {...props}>
+    <Card
+      asChild
+      {...props}
+      style={{
+        clipPath:
+          "polygon(0 0, calc(100% - 42px) 0, 100% 42px, 100% 100%, 0 100%)",
+      }}
+      className="group hover:bg-orange-500/20 transition-colors duration-200"
+    >
       <Link href={`/${tool.slug}`} className="group">
-        <CardHeader>
-          <Favicon src={tool.faviconUrl} title={tool.name} />
+        <CardHeader className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Favicon src={tool.faviconUrl} title={tool.name} />
+            <H4 as="h3" className="truncate">
+              {tool.name}
+            </H4>
+          </div>
 
-          <H4 as="h3" className="truncate">
-            {tool.name}
-          </H4>
+          <div className="flex items-center gap-3 ml-auto">
+            <ToolBadges tool={tool}>
+              {tool.discountAmount && (
+                <Badge variant="success">Get {tool.discountAmount}!</Badge>
+              )}
+            </ToolBadges>
 
-          <ToolBadges tool={tool} className="ml-auto">
-            {tool.discountAmount && <Badge variant="success">Get {tool.discountAmount}!</Badge>}
-          </ToolBadges>
+            <button className="bg-black/50 p-2 rounded-full">
+              <ArrowUpRightIcon className="text-white w-4 h-4" />
+            </button>
+          </div>
         </CardHeader>
 
-        <div className="relative size-full flex flex-col">
+        <div className="relative size-full flex flex-col group">
           <Stack
             size="lg"
             direction="column"
-            className="items-stretch absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100"
+            className="items-stretch absolute inset-0 opacity-0 transition-opacity group-hover:text-black group-hover:opacity-500"
           >
             {tool.description && (
-              <CardDescription className="line-clamp-4">{tool.description}</CardDescription>
+              <CardDescription className="line-clamp-4 text-white group-hover:text-black">
+                {tool.description}
+              </CardDescription>
             )}
 
             {!!tool.alternatives.length && (
@@ -67,7 +95,11 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
 
                 {tool.alternatives.map(({ slug, name, faviconUrl }) => (
                   <Stack size="xs" key={slug}>
-                    <Favicon src={faviconUrl} title={name} className="size-6 p-[3px]" />
+                    <Favicon
+                      src={faviconUrl}
+                      title={name}
+                      className="size-6 p-[3px]"
+                    />
                     <strong className="font-medium">{name}</strong>
                   </Stack>
                 ))}
@@ -80,14 +112,52 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
             direction="column"
             className="flex-1 transition-opacity duration-200 group-hover:opacity-0"
           >
-            {tool.tagline && <CardDescription>{tool.tagline}</CardDescription>}
-            <Insights insights={insights} className="mt-auto" />
+            {tool.description ? (
+              <CardDescription className="line-clamp-2">
+                {tool.description}
+              </CardDescription>
+            ) : tool.tagline ? (
+              <CardDescription className="line-clamp-2">
+                {tool.tagline}
+              </CardDescription>
+            ) : null}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <div className="flex items-center">
+                  <GtwosIcon className="w-4 h-4 text-gray-500 mr-1 gap-3" />
+
+                  <span className="text-sm font-medium pr-1 pl-1"> 4.3/5</span>
+                  <StarIcon className="w-4 h-4 text-white-500 mr-1" />
+                  <StarIcon className="w-4 h-4 text-white-500 mr-1" />
+                  <StarIcon className="w-4 h-4 text-white-500 mr-1" />
+                  <StarIcon className="w-4 h-4 text-whitew-500 mr-1" />
+                </div>
+                <span className="text-sm text-gray-500 ">(2,236 Reviews)</span>
+              </div>
+            </div>
+
+            <div className="flex justify-between items-center w-full border-t border-gray-500 p-2">
+              {tool.category && (
+                <Badge
+                  variant="outline"
+                  className="px-3 py-1 border border-gray-500 rounded-md text-sm"
+                >
+                  {tool.category}
+                </Badge>
+              )}
+
+              {tool.price !== undefined && (
+                <div className="text-orange-400 font-bold">
+                  {tool.price === 0 ? "Free" : `₹${tool.price}`}
+                </div>
+              )}
+            </div>
           </Stack>
         </div>
       </Link>
     </Card>
-  )
-}
+  );
+};
 
 const ToolCardSkeleton = () => {
   // const insights = [
@@ -99,7 +169,10 @@ const ToolCardSkeleton = () => {
   return (
     <Card hover={false} className="items-stretch select-none">
       <CardHeader>
-        <Favicon src="/agents-hive-favicon.png" className="animate-pulse opacity-50" />
+        <Favicon
+          src="/agents-hive-favicon.png"
+          className="animate-pulse opacity-50"
+        />
 
         <H4 className="w-2/3">
           <Skeleton>&nbsp;</Skeleton>
@@ -115,7 +188,7 @@ const ToolCardSkeleton = () => {
         <Insights insights={insights} className="mt-auto animate-pulse" />
       </Stack> */}
     </Card>
-  )
-}
+  );
+};
 
-export { ToolCard, ToolCardSkeleton }
+export { ToolCard, ToolCardSkeleton };

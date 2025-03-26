@@ -33,7 +33,7 @@ const CategoryList = ({
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-center">
+      <div className="flex -mt-6 space-x-4">
         <Button suffix={<ArrowUpRightIcon />} asChild>
           <InternalLink
             href={`/agents-list`}
@@ -41,11 +41,26 @@ const CategoryList = ({
             eventName="click_website"
             // eventProps={{ url: category.website }}
           >
-            Find agents
+            {/* Find agents */} Explore Agents
+          </InternalLink>
+        </Button>
+
+        <Button suffix={<ArrowUpRightIcon />} asChild>
+          <InternalLink
+            href={`/agents-list`}
+            // rel={category.isFeatured ? "noopener noreferrer" : undefined}
+            eventName="click_website"
+            // eventProps={{ url: category.website }}
+          >
+            {/* Find agents */} Join Community
           </InternalLink>
         </Button>
       </div>
-      <div className="relative grow min-w-0">
+      
+      
+
+      {/* Categories Search element */}
+      {/* <div className="relative grow min-w-0">
         <div className="absolute left-4 top-1/2 -translate-y-1/2 opacity-50 pointer-events-none">
           <SearchIcon />
         </div>
@@ -58,10 +73,10 @@ const CategoryList = ({
           onChange={(e) => setSearchQuery(e.target.value)}
           className="w-full truncate px-10"
         />
-      </div>
+      </div> */}
       
 
-      <Grid className={cx("gap-8", className)} {...props}>
+      <Grid className={cx("gap-2", className)} {...props}>
         {filteredCategories.map((category) => (
           <CategoryCard key={category.slug} category={category} />
         ))}

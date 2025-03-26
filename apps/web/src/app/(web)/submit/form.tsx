@@ -82,7 +82,7 @@ export const SubmitForm = ({ className, ...props }: HTMLAttributes<HTMLFormEleme
               name="submitterName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel isRequired>Your Name:</FormLabel>
+                  <FormLabel isRequired>Agent Name:</FormLabel>
                   <FormControl>
                     <Input type="text" size="lg" placeholder="John Doe" data-1p-ignore {...field} />
                   </FormControl>
@@ -96,7 +96,7 @@ export const SubmitForm = ({ className, ...props }: HTMLAttributes<HTMLFormEleme
               name="submitterEmail"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel isRequired>Your Email:</FormLabel>
+                  <FormLabel isRequired>Contact Email:</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
@@ -113,7 +113,7 @@ export const SubmitForm = ({ className, ...props }: HTMLAttributes<HTMLFormEleme
           </>
         )}
 
-        <FormField
+        {/* <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
@@ -125,13 +125,13 @@ export const SubmitForm = ({ className, ...props }: HTMLAttributes<HTMLFormEleme
               <FormMessage />
             </FormItem>
           )}
-        />
+        /> */}
 
         <FormField
           control={form.control}
           name="website"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="col-span-full">
               <FormLabel isRequired>Website URL:</FormLabel>
               <FormControl>
                 <Input type="url" size="lg" placeholder="https://posthog.com" {...field} />
@@ -143,15 +143,58 @@ export const SubmitForm = ({ className, ...props }: HTMLAttributes<HTMLFormEleme
 
         <FormField
           control={form.control}
+          name="category"
+          render={({ field }) => (
+            <FormItem >
+              <FormLabel>Pricing Model:</FormLabel>
+              <FormControl>
+                <select
+                  {...field}
+                  className="border p-2 w-full rounded-md"
+                >
+                  <option value="">Free - No Payment Required</option>
+                  <option value="AI Agent Builders">Paid - Payment Required</option>
+
+                </select>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="category"
+          render={({ field }) => (
+            <FormItem >
+              <FormLabel>Category:</FormLabel>
+              <FormControl>
+                <select
+                  {...field}
+                  className="border p-2 w-full rounded-md"
+                >
+                  <option value="">Select a category</option>
+                  <option value="AI Agent Builders">AI Agent Builders</option>
+                  <option value="Coding">Coding</option>
+                  <option value="Personal Assistant">Personal Assistant</option>
+                  <option value="finance">Productivity</option>
+                </select>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="repository"
           render={({ field }) => (
-            <FormItem className="col-span-full">
+            <FormItem >
               <FormLabel isRequired>Repository URL:</FormLabel>
               <FormControl>
                 <Input
                   type="url"
                   size="lg"
-                  placeholder="https://github.com/posthog/posthog"
+                  placeholder="https://github.com/confillow"
                   {...field}
                 />
               </FormControl>
@@ -159,6 +202,45 @@ export const SubmitForm = ({ className, ...props }: HTMLAttributes<HTMLFormEleme
             </FormItem>
           )}
         />
+
+        <FormField
+          control={form.control}
+          name="repository"
+          render={({ field }) => (
+            <FormItem >
+              <FormLabel isRequired>LinkedIn:</FormLabel>
+              <FormControl>
+                <Input
+                  type="url"
+                  size="lg"
+                  placeholder="https://linkedin.com/confillow"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+<FormField
+          control={form.control}
+          name="repository"
+          render={({ field }) => (
+            <FormItem >
+              <FormLabel isRequired>Twitter/X:</FormLabel>
+              <FormControl>
+                <Input
+                  type="url"
+                  size="lg"
+                  placeholder="https://x.com/confillow"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        
 
         {/* <FormField
           control={form.control}
@@ -178,7 +260,7 @@ export const SubmitForm = ({ className, ...props }: HTMLAttributes<HTMLFormEleme
             </FormItem>
           )}
         /> */}
-        <FormField
+        {/* <FormField
           control={form.control}
           name="category"
           render={({ field }) => (
@@ -195,18 +277,18 @@ export const SubmitForm = ({ className, ...props }: HTMLAttributes<HTMLFormEleme
               <FormMessage />
             </FormItem>
           )}
-        />
+        /> */}
         <FormField
           control={form.control}
           name="features"
           render={({ field }) => (
-            <FormItem className="col-span-full">
-              <FormLabel>Features:</FormLabel>
+            <FormItem >
+              <FormLabel>Additional Resource:</FormLabel>
               <FormControl>
                 <Input
-                  type="text"
+                  type="url"
                   size="lg"
-                  placeholder="features"
+                  placeholder="https://confillow.com/feed"
                   {...field}
                 />
               </FormControl>

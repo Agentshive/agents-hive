@@ -7,7 +7,7 @@ import { type VariantProps, cva, cx } from "~/utils/cva"
 const cardVariants = cva({
   base: [
     "relative flex flex-col items-start gap-4 w-full border bg-card p-5 rounded-lg transform-gpu",
-    "hover:[&[href]]:bg-card-dark",
+    "hover:[&[href]]:bg-[#ff8a5a] hover:[&[href]]:text-black",
   ],
 })
 

@@ -139,15 +139,17 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
 
           {/* <NavLink href="/alternatives">Alternatives</NavLink> */}
           {/* <NavLink href="/advertise">Advertise</NavLink> */}
-          {/* <NavLink href="/">Home</NavLink>
-          <NavLink href="/agents-list">AI Agents</NavLink>
-          <NavLink href="/categories">Categories</NavLink> */}
+          <NavLink href="/">Home</NavLink>
+          <NavLink href="/categories">Categories</NavLink>
+          <NavLink href="/agents-list">Agents</NavLink>
+          <NavLink href="/newsletter">News Letter</NavLink>
+         
         </nav>
 
         <Stack size="sm" className="max-sm:hidden">
-          <Suspense fallback={<SearchIcon className="size-4" />}>
+          {/* <Suspense fallback={<SearchIcon className="size-4" />}>
             <SearchForm />
-          </Suspense>
+          </Suspense> */}
 
           {/* <NavLink
             href={config.links.bluesky}
@@ -179,11 +181,12 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
 
         <Stack size="sm">
           <Button size="sm" variant="secondary" asChild>
-            <Link href="/submit">Launch</Link>
+            <Link href="/submit">Submit</Link>
           </Button>
-          <Button size="sm"  asChild>
+          {/* <Button size="sm"  asChild>
             <Link href="/auth/login">Login</Link>
-          </Button>
+          </Button> */}
+          
 
           {/* <UserMenu /> */}
         </Stack>

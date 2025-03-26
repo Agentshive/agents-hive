@@ -12,7 +12,7 @@ type ToolListProps = ComponentProps<typeof Grid> & {
 
 const ToolList = ({ tools, showAd = true, ...props }: ToolListProps) => {
   return (
-    <Grid className="grid-cols-1" {...props}>
+    <Grid {...props}>
       {tools.map((tool, order) => (
         <Fragment key={tool.slug}>
           {/* {showAd && Math.min(2, tools.length - 1) === order && (
@@ -32,7 +32,7 @@ const ToolList = ({ tools, showAd = true, ...props }: ToolListProps) => {
 
 const ToolListSkeleton = ({ count = 6 }: { count?: number }) => {
   return (
-    <Grid className="grid-cols-1">
+    <Grid >
       {[...Array(count)].map((_, index) => (
         <ToolCardSkeleton key={index} />
       ))}

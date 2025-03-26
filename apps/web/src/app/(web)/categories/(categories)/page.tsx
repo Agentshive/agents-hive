@@ -7,8 +7,10 @@ import { Intro, IntroDescription, IntroTitle } from "~/components/web/ui/intro"
 import { metadataConfig } from "~/config/metadata"
 
 export const metadata: Metadata = {
-  title: "The Largest AI Agent Marketplace",
-  description: "Categories",
+  title: "AI Agents Listed",
+  // "The Largest AI Agent Marketplace"
+  description: "Browse AI Agents by category",
+  // "Categories"
   openGraph: { ...metadataConfig.openGraph, url: "/categories" },
   alternates: { ...metadataConfig.alternates, canonical: "/categories" },
 }
