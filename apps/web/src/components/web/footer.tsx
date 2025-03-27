@@ -1,50 +1,57 @@
-import { formatNumber } from "@curiousleaf/utils"
-import { AtSignIcon, RssIcon } from "lucide-react"
-import Image from "next/image"
-import type { HTMLAttributes } from "react"
-import { H5, H6 } from "~/components/common/heading"
-import { BrandBlueskyIcon } from "~/components/common/icons/brand-bluesky"
-import { BrandGitHubIcon } from "~/components/common/icons/brand-github"
-import { BrandLinkedInIcon } from "~/components/common/icons/brand-linkedin"
-import { BrandMediumIcon } from "~/components/common/icons/brand-medium"
-import { BrandXIcon } from "~/components/common/icons/brand-x"
-import { Stack } from "~/components/common/stack"
-import { NewsletterForm } from "~/components/web/newsletter-form"
+import { formatNumber } from "@curiousleaf/utils";
+import { AtSignIcon, RssIcon } from "lucide-react";
+import Image from "next/image";
+import type { HTMLAttributes } from "react";
+import { H5, H6 } from "~/components/common/heading";
+import { BrandBlueskyIcon } from "~/components/common/icons/brand-bluesky";
+import { BrandGitHubIcon } from "~/components/common/icons/brand-github";
+import { BrandLinkedInIcon } from "~/components/common/icons/brand-linkedin";
+import { BrandMediumIcon } from "~/components/common/icons/brand-medium";
+import { BrandXIcon } from "~/components/common/icons/brand-x";
+import { Stack } from "~/components/common/stack";
+import { NewsletterForm } from "~/components/web/newsletter-form";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "~/components/web/ui/dropdown-menu"
-import { NavLink } from "~/components/web/ui/nav-link"
-import { Tooltip, TooltipProvider } from "~/components/web/ui/tooltip"
-import { config } from "~/config"
-import { cx } from "~/utils/cva"
+} from "~/components/web/ui/dropdown-menu";
+import { NavLink } from "~/components/web/ui/nav-link";
+import { Tooltip, TooltipProvider } from "~/components/web/ui/tooltip";
+import { config } from "~/config";
+import { cx } from "~/utils/cva";
 
-import { updateUrlWithSearchParams } from "~/utils/queryString"
+import { updateUrlWithSearchParams } from "~/utils/queryString";
+import { Logo } from "./ui/logo";
 
 type FooterProps = HTMLAttributes<HTMLElement> & {
-  hideNewsletter?: boolean
-}
+  hideNewsletter?: boolean;
+};
 
-export const Footer = ({ children, className, hideNewsletter, ...props }: FooterProps) => {
+export const Footer = ({
+  children,
+  className,
+  hideNewsletter,
+  ...props
+}: FooterProps) => {
   return (
     <footer className="flex flex-col gap-y-8 mt-auto pt-8 border-t border-foreground/10 md:pt-10 lg:pt-12 ">
       <div
         className={cx(
-          "grid grid-cols-3 gap-y-8 gap-x-4 md:gap-x-6 md:grid-cols-[repeat(16,minmax(0,1fr))]",
-          className,
+          "grid grid-cols-1 justify-items-center gap-y-8 md:grid-cols-[repeat(16,minmax(0,1fr))] md:justify-items-start md:gap-x-6",
+          className
         )}
         {...props}
       >
         <Stack
           direction="column"
-          className="flex flex-col items-start gap-4 col-span-full md:col-span-6"
+          className="flex flex-col items-center gap-4 col-span-full md:col-span-6 md:items-start text-center md:text-left"
         >
           <Stack size="lg" direction="column" className="min-w-0 max-w-64">
             {/* <H5 as="strong" className="px-0.5 font-medium">
               Subscribe to our newsletter
             </H5> */}
+            <Logo className="mx-auto w-24 h-auto md:mx-0 md:w-32 lg:w-40 xl:w-48" />
 
             <p className="-mt-2 px-0.5 text-sm text-muted first:mt-0">
               {/* Join {formatNumber(config.stats.subscribers, "standard")}+ other members and get
@@ -54,8 +61,7 @@ export const Footer = ({ children, className, hideNewsletter, ...props }: Footer
 
             {/* <NewsletterForm medium="footer_form" /> */}
           </Stack>
-
-          <Stack className="text-sm/normal">
+          <Stack className="text-sm/normal justify-center md:justify-start">
             <TooltipProvider delayDuration={500} disableHoverableContent>
               {/* <DropdownMenu modal={false}>
                 <Tooltip tooltip="RSS Feeds">
@@ -92,11 +98,15 @@ export const Footer = ({ children, className, hideNewsletter, ...props }: Footer
                 </NavLink>
               </Tooltip> */}
 
-               <Tooltip tooltip="Follow us on X/Twitter">
-                <NavLink href={config.links.twitter} target="_blank" rel="nofollow noreferrer">
+              <Tooltip tooltip="Follow us on X/Twitter">
+                <NavLink
+                  href={config.links.twitter}
+                  target="_blank"
+                  rel="nofollow noreferrer"
+                >
                   <BrandXIcon className="size-[1.44em] stroke-[1.25]" />
                 </NavLink>
-              </Tooltip> 
+              </Tooltip>
 
               {/* <Tooltip tooltip="Follow us on Bluesky">
                 <NavLink href={config.links.bluesky} target="_blank" rel="nofollow noreferrer">
@@ -105,7 +115,11 @@ export const Footer = ({ children, className, hideNewsletter, ...props }: Footer
               </Tooltip> */}
 
               <Tooltip tooltip="Follow us on LinkedIn">
-                <NavLink href={config.links.linkedin} target="_blank" rel="nofollow noreferrer">
+                <NavLink
+                  href={config.links.linkedin}
+                  target="_blank"
+                  rel="nofollow noreferrer"
+                >
                   <BrandLinkedInIcon className="size-[1.44em] stroke-[1.25]" />
                 </NavLink>
               </Tooltip>
@@ -118,26 +132,33 @@ export const Footer = ({ children, className, hideNewsletter, ...props }: Footer
             </TooltipProvider>
           </Stack>
         </Stack>
-        <Stack direction={{ base: "column", md: "row" }} className="text-sm gap-16 ">
+        <Stack
+          direction={{ base: "column", md: "row" }}
+          className="text-sm gap-4 md:gap-16 text-center md:text-left"
+        >
           {/* //new ab line */}
-        <Stack direction="column" className="text-sm/normal md:col-span-3 md:col-start-8 whitespace-nowrap">
-          <H6 as="strong">Categories</H6>
+          <Stack
+            direction="column"
+            className="text-sm-2 md:col-span-1 md:col-start-8 sm:pl-10"
+          >
+            <H6 as="strong">Categories</H6>
 
-          {/* <NavLink href="/alternatives">Alternatives</NavLink> */}
-          <NavLink href="/">Customer Service</NavLink>
-          <NavLink href="/">Hr</NavLink>
-          <NavLink href="/">Design</NavLink>
-          <NavLink href="/">Marketing</NavLink>
-          <NavLink href="/">Science</NavLink>
-          <NavLink href="/">Other</NavLink>
-          <NavLink href="/">Voice AI Agent</NavLink>
-          <NavLink href="/">Coding</NavLink>
-          {/* <NavLink href="/self-hosted">Self-hosted</NavLink> */}
-          {/* <NavLink href="/stacks">Tech Stacks</NavLink> */}
-          {/* <NavLink href="/topics">Topics</NavLink> */}
-          {/* <NavLink href="/licenses">Licenses</NavLink> */}
-        </Stack>
-        <Stack direction="row" className="text-sm/normal md:col-span-3 md:col-start-8 whitespace-nowrap">
+            {/* <NavLink href="/alternatives">Alternatives</NavLink> */}
+
+            <NavLink href="/">Hr</NavLink>
+            <NavLink href="/">Design</NavLink>
+            <NavLink href="/">Marketing</NavLink>
+            <NavLink href="/">Science</NavLink>
+            <NavLink href="/">Other</NavLink>
+            <NavLink href="/">Coding</NavLink>
+            <NavLink href="/">Voice AI Agent</NavLink>
+            <NavLink href="/">Customer Service</NavLink>
+            {/* <NavLink href="/self-hosted">Self-hosted</NavLink> */}
+            {/* <NavLink href="/stacks">Tech Stacks</NavLink> */}
+            {/* <NavLink href="/topics">Topics</NavLink> */}
+            {/* <NavLink href="/licenses">Licenses</NavLink> */}
+          </Stack>
+          {/* <Stack direction="row" className="text-sm/normal md:col-span-3 md:col-start-8 whitespace-nowrap">
           <NavLink href="/">Productivity</NavLink>
           <NavLink href="/">Personal Assistant</NavLink>
           <NavLink href="/">Data Analysis</NavLink>
@@ -146,23 +167,26 @@ export const Footer = ({ children, className, hideNewsletter, ...props }: Footer
           <NavLink href="/">Research</NavLink>
           <NavLink href="/">Content Creation</NavLink>
           <NavLink href="/">Business Intelligence</NavLink>
+        </Stack> */}
 
-        </Stack>
-
-        <Stack direction="row" className="text-sm/normal md:col-span-3 items-end  ">
-          {/* <H6 as="strong">Quick Links:</H6> */}
-          <H6 as="strong">Navigation</H6>
-          <NavLink href="/submit" className="whitespace-nowrap">Submit an Agent</NavLink>
-          <NavLink href="/">Blog</NavLink>
-          <NavLink href="/" className="whitespace-nowrap">All Categories</NavLink>
-          <NavLink href="/">All tags</NavLink>
-          <NavLink href="/about">About</NavLink>
+          <Stack direction="column" className="text-sm/normal">
+            {/* <H6 as="strong">Quick Links:</H6> */}
+            <H6 as="strong">Navigation</H6>
+            <NavLink href="/submit" className="whitespace-nowrap">
+              Submit an Agent
+            </NavLink>
+            <NavLink href="/">Blog</NavLink>
+            <NavLink href="/" className="whitespace-nowrap">
+              All Categories
+            </NavLink>
+            <NavLink href="/">All tags</NavLink>
+            <NavLink href="/about">About</NavLink>
           </Stack>
+
           <Stack>
             <H6 as="strong">Collaboration</H6>
-            <NavLink href="/">Sales@gaentshive.com</NavLink>
+            <NavLink href="/">hello@agentshive.ai</NavLink>
           </Stack>
-
         </Stack>
 
         {/* <Stack direction="row" className="text-sm/normal md:col-span-3 items-end whitespace-nowrap "> */}
@@ -194,8 +218,7 @@ export const Footer = ({ children, className, hideNewsletter, ...props }: Footer
           </Stack>
         </Stack> */}
       </div>
-
-      <div className="flex flex-row flex-wrap items-end justify-between gap-x-4 gap-y-2 w-full">
+      <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 w-full text-[5px] sm:text-xs md:text-sm text-muted">
         {/* <NavLink
           href={config.links.author}
           className="text-xs"

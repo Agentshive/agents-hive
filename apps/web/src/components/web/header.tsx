@@ -9,6 +9,7 @@ import {
   SearchIcon,
   ServerIcon,
   TagIcon,
+  ArrowRight,
 } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { type HTMLAttributes, Suspense, useEffect, useState } from "react"
@@ -53,7 +54,7 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
     <Container
       className={cx(
         "group/menu sticky top-[var(--header-top)] inset-x-0 z-[49] duration-300",
-        "max-lg:data-[state=open]:bg-background/90",
+        "max-lg:data-[state=open]:bg-background/90      ",
         className,
       )}
       id="header"
@@ -63,7 +64,7 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
     >
       <div className="absolute top-0 inset-x-0 h-[calc(var(--header-top)+var(--header-height)+2rem)] pointer-events-none bg-linear-to-b from-background via-background to-transparent lg:h-[calc(var(--header-top)+var(--header-height)+3rem)]" />
 
-      <div className="relative flex flex-nowrap items-center py-3.5 gap-x-3 text-base h-[var(--header-height)] isolate duration-300 lg:gap-4">
+      <div className="relative flex flex-nowrap items-center py-12 gap-x-3 text-base h-[var(--header-height)] isolate duration-300 lg:gap-4">
         <button
           type="button"
           onClick={() => setNavOpen(!isNavOpen)}
@@ -90,8 +91,9 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
             />
           </svg>
         </button>
-
-        <Logo className="mr-auto" />
+        <Logo className="mr-auto w-24 h-auto md:w-32 lg:w-40 xl:w-48" />
+{/* 
+        <Logo className="mr-auto" /> */}
 
         <nav className="contents max-lg:hidden">
           {/* <DropdownMenu>
@@ -180,9 +182,15 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
         </Stack>
 
         <Stack size="sm">
-          <Button size="sm" variant="secondary" asChild>
-            <Link href="/submit">Submit</Link>
-          </Button>
+       
+        <Button suffix={<ArrowRight />} asChild>
+          <Link
+           href="/submit">
+          Submit
+          </Link>
+        </Button>
+
+
           {/* <Button size="sm"  asChild>
             <Link href="/auth/login">Login</Link>
           </Button> */}

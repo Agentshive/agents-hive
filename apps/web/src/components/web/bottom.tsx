@@ -60,7 +60,12 @@ export const Bottom = async ({ className, ...props }: ComponentProps<"div">) => 
 
         {!!categories?.length && (
           <Stack className="gap-x-4 text-sm/normal">
-            <H6 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-lg ">&copy; 2025 Agentshivea.ai. All rights reserved</H6>
+          <H6 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+                          text-xs sm:text-sm md:text-base lg:text-lg
+                          whitespace-nowrap px-2 py-1">
+            &copy; 2025 Agentshive.ai. All rights reserved
+          </H6>
+        
             {/* <H6 as="strong">Popular Categories:</H6> */}
             
             {/* <div className="grid grid-cols-2xs gap-x-4 gap-y-2 w-full sm:grid-cols-xs">
