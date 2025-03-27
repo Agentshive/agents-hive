@@ -267,7 +267,7 @@ export default async function ToolPage(props: PageProps) {
               </div>
             </div>
 
-            <div className="bg-[#1b1b1b] p-4 rounded-xl w-full md:w-80">
+            {/* <div className="bg-[#1b1b1b] p-4 rounded-xl w-full md:w-80">
               <h3 className="text-lg font-semibold">Skills</h3>
               <div className="flex gap-2 mt-2 flex-wrap">
                 <span className="px-3 py-1 border border-gray-500 rounded-md text-sm">
@@ -317,6 +317,7 @@ export default async function ToolPage(props: PageProps) {
                 />
               </div>
             </div>
+          </div> */}
           </div>
 
           {tool.screenshotUrl && (
