@@ -29,7 +29,7 @@ export default async function SubmitPage() {
         </Section.Content>
 
         <Section.Sidebar>
-          <Card hover={false}>
+          {/* <Card hover={false}>
             <Prose className="text-sm/normal">
               <p>
                 <strong>Note:</strong> Submission alone does not guarantee a feature. Please make
@@ -43,9 +43,9 @@ export default async function SubmitPage() {
                 {/* <li>
                   An <Link href="/alternatives">alternative to popular software</Link>
                 </li> */}
-              </ul>
+              {/* </ul>
             </Prose>
-          </Card>
+          </Card> */} 
         </Section.Sidebar>
       </Section>
     </>

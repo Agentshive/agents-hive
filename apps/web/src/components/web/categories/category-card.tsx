@@ -31,7 +31,7 @@ const CategoryCard = ({ category, ...props }: CategoryCardProps) => {
       }}
       className="group hover:bg-orange-500/20 transition-colors duration-200"
     >
-      <Link href={`/categories/${category.slug}`}>
+      <Link href={`/categories/${category.slug}/list`}>
         <CardHeader>
           <Favicon
             src={`/categories/${category.slug}.webp`}
@@ -48,7 +48,7 @@ const CategoryCard = ({ category, ...props }: CategoryCardProps) => {
         </CardHeader>
 
         {category && (
-           <CardDescription className="line-clamp-4 text-white group-hover:text-black">
+          <CardDescription className="line-clamp-4 text-white group-hover:text-black">
             {`${category._count.tools} ${plur(
               "AI agent",
               category._count.tools
@@ -56,8 +56,8 @@ const CategoryCard = ({ category, ...props }: CategoryCardProps) => {
           </CardDescription>
         )}
         <CardDescription className="line-clamp-4 text-white group-hover:text-black">
-           
-        {category.description}</CardDescription>
+          {category.description}
+        </CardDescription>
       </Link>
     </Card>
   );

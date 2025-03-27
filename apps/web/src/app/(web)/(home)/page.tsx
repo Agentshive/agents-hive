@@ -14,7 +14,10 @@ import { config } from "~/config";
 import { CategoryListing } from "../categories/(categories)/listing";
 import { ToolSearch } from "~/components/web/agents/agents-search";
 import { ToolFiltersProvider } from "~/contexts/tool-filter-context";
-
+import { Homeimage } from "~/components/common/icons/homeimg";
+import { InternalLink } from "~/components/web/internalLink";
+import { Button } from "~/components/web/ui/button";
+import { ArrowRight } from "lucide-react";
 
 type PageProps = {
   searchParams: Promise<SearchParams>;
@@ -23,37 +26,55 @@ type PageProps = {
 export default function Home({ searchParams }: PageProps) {
   return (
     <>
-      {/* <div className="inline-block px-3 py-1 text-xs font-semibold text-white bg-green-900 rounded-md w-fit pd-20">Agents Marketplce</div> */}
-      <section className="flex flex-col gap-y-4 w-full mb-[2vh] px-4 lg:px-0">
-      <div className="bg-green-900 text-white text-xs font-bold px-3 py-1 rounded-lg w-fit">Agents Marketplce</div>
-        <Intro className="flex flex-col items-start lg:items-start">
-         
-          <IntroTitle className="max-w-[45rem] text-left font-serif text-3xl sm:text-4xl md:text-5xl lg:text-5xl/[1.1]">
-            
-            {/* Discover {config.site.tagline} */}
-            {/* Discover, Hire, Deploy AI Agents */}AI Agent Marketplace & Community
-          </IntroTitle>
+      <section className="flex flex-col-reverse lg:flex-row items-center justify-between w-full sm:px-0 lg:px-8 py-12 lg:py-24 gap-8 lg:gap-0 lg:mt-[-380px] lg:mb-[-380px]">
+        <div className="flex flex-col gap-y-4 w-full lg:w-1/2 text-center lg:text-left">
+          <div className="bg-green-900 text-white text-xs font-bold px-3 py-1 rounded-lg w-fit mx-auto lg:mx-0">
+            Agents Marketplace
+          </div>
 
-          {/* <IntroDescription className="lg:mt-2">{config.site.description}</IntroDescription> */}
-          <IntroDescription className="text-sm sm:text-base md:text-lg lg:text-xl text-left lg:mt-2 max-w-[50rem] leading-relaxed">
-            {/* Tap into agentic workforce, available all day, every day, to keep
-            things moving forward */} The software we know and consume has undergone a radical transformation in the past year,largely driven by the emergence of AI Agents
-          </IntroDescription>
+          <Intro className="flex flex-col items-center lg:items-start">
+            <IntroTitle className="max-w-[45rem] font-serif text-3xl sm:text-4xl md:text-5xl lg:text-5xl/[1.1]">
+              AI Agent Marketplace & Community
+            </IntroTitle>
 
-          {/* <Suspense fallback={<CountBadgeSkeleton />}>
-            <CountBadge />
-          </Suspense> */}
-        </Intro>
+            <IntroDescription className="text-sm sm:text-base md:text-lg lg:text-xl lg:mt-2 max-w-[50rem] leading-relaxed">
+              The software we know and consume has undergone a radical
+              transformation in the past year, largely driven by the emergence
+              of AI Agents.
+            </IntroDescription>
+          </Intro>
 
-        {/* <NewsletterForm
-          size="lg"
-          className="max-w-sm mx-auto items-center text-center"
-          buttonProps={{ children: "Join our community", size: "md", variant: "fancy" }}
-        >
-          <NewsletterProof />
-        </NewsletterForm> */}
+          <div className="flex gap-4 justify-center lg:justify-start">
+            <Button suffix={<ArrowRight />} asChild>
+              <InternalLink
+                href={`/agents-list`}
+                // rel={category.isFeatured ? "noopener noreferrer" : undefined}
+                eventName="click_website"
+                // eventProps={{ url: category.website }}
+              >
+                {/* Find agents */} Explore Agents
+              </InternalLink>
+            </Button>
+
+            <Button
+              asChild
+              className="bg-black text-white border border-white hover:border-gray-300"
+            >
+              <InternalLink
+                href={`/agents-list`}
+                // rel={category.isFeatured ? "noopener noreferrer" : undefined}
+                eventName="click_website"
+                // eventProps={{ url: category.website }}
+              >
+                {/* Find agents */} Join Community
+              </InternalLink>
+            </Button>
+          </div>
+        </div>
+        <div className="w-full lg:w-1/2 flex justify-center md:mt-[-200px] md:mb-[-200px] mt-[-350px] mb-[-350px] lg:mt-0 lg:mb-0">
+          <Homeimage className="w-full max-w-md lg:max-w-lg h-auto" />
+        </div>
       </section>
-
       <Suspense fallback={<ToolQuerySkeleton />}>
         {/* <HomeToolListing searchParams={searchParams} /> */}
 
