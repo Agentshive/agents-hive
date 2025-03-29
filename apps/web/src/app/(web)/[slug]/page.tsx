@@ -321,21 +321,12 @@ export default async function ToolPage(props: PageProps) {
                 />
               </div>
             </div>
-          </div>
-
-          {tool.screenshotUrl && (
-            // <Image
-            //   key={tool.screenshotUrl}
-            //   src={tool.screenshotUrl}
-            //   alt={`A screenshot of ${tool.name}`}
-            //   width={1280}
-            //   height={1024}
-            //   loading="lazy"
-            //   className="aspect-video h-auto w-full rounded-md border object-cover object-top max-md:order-2"
-            // />
+          </div> 
+          
+          {tool.videoUrl && (
             <iframe
-              key={tool.screenshotUrl}
-              src={tool.screenshotUrl.replace("watch?v=", "embed/")}
+              key={tool.videoUrl}
+              src={tool.videoUrl.replace("watch?v=", "embed/")}
               title={`Video of ${tool.name}`}
               width="1280"
               height="720"
@@ -363,20 +354,28 @@ export default async function ToolPage(props: PageProps) {
           {/* 
           <div className="text-white rounded-lg max-w-full mx-auto">
             {/* Tags Section */}
-          {/* <div className="flex items-center gap-3 mb-6">
+            {!!tool.topics.length && (
+            <>
+            <div className="flex items-center gap-3 mb-6">
               <HashedIcon />
               <h3 className="text-lg font-semibold">Tags</h3>
             </div>
             <div className="flex flex-wrap gap-2 mb-6">
-              {tags.map((tag, index) => (
+              {tool.topics.map(({ slug }) => (
                 <span
-                  key={index}
+                  key={slug}
                   className="px-3 py-1 border border-gray-500 rounded-md text-sm"
                 >
-                  #{tag}
+                  <Tag
+                    key={slug}
+                    href={`/topics/${slug}`}
+                    prefix={<HashIcon />}
+                  >
+                    {slug}
+                  </Tag>
                 </span>
               ))}
-            </div> */}
+            </div></>)}
 
           {/* Reviews Section */}
           {/* <div className="flex items-center gap-3 mb-6">
