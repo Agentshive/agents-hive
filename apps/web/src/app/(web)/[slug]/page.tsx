@@ -98,7 +98,7 @@ export default async function ToolPage(props: PageProps) {
   const tool = await getTool(props);
   const { title } = getMetadata(tool);
   const jsonLd: ImageObject[] = [];
-
+console.log("tool", tool)
   if (tool.screenshotUrl) {
     jsonLd.push({
       "@type": "ImageObject",
@@ -320,19 +320,10 @@ export default async function ToolPage(props: PageProps) {
           </div> */}
           </div>
 
-          {tool.screenshotUrl && (
-            // <Image
-            //   key={tool.screenshotUrl}
-            //   src={tool.screenshotUrl}
-            //   alt={`A screenshot of ${tool.name}`}
-            //   width={1280}
-            //   height={1024}
-            //   loading="lazy"
-            //   className="aspect-video h-auto w-full rounded-md border object-cover object-top max-md:order-2"
-            // />
+          {tool.videoUrl && (
             <iframe
-              key={tool.screenshotUrl}
-              src={tool.screenshotUrl.replace("watch?v=", "embed/")}
+              key={tool.videoUrl}
+              src={tool.videoUrl.replace("watch?v=", "embed/")}
               title={`Video of ${tool.name}`}
               width="1280"
               height="720"
