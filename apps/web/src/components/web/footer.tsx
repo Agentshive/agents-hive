@@ -1,33 +1,19 @@
 import { formatNumber } from "@curiousleaf/utils";
 import { AtSignIcon, RssIcon } from "lucide-react";
-import Image from "next/image";
 import type { HTMLAttributes } from "react";
 import { H5, H6 } from "~/components/common/heading";
-import { BrandBlueskyIcon } from "~/components/common/icons/brand-bluesky";
-import { BrandGitHubIcon } from "~/components/common/icons/brand-github";
-import { BrandLinkedInIcon } from "~/components/common/icons/brand-linkedin";
-import { BrandMediumIcon } from "~/components/common/icons/brand-medium";
 import { BrandXIcon } from "~/components/common/icons/brand-x";
+import { BrandLinkedInIcon } from "~/components/common/icons/brand-linkedin";
 import { Stack } from "~/components/common/stack";
-import { NewsletterForm } from "~/components/web/newsletter-form";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "~/components/web/ui/dropdown-menu";
 import { NavLink } from "~/components/web/ui/nav-link";
 import { Tooltip, TooltipProvider } from "~/components/web/ui/tooltip";
 import { config } from "~/config";
 import { cx } from "~/utils/cva";
-
-import { updateUrlWithSearchParams } from "~/utils/queryString";
 import { Logo } from "./ui/logo";
 
 type FooterProps = HTMLAttributes<HTMLElement> & {
   hideNewsletter?: boolean;
 };
-
 export const Footer = ({
   children,
   className,
@@ -35,52 +21,23 @@ export const Footer = ({
   ...props
 }: FooterProps) => {
   return (
-    <footer className="flex flex-col gap-y-8 mt-auto pt-8 border-t border-foreground/10 md:pt-10 lg:pt-12 ">
-      <div
-        className={cx(
-          "grid grid-cols-1 justify-items-center gap-y-8 md:grid-cols-[repeat(16,minmax(0,1fr))] md:justify-items-start md:gap-x-6",
-          className
-        )}
-        {...props}
-      >
-        <Stack
-          direction="column"
-          className="flex flex-col items-center gap-4 col-span-full md:col-span-6 md:items-start text-center md:text-left"
-        >
-          <Stack size="lg" direction="column" className="min-w-0 max-w-64">
-            {/* <H5 as="strong" className="px-0.5 font-medium">
-              Subscribe to our newsletter
-            </H5> */}
-            <Logo className="mx-auto w-24 h-auto md:mx-0 md:w-32 lg:w-40 xl:w-48" />
+    <footer
+      className={cx(
+        "flex flex-col gap-y-8 mt-auto pt-8 border-t border-foreground/10",
+        className
+      )}
+      {...props}
+    >
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+        {/* Brand Section */}
+        <div className="flex flex-col gap-4">
+          <Logo className="w-32 h-auto" />
+          <p className="text-sm text-muted">
+            Discover the best AI agents from across the internet.
+          </p>
 
-            <p className="-mt-2 px-0.5 text-sm text-muted first:mt-0">
-              {/* Join {formatNumber(config.stats.subscribers, "standard")}+ other members and get
-              updates on new AI agents. */}
-              Discover the best AI agents from across the internet.
-            </p>
-
-            {/* <NewsletterForm medium="footer_form" /> */}
-          </Stack>
-          <Stack className="text-sm/normal justify-center md:justify-start">
-            <TooltipProvider delayDuration={500} disableHoverableContent>
-              {/* <DropdownMenu modal={false}>
-                <Tooltip tooltip="RSS Feeds">
-                  <DropdownMenuTrigger aria-label="RSS Feeds" {...props}>
-                    <RssIcon className="size-[1.44em] stroke-[1.25] text-muted hover:text-foreground" />
-                  </DropdownMenuTrigger>
-                </Tooltip>
-
-                <DropdownMenuContent align="start" side="top">
-                  {config.links.feeds.map(({ url, title }) => (
-                    <DropdownMenuItem key={url} asChild>
-                      <NavLink href={url} target="_blank" rel="nofollow noreferrer">
-                        RSS &raquo; {title}
-                      </NavLink>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu> */}
-
+          <TooltipProvider delayDuration={500} disableHoverableContent>
+            <div className="flex gap-4">
               <Tooltip tooltip="Contact us">
                 <NavLink
                   href={`mailto:${config.site.email}`}
@@ -88,15 +45,9 @@ export const Footer = ({
                   rel="nofollow noreferrer"
                   aria-label="Contact us"
                 >
-                  <AtSignIcon className="size-[1.44em] stroke-[1.25]" />
+                  <AtSignIcon className="size-5" />
                 </NavLink>
               </Tooltip>
-
-              {/* <Tooltip tooltip="View source code">
-                <NavLink href={config.links.github} target="_blank" rel="nofollow noreferrer">
-                  <BrandGitHubIcon className="size-[1.44em] stroke-[1.25]" />
-                </NavLink>
-              </Tooltip> */}
 
               <Tooltip tooltip="Follow us on X/Twitter">
                 <NavLink
@@ -104,15 +55,9 @@ export const Footer = ({
                   target="_blank"
                   rel="nofollow noreferrer"
                 >
-                  <BrandXIcon className="size-[1.44em] stroke-[1.25]" />
+                  <BrandXIcon className="size-5" />
                 </NavLink>
               </Tooltip>
-
-              {/* <Tooltip tooltip="Follow us on Bluesky">
-                <NavLink href={config.links.bluesky} target="_blank" rel="nofollow noreferrer">
-                  <BrandBlueskyIcon className="size-[1.44em] stroke-[1.25]" />
-                </NavLink>
-              </Tooltip> */}
 
               <Tooltip tooltip="Follow us on LinkedIn">
                 <NavLink
@@ -120,104 +65,47 @@ export const Footer = ({
                   target="_blank"
                   rel="nofollow noreferrer"
                 >
-                  <BrandLinkedInIcon className="size-[1.44em] stroke-[1.25]" />
+                  <BrandLinkedInIcon className="size-5" />
                 </NavLink>
               </Tooltip>
+            </div>
+          </TooltipProvider>
+        </div>
 
-              {/* <Tooltip tooltip="Follow us on Medium">
-                <NavLink href={config.links.medium} target="_blank" rel="nofollow noreferrer">
-                  <BrandMediumIcon className="size-[1.44em] stroke-[1.25]" />
-                </NavLink>
-              </Tooltip> */}
-            </TooltipProvider>
-          </Stack>
-        </Stack>
-        <Stack
-          direction={{ base: "column", md: "row" }}
-          className="text-sm gap-4 md:gap-16 text-center md:text-left"
-        >
-          {/* //new ab line */}
-          <Stack
-            direction="column"
-            className="text-sm-2 md:col-span-1 md:col-start-8 sm:pl-10"
-          >
-            <H6 as="strong">Categories</H6>
+        {/* Top Categories Section */}
+        <div className="flex flex-col gap-2">
+          <H6 as="strong">Top Categories</H6>
+          <NavLink href="/">Customer Service</NavLink>
+          <NavLink href="/">HR</NavLink>
+          <NavLink href="/">Design</NavLink>
+          {/* <NavLink href="/">Marketing</NavLink>
+          <NavLink href="/">Science</NavLink>
+          <NavLink href="/">Other</NavLink>
+          <NavLink href="/">Voice AI Agents</NavLink>
+          <NavLink href="/">Coding</NavLink> */}
+        </div>
 
-            {/* <NavLink href="/alternatives">Alternatives</NavLink> */}
+        {/* Navigation Section */}
+        <div className="flex flex-col gap-2">
+          <H6 as="strong">Navigation</H6>
+          <NavLink href="/categories">All categories</NavLink>
+          <NavLink href="/agents-list">All agents</NavLink>
+          <NavLink href="/">All tags</NavLink>
 
-            <NavLink href="/">Hr</NavLink>
-            <NavLink href="/">Design</NavLink>
-            <NavLink href="/">Marketing</NavLink>
-            <NavLink href="/">Science</NavLink>
-            <NavLink href="/">Other</NavLink>
-            <NavLink href="/">Coding</NavLink>
-            <NavLink href="/">Voice AI Agent</NavLink>
-            <NavLink href="/">Customer Service</NavLink>
-            {/* <NavLink href="/self-hosted">Self-hosted</NavLink> */}
-            {/* <NavLink href="/stacks">Tech Stacks</NavLink> */}
-            {/* <NavLink href="/topics">Topics</NavLink> */}
-            {/* <NavLink href="/licenses">Licenses</NavLink> */}
-          </Stack>
-          {/* <Stack direction="row" className="text-sm/normal md:col-span-3 md:col-start-8 whitespace-nowrap">
-          <NavLink href="/">Productivity</NavLink>
-          <NavLink href="/">Personal Assistant</NavLink>
-          <NavLink href="/">Data Analysis</NavLink>
-          <NavLink href="/">Finance</NavLink>
-          <NavLink href="/">Digital Workers</NavLink>
-          <NavLink href="/">Research</NavLink>
-          <NavLink href="/">Content Creation</NavLink>
-          <NavLink href="/">Business Intelligence</NavLink>
-        </Stack> */}
+          {/* <NavLink href="/">Blog</NavLink>
+          <NavLink href="/">Newsletter</NavLink>
+          <NavLink href="/">Community</NavLink> */}
+        </div>
 
-          <Stack direction="column" className="text-sm/normal">
-            {/* <H6 as="strong">Quick Links:</H6> */}
-            <H6 as="strong">Navigation</H6>
-            <NavLink href="/submit" className="whitespace-nowrap">
-              Submit an Agent
-            </NavLink>
-            <NavLink href="/">Blog</NavLink>
-            <NavLink href="/" className="whitespace-nowrap">
-              All Categories
-            </NavLink>
-            <NavLink href="/">All tags</NavLink>
-            <NavLink href="/about">About</NavLink>
-          </Stack>
-
-          <Stack>
-            <H6 as="strong">Collaboration</H6>
-            <NavLink href="/">hello@agentshive.ai</NavLink>
-          </Stack>
-        </Stack>
-
-        {/* <Stack direction="row" className="text-sm/normal md:col-span-3 items-end whitespace-nowrap "> */}
-          {/* <H6 as="strong">Quick Links:</H6> */}
-          {/* <H6 as="strong">Navigation</H6>
-          <NavLink href="/submit">Add a Free Listing</NavLink>
-          <NavLink href="/about">About Us</NavLink> */}
-          
-          {/* <NavLink href="/advertise">Advertise</NavLink> */}  
-          {/* <NavLink href="/blog">Blog</NavLink> */}
-          {/* <NavLink href="/tools/github-stack-analyzer">Stack Analyzer</NavLink> */}
-        {/* </Stack> */}
-
-        {/* <Stack direction="column" className="text-sm/normal md:col-span-3">
-          <Stack direction="column">
-            <H6 as="strong">Other Products:</H6>
-
-            {config.links.family.map(({ href, title, description }) => (
-              <NavLink
-                key={href}
-                href={updateUrlWithSearchParams(href, { ref: config.site.name.toLowerCase() })}
-                target="_blank"
-                rel="noreferrer noopener"
-                title={description}
-              >
-                {title}
-              </NavLink>
-            ))}
-          </Stack>
-        </Stack> */}
+        {/* Collaboration Section */}
+        <div className="flex flex-col gap-2">
+          <H6 as="strong">Collaboration</H6>
+          <NavLink href="mailto:hello@agentshive.ai">
+            hello@agentshive.ai
+          </NavLink>
+        </div>
       </div>
+
       <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 w-full text-[5px] sm:text-xs md:text-sm text-muted">
         {/* <NavLink
           href={config.links.author}
@@ -242,5 +130,5 @@ export const Footer = ({
 
       {children}
     </footer>
-  )
-}
+  );
+};

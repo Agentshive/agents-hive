@@ -83,12 +83,12 @@ const FormLabel = (props: ComponentProps<typeof Label>) => {
 }
 
 const FormControl = (props: ComponentProps<typeof Slot>) => {
-  const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
+  const { error, formItemId, formDescriptionId } = useFormField()
 
   return (
     <Slot
       id={formItemId}
-      aria-describedby={!error ? `${formDescriptionId}` : `${formDescriptionId} ${formMessageId}`}
+      aria-describedby={!error ? `${formDescriptionId}` : `${formDescriptionId}`}
       aria-invalid={!!error}
       {...props}
     />

@@ -1,12 +1,14 @@
 import type { SearchParams } from "nuqs/server";
 import { Suspense } from "react";
+import ModalWrapper from "~/components/web/ui/modelwrapper";
+
 import { CountBadge, CountBadgeSkeleton } from "~/app/(web)/(home)/count-badge";
 import { HomeToolListing } from "~/app/(web)/(home)/listing";
 import {
   AlternativePreview,
   AlternativePreviewSkeleton,
 } from "~/components/web/alternatives/alternative-preview";
-import { NewsletterForm } from "~/components/web/newsletter-form";
+// import { NewsletterForm } from "~/components/web/newsletter-form";
 import { NewsletterProof } from "~/components/web/newsletter-proof";
 import { ToolQuerySkeleton } from "~/components/web/agents/agents-query";
 import { Intro, IntroDescription, IntroTitle } from "~/components/web/ui/intro";
@@ -26,7 +28,7 @@ type PageProps = {
 export default function Home({ searchParams }: PageProps) {
   return (
     <>
-      <section className="flex flex-col-reverse lg:flex-row items-center justify-between w-full sm:px-0 lg:px-8 py-12 lg:py-24 gap-8 lg:gap-0 lg:mt-[-380px] lg:mb-[-380px]">
+      <section className="flex flex-col-reverse lg:flex-row items-center justify-between w-full sm:px-0 lg:px-0 py-12 lg:py-24 gap-8 lg:gap-0 lg:mt-[-380px] lg:mb-[-380px]">
         <div className="flex flex-col gap-y-4 w-full lg:w-1/2 text-center lg:text-left">
           <div className="bg-green-900 text-white text-xs font-bold px-3 py-1 rounded-lg w-fit mx-auto lg:mx-0">
             Agents Marketplace
@@ -55,20 +57,7 @@ export default function Home({ searchParams }: PageProps) {
                 {/* Find agents */} Explore Agents
               </InternalLink>
             </Button>
-
-            <Button
-              asChild
-              className="bg-black text-white border border-white hover:border-gray-300"
-            >
-              <InternalLink
-                href={`/agents-list`}
-                // rel={category.isFeatured ? "noopener noreferrer" : undefined}
-                eventName="click_website"
-                // eventProps={{ url: category.website }}
-              >
-                {/* Find agents */} Join Community
-              </InternalLink>
-            </Button>
+            <ModalWrapper />
           </div>
         </div>
         <div className="w-full lg:w-1/2 flex justify-center md:mt-[-200px] md:mb-[-200px] mt-[-350px] mb-[-350px] lg:mt-0 lg:mb-0">
