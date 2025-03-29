@@ -121,6 +121,16 @@ export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
             label="Categories"
           />
         </div>
+
+        {/* <div className="min-w-36">
+  <MultiSelect
+    options={sortOptions}
+    selectedValues={[filters.sort]} 
+    onChange={(selected) => updateFilters({ sort: selected[0] || "" })}
+    label="Order by"
+  />
+</div> */}
+
         <Select
           size="lg"
           className="min-w-36 text-white"
@@ -132,7 +142,7 @@ export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
             <option
               key={option.value}
               value={option.value}
-              className="text-white text-lg"
+              className="text-white text-xs"
             >
               {option.label}
             </option>

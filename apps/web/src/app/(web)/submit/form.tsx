@@ -28,8 +28,13 @@ import { cx } from "~/utils/cva";
 
 export const SubmitForm = ({
   className,
+  title,
+  description,
   ...props
-}: HTMLAttributes<HTMLFormElement>) => {
+}: HTMLAttributes<HTMLFormElement> & {
+  title: string;
+  description: string;
+}) => {
   const router = useRouter();
   const { data: session } = useSession();
 
@@ -75,12 +80,23 @@ export const SubmitForm = ({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit((data) => execute(data))}
-        className={cx("grid w-full gap-5 sm:grid-cols-2", className)}
+        // className={cx("grid w-full gap-5 sm:grid-cols-2", className)}
+
+        // className={cx("grid w-full gap-5 sm:grid-cols-2 bg-[#1b1b1b]", className)}
+        className={cx(
+          "grid w-full max-w-2xl gap-2 bg-[#1b1b1b] p-6 mx-60 space-y-0",
+          className
+        )}
         noValidate
         {...props}
       >
+        <div className="mb-6">
+          <h1 className="text-2xl font-bold text-white mb-0">{title}</h1>
+          <p className="text-gray-400 text-sm">{description}</p>
+        </div>
+        <div className="space-y-2"></div>
         {!session?.user && (
-          <>
+          <div className="grid grid-cols-2 gap-4">
             <FormField
               control={form.control}
               name="submitterName"
@@ -92,6 +108,7 @@ export const SubmitForm = ({
                       type="text"
                       size="lg"
                       placeholder="John Doe"
+                      className="bg-[#1b1b1b]"
                       data-1p-ignore
                       {...field}
                     />
@@ -112,6 +129,7 @@ export const SubmitForm = ({
                       type="email"
                       size="lg"
                       placeholder="john@doe.com"
+                      className="bg-[#1b1b1b]"
                       data-1p-ignore
                       {...field}
                     />
@@ -120,7 +138,7 @@ export const SubmitForm = ({
                 </FormItem>
               )}
             />
-          </>
+          </div>
         )}
 
         {/* <FormField
@@ -148,6 +166,7 @@ export const SubmitForm = ({
                   type="url"
                   size="lg"
                   placeholder="https://posthog.com"
+                  className="bg-[#1b1b1b]"
                   {...field}
                 />
               </FormControl>
@@ -229,6 +248,7 @@ export const SubmitForm = ({
                   type="url"
                   size="lg"
                   placeholder="https://linkedin.com/confillow"
+                  className="bg-[#1b1b1b]"
                   {...field}
                 />
               </FormControl>
@@ -330,6 +350,7 @@ export const SubmitForm = ({
             </FormItem>
           )}
         />
+
         <div className="col-span-full mt-4">
           <Button
             variant="primary"

@@ -267,7 +267,7 @@ export default async function ToolPage(props: PageProps) {
               </div>
             </div>
 
-            {/* <div className="bg-[#1b1b1b] p-4 rounded-xl w-full md:w-80">
+            <div className="bg-[#1b1b1b] p-4 rounded-xl w-full md:w-80">
               <h3 className="text-lg font-semibold">Skills</h3>
               <div className="flex gap-2 mt-2 flex-wrap">
                 <span className="px-3 py-1 border border-gray-500 rounded-md text-sm">
@@ -280,6 +280,29 @@ export default async function ToolPage(props: PageProps) {
                   Research
                 </span>
               </div>
+
+   {/* Skills Section */}
+
+
+<h3 className="text-lg font-semibold">Skills</h3>
+<div className="flex gap-2 mt-2 flex-wrap">
+  {(tool as any).skills?.map((skill: string, index: number) => (
+    <span key={index} className="px-3 py-1 border border-gray-500 rounded-md text-sm">
+      {skill}
+    </span>
+  ))}
+</div>
+
+
+
+<h3 className="text-lg font-semibold mt-4">Language</h3>
+<div className="flex gap-2 mt-2 flex-wrap">
+  {(tool as any).languages?.map((language: string, index: number) => (
+    <span key={index} className="px-3 py-1 border border-gray-500 rounded-md text-sm">
+      {language}
+    </span>
+  ))}
+</div>
 
               <h3 className="text-lg font-semibold mt-4">Integration</h3>
               <div className="flex gap-3 mt-2">
@@ -317,9 +340,8 @@ export default async function ToolPage(props: PageProps) {
                 />
               </div>
             </div>
-          </div> */}
-          </div>
-
+          </div> 
+          
           {tool.screenshotUrl && (
             // <Image
             //   key={tool.screenshotUrl}
@@ -357,10 +379,10 @@ export default async function ToolPage(props: PageProps) {
               <StackList stacks={tool.stacks} />
             </Stack>
           )}
-
+{/* 
           <div className="text-white rounded-lg max-w-full mx-auto">
             {/* Tags Section */}
-            <div className="flex items-center gap-3 mb-6">
+            {/* <div className="flex items-center gap-3 mb-6">
               <HashedIcon />
               <h3 className="text-lg font-semibold">Tags</h3>
             </div>
@@ -373,10 +395,10 @@ export default async function ToolPage(props: PageProps) {
                   #{tag}
                 </span>
               ))}
-            </div>
+            </div> */}
 
             {/* Reviews Section */}
-            <div className="flex items-center gap-3 mb-6">
+            {/* <div className="flex items-center gap-3 mb-6">
               <ReviewIcon />
               <h3 className="text-lg font-semibold">Reviews</h3>
             </div>
@@ -385,10 +407,10 @@ export default async function ToolPage(props: PageProps) {
               {ratings.overall} Ratings ({ratings.count})
             </h2>
             <p className="text-gray-400 text-sm mb-4">Overall Ratings</p>
-            <p className="text-gray-300 text-sm">{tool.description}</p>
+            <p className="text-gray-300 text-sm">{tool.description}</p> */}
 
             {/* Ratings from different platforms */}
-            <div className="flex flex-wrap gap-4 mt-6">
+            {/* <div className="flex flex-wrap gap-4 mt-6">
               {ratings.sources.map((source, index) => (
                 <div key={index} className="flex items-center gap-2">
                   <span className={source.color}>{source.icon}</span>
@@ -398,7 +420,7 @@ export default async function ToolPage(props: PageProps) {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */} 
 
           {/* Technical Stack Section */}
           {!!tool.stacks.length && (
