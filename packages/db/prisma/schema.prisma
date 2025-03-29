@@ -146,8 +146,8 @@ model Tool {
   linkedIn String?
   benefits  String?
   integrations  String?
-  skills String?
-  languages String?
+  skills String[]
+  languages String[]
   customerStories String?
   openSourceInfo String?
   discountCode    String?
