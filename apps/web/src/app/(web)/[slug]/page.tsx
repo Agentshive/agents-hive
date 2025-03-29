@@ -268,18 +268,7 @@ export default async function ToolPage(props: PageProps) {
             </div>
 
             <div className="bg-[#1b1b1b] p-4 rounded-xl w-full md:w-80">
-              <h3 className="text-lg font-semibold">Skills</h3>
-              <div className="flex gap-2 mt-2 flex-wrap">
-                <span className="px-3 py-1 border border-gray-500 rounded-md text-sm">
-                  Prospecting
-                </span>{" "}
-                <span className="px-3 py-1 border border-gray-500 rounded-md text-sm">
-                  Personalization
-                </span>{" "}
-                <span className="px-3 py-1 border border-gray-500 rounded-md text-sm">
-                  Research
-                </span>
-              </div>
+
 
    {/* Skills Section */}
 
@@ -295,14 +284,6 @@ export default async function ToolPage(props: PageProps) {
 
 
 
-<h3 className="text-lg font-semibold mt-4">Language</h3>
-<div className="flex gap-2 mt-2 flex-wrap">
-  {(tool as any).languages?.map((language: string, index: number) => (
-    <span key={index} className="px-3 py-1 border border-gray-500 rounded-md text-sm">
-      {language}
-    </span>
-  ))}
-</div>
 
               <h3 className="text-lg font-semibold mt-4">Integration</h3>
               <div className="flex gap-3 mt-2">
@@ -320,16 +301,15 @@ export default async function ToolPage(props: PageProps) {
                 />
               </div>
 
-              <h3 className="text-lg font-semibold mt-4">Language</h3>
-              <div className="flex gap-2 mt-2 flex-wrap">
-                <span className="px-3 py-1 border border-gray-500 rounded-md text-sm">
-                  English
-                </span>
-                <span className="px-3 py-1 border border-gray-500 rounded-md text-sm">
-                  Spanish
-                </span>
-              </div>
-
+              
+<h3 className="text-lg font-semibold mt-4">Language</h3>
+<div className="flex gap-2 mt-2 flex-wrap">
+  {(tool as any).languages?.map((language: string, index: number) => (
+    <span key={index} className="px-3 py-1 border border-gray-500 rounded-md text-sm">
+      {language}
+    </span>
+  ))}
+</div>
               <h3 className="text-lg font-semibold mt-4">Alternatives</h3>
               <div className="flex gap-3 mt-2">
                 <Image
