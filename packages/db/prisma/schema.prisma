@@ -130,28 +130,30 @@ model Tool {
   tagline         String?
   description     String?
   content         String?
+  technicalSpecifications String?
+  useCases        String?
   category        String
   price           Float?                   @default(0)
-  features        String
+  features        String?
   faviconUrl      String?
   screenshotUrl   String?
-  videoUrl String?
+  videoUrl        String?
   isFeatured      Boolean?                  @default(false)
   isSelfHosted    Boolean?                  @default(false)
   submitterName   String?
   submitterEmail  String?
   submitterNote   String?
   hostingUrl      String?
-  x String?
-  linkedIn String?
-  benefits  String?
-  integrations  String?
-  skills String[]
-  languages String[]
+  x               String?
+  linkedIn        String?
+  benefits        String?
+  skills          String[]
+  integrations    String[]
+  languages       String[]
   customerStories String?
-  openSourceInfo String?
+  openSourceInfo  String?
   discountCode    String?
-  form String?
+  form            String?
   discountAmount  String?
   firstCommitDate DateTime?
   lastCommitDate  DateTime?
