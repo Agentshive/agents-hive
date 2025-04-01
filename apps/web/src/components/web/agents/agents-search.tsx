@@ -96,7 +96,7 @@ export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
             className="w-50   truncate px-10"
           />
         </div>
-        <div className="min-w-28">
+        {/* <div className="min-w-28">
           <MultiSelect
             options={ratings}
             selectedValues={selectedRatings}
@@ -112,7 +112,7 @@ export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
             onChange={onPriceSelect}
             label="Price"
           />
-        </div>
+        </div> */}
         <div className="min-w-20">
           <MultiSelect
             options={categories}

@@ -356,7 +356,7 @@ export const SubmitForm = ({
             variant="primary"
             isPending={isPending}
             disabled={isPending}
-            className="w-full flex justify-center items-center py-2"
+            className="w-full flex justify-center items-center py-2 bg-white rounded-[4px]"
           >
             <span className="flex items-center justify-center gap-2 w-full">
               Submit

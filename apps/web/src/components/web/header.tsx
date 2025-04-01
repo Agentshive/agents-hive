@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   BlocksIcon,
@@ -10,52 +10,55 @@ import {
   ServerIcon,
   TagIcon,
   ArrowRight,
-} from "lucide-react"
-import { usePathname } from "next/navigation"
-import { type HTMLAttributes, Suspense, useEffect, useState } from "react"
-import { BrandBlueskyIcon } from "~/components/common/icons/brand-bluesky"
-import { BrandGitHubIcon } from "~/components/common/icons/brand-github"
-import { BrandXIcon } from "~/components/common/icons/brand-x"
-import { Link } from "~/components/common/link"
-import { Stack } from "~/components/common/stack"
-import { SearchForm } from "~/components/web/search-form"
-import { Button } from "~/components/web/ui/button"
-import { Container } from "~/components/web/ui/container"
+} from "lucide-react";
+import { usePathname } from "next/navigation";
+import { type HTMLAttributes, Suspense, useEffect, useState } from "react";
+import { BrandBlueskyIcon } from "~/components/common/icons/brand-bluesky";
+import { BrandGitHubIcon } from "~/components/common/icons/brand-github";
+import { BrandXIcon } from "~/components/common/icons/brand-x";
+import { Link } from "~/components/common/link";
+import { Stack } from "~/components/common/stack";
+import { SearchForm } from "~/components/web/search-form";
+import { Button } from "~/components/web/ui/button";
+import { Container } from "~/components/web/ui/container";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "~/components/web/ui/dropdown-menu"
-import { Logo } from "~/components/web/ui/logo"
-import { NavLink, navLinkVariants } from "~/components/web/ui/nav-link"
-import { config } from "~/config"
-import { cx } from "~/utils/cva"
+} from "~/components/web/ui/dropdown-menu";
+import { Logo } from "~/components/web/ui/logo";
+import { NavLink, navLinkVariants } from "~/components/web/ui/nav-link";
+import { config } from "~/config";
+import { cx } from "~/utils/cva";
 
-export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => {
-  const pathname = usePathname()
-  const [isNavOpen, setNavOpen] = useState(false)
+export const Header = ({
+  className,
+  ...props
+}: HTMLAttributes<HTMLElement>) => {
+  const pathname = usePathname();
+  const [isNavOpen, setNavOpen] = useState(false);
 
   // Close the mobile navigation when the user presses the "Escape" key
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setNavOpen(false)
-    }
+      if (e.key === "Escape") setNavOpen(false);
+    };
 
-    document.addEventListener("keydown", onKeyDown)
-    return () => document.removeEventListener("keydown", onKeyDown)
-  }, [])
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   useEffect(() => {
-    setNavOpen(false)
-  }, [pathname])
+    setNavOpen(false);
+  }, [pathname]);
 
   return (
     <Container
       className={cx(
         "group/menu sticky top-[var(--header-top)] inset-x-0 z-[49] duration-300",
         "max-lg:data-[state=open]:bg-background/90      ",
-        className,
+        className
       )}
       id="header"
       role="banner"
@@ -92,7 +95,7 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
           </svg>
         </button>
         <Logo className="mr-auto w-24 h-auto md:w-32 lg:w-40 xl:w-48" />
-{/* 
+        {/* 
         <Logo className="mr-auto" /> */}
 
         <nav className="contents max-lg:hidden">
@@ -105,7 +108,7 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
             <Link href="/submit">Submit</Link>
           </Button> */}
 
-            {/* <DropdownMenuContent align="start">
+          {/* <DropdownMenuContent align="start">
               <DropdownMenuItem asChild>
                 <NavLink href="/?sort=publishedAt.desc">
                   <CalendarDaysIcon className="shrink-0 size-4 opacity-75" /> Latest agents
@@ -121,12 +124,12 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
                   <ServerIcon className="shrink-0 size-4 opacity-75" /> Self-hosted
                 </NavLink>
               </DropdownMenuItem> */}
-              {/* <DropdownMenuItem asChild>
+          {/* <DropdownMenuItem asChild>
                 <NavLink href="/stacks">
                   <BlocksIcon className="shrink-0 size-4 opacity-75" /> Tech Stacks
                 </NavLink>
               </DropdownMenuItem> */}
-              {/* <DropdownMenuItem asChild>
+          {/* <DropdownMenuItem asChild>
                 <NavLink href="/topics">
                   <TagIcon className="shrink-0 size-4 opacity-75" /> Topics
                 </NavLink>
@@ -136,7 +139,7 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
                   <CopyrightIcon className="shrink-0 size-4 opacity-75" /> Licenses
                 </NavLink>
               </DropdownMenuItem> */}
-            {/* </DropdownMenuContent> */}
+          {/* </DropdownMenuContent> */}
           {/* </DropdownMenu> */}
 
           {/* <NavLink href="/alternatives">Alternatives</NavLink> */}
@@ -145,7 +148,6 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
           <NavLink href="/categories">Categories</NavLink>
           <NavLink href="/agents-list">Agents</NavLink>
           <NavLink href="/newsletter">News Letter</NavLink>
-         
         </nav>
 
         <Stack size="sm" className="max-sm:hidden">
@@ -182,19 +184,17 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
         </Stack>
 
         <Stack size="sm">
-       
-        <Button suffix={<ArrowRight />} asChild>
-          <Link
-           href="/submit">
-          Submit
-          </Link>
-        </Button>
-
+          <Button
+            suffix={<ArrowRight />}
+            asChild
+            className="rounded-[4px] bg-white"
+          >
+            <Link href="/submit">Submit</Link>
+          </Button>
 
           {/* <Button size="sm"  asChild>
             <Link href="/auth/login">Login</Link>
           </Button> */}
-          
 
           {/* <UserMenu /> */}
         </Stack>
@@ -203,7 +203,7 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
       <nav
         className={cx(
           "absolute top-full inset-x-0 h-[calc(100dvh-var(--header-top)-var(--header-height))] -mt-px py-4 px-6 grid grid-cols-2 place-items-start place-content-start gap-x-4 gap-y-6 bg-background/90 backdrop-blur-lg transition-opacity lg:hidden",
-          isNavOpen ? "opacity-100" : "opacity-0 pointer-events-none",
+          isNavOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         )}
       >
         <NavLink href="/?sort=publishedAt.desc" className="text-lg">
@@ -239,5 +239,5 @@ export const Header = ({ className, ...props }: HTMLAttributes<HTMLElement>) => 
         </Suspense>
       </nav>
     </Container>
-  )
-}
+  );
+};

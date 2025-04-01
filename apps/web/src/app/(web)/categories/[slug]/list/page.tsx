@@ -33,14 +33,14 @@ export default async function AgentsListPage(props: PageProps) {
               href: "/categories",
               name: "Categories",
             },
-            {
-              href: `/categories/${category.slug}`,
-              name: category.label || category.name,
-            },
-            {
-              href: `/categories/${category.slug}/list`,
-              name: category.label  + " list" || category.name + " list",
-            },
+            // {
+            //   href: `/categories/${category.slug}`,
+            //   name: category.label || category.name,
+            // },
+            // {
+            //   href: `/categories/${category.slug}`,
+            //   name: category.label  || category.name ,
+            // },
           ]}
       />
 

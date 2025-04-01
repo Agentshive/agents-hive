@@ -50,8 +50,9 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
       style={{
         clipPath:
           "polygon(0 0, calc(100% - 42px) 0, 100% 42px, 100% 100%, 0 100%)",
+        borderRadius: "4px",
       }}
-      className="group hover:bg-orange-500/20 transition-colors duration-200"
+      className="group hover:bg-[#FF8A5A] transition-colors duration-200"
     >
       <Link href={`/${tool.slug}`} className="group">
         <CardHeader className="flex items-center justify-between">
@@ -124,15 +125,15 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <div className="flex items-center">
-                  <GtwosIcon className="w-4 h-4 text-gray-500 mr-1 gap-3" />
-
-                  <span className="text-sm font-medium pr-1 pl-1"> 4.3/5</span>
+                  {/* <GtwosIcon className="w-4 h-4 text-gray-500 mr-1 gap-3" /> */}
+                  {/* 
+                  <span className="text-sm font-medium pr-1 pl-1"> 4.3/5</span> */}
+                  {/* <StarIcon className="w-4 h-4 text-white-500 mr-1" />
                   <StarIcon className="w-4 h-4 text-white-500 mr-1" />
                   <StarIcon className="w-4 h-4 text-white-500 mr-1" />
-                  <StarIcon className="w-4 h-4 text-white-500 mr-1" />
-                  <StarIcon className="w-4 h-4 text-whitew-500 mr-1" />
+                  <StarIcon className="w-4 h-4 text-whitew-500 mr-1" /> */}
                 </div>
-                <span className="text-sm text-gray-500 ">(2,236 Reviews)</span>
+                {/* <span className="text-sm text-gray-500 ">(2,236 Reviews)</span> */}
               </div>
             </div>
 
@@ -167,7 +168,14 @@ const ToolCardSkeleton = () => {
   // ]
 
   return (
-    <Card hover={false} className="items-stretch select-none">
+    <Card
+      hover={false}
+      className="items-stretch select-none"
+      style={{
+        clipPath:
+          "polygon(0 0, calc(100% - 42px) 0, 100% 42px, 100% 100%, 0 100%)",
+      }}
+    >
       <CardHeader>
         <Favicon
           src="/agents-hive-favicon.png"
