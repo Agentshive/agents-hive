@@ -1,83 +1,43 @@
-"use server"
+"use server";
+import { createServerAction } from "zsa";
+import nodemailer from "nodemailer";
+import { submitToolSchema } from "~/server/schemas";
 
-import { slugify } from "@curiousleaf/utils"
-import { db } from "@openalternative/db"
-import { createServerAction } from "zsa"
-import { subscribeToNewsletter } from "~/actions/subscribe"
-import { isProd } from "~/env"
-import { getIP, isRateLimited } from "~/lib/rate-limiter"
-import { submitToolSchema } from "~/server/schemas"
-import { inngest } from "~/services/inngest"
-import { isDisposableEmail } from "~/utils/helpers"
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.EMAIL_PASSWORD,
+  },
+});
 
-/**
- * Generates a unique slug by adding a numeric suffix if needed
- */
-const generateUniqueSlug = async (baseName: string): Promise<string> => {
-  const baseSlug = slugify(baseName)
-  let slug = baseSlug
-  let suffix = 2
-
-  while (true) {
-    // Check if slug exists
-    if (!(await db.tool.findUnique({ where: { slug } }))) {
-      return slug
-    }
-
-    // Add/increment suffix and try again
-    slug = `${baseSlug}-${suffix}`
-    suffix++
-  }
-}
-
-/**
- * Submit a tool to the database
- * @param input - The tool data to submit
- * @returns The tool that was submitted
- */
 export const submitTool = createServerAction()
   .input(submitToolSchema)
-  .handler(async ({ input: { newsletterOptIn, ...data } }) => {
-    const ip = await getIP()
+  .handler(async (data) => {
+    try {
+      const emailContent = Object.entries(data.input)
+        .map(([key, value]) => `<p><strong>${key}:</strong> ${value}</p>`)
+        .join("\n");
 
-    // Rate limiting check
-    if (await isRateLimited(ip, "submission")) {
-      throw new Error("Too many submissions. Please try again later.")
+      await transporter.sendMail({
+        from: process.env.EMAIL,
+        to: process.env.TO_EMAIL,
+        subject: "New Submission",
+        html: `<h2>New Submission</h2>${emailContent}`,
+      });
+
+      return {
+        name: "Submission",
+        slug: "email-submission",
+        publishedAt: new Date(),
+        isFeatured: false,
+      };
+    } catch (error) {
+      console.error("Email error:", error);
+      if (error instanceof Error) {
+        throw new Error("Failed to send email: " + error.message);
+      } else {
+        throw new Error("Failed to send email due to an unknown error.");
+      }
     }
-
-    // Disposable email check
-    if (await isDisposableEmail(data.submitterEmail)) {
-      throw new Error("Invalid email address, please use a real one")
-    }
-
-    if (newsletterOptIn) {
-      await subscribeToNewsletter({
-        value: data.submitterEmail,
-        utm_medium: "submit_form",
-        send_welcome_email: false,
-      })
-    }
-
-    // Check if the tool already exists
-    const existingTool = await db.tool.findFirst({
-      where: { OR: [{ repository: data.repository }, { website: data.website }] },
-    })
-
-    // If the tool exists, redirect to the tool or submit page
-    if (existingTool) {
-      return existingTool
-    }
-
-    // Generate a unique slug
-    const slug = await generateUniqueSlug(data.name)
-
-    // Save the tool to the database
-    const tool = await db.tool.create({
-      data: { ...data, slug },
-    })
-
-    // Send an event to the Inngest pipeline
-    // isProd && (await inngest.send({ name: "tool.submitted", data: { slug } }))
-
-    return tool
-  })
+  });
