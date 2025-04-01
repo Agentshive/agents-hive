@@ -33,17 +33,17 @@ const CategoryCard = ({ category, ...props }: CategoryCardProps) => {
     >
       <Link href={`/categories/${category.slug}/list`}>
         <CardHeader>
-          <Favicon
+          {/* <Favicon
             src={`/categories/${category.slug}.webp`}
             title={category.name}
-          />
+          /> */}
           <H4 as="h3" className="truncate">
             {category.name}
           </H4>
           <div className="flex items-center gap-3 ml-auto">
-            <button className="bg-black/50 p-2 rounded-full">
-              <ArrowUpRightIcon className="text-white w-4 h-4 " />
-            </button>
+            <Button className="bg-black  hover:bg-black  p-2 rounded-full">
+              <ArrowUpRightIcon className="text-white w-4 h-4 hover:bg-black " />
+            </Button>
           </div>
         </CardHeader>
 
