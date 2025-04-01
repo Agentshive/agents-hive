@@ -47,7 +47,7 @@ const CategoryList = ({
         />
       </div> */}
 
-      <Grid className={cx("gap-2", className)} {...props}>
+      <Grid className={cx("gap-6 rounded-[4px]", className)} {...props}>
         {filteredCategories.map((category) => (
           <CategoryCard key={category.slug} category={category} />
         ))}

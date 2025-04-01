@@ -28,6 +28,7 @@
   "workspaces": ["apps/*", "packages/*"],
   "packageManager": "bun@1.1.34",
   "dependencies": {
-    "inngest": "^3.31.7"
+    "inngest": "^3.31.7",
+    "nodemailer": "^6.10.0"
   }
 }

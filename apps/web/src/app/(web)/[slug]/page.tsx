@@ -132,10 +132,10 @@ export default async function ToolPage(props: PageProps) {
                   href: "/categories",
                   name: "Categories",
                 },
-                {
-                  href: `/categories/${slugify(tool.category)}`,
-                  name: tool.category,
-                },
+                // {
+                //   href: `/categories/${slugify(tool.category)}`,
+                //   name: tool.category,
+                // },
                 {
                   href: `/${tool.slug}`,
                   name: tool.name,
@@ -282,7 +282,7 @@ export default async function ToolPage(props: PageProps) {
                 ))}
               </div>
 
-              <h3 className="text-lg font-semibold mt-4">Integration</h3>
+              {/* <h3 className="text-lg font-semibold mt-4">Integration</h3>
               <div className="flex gap-3 mt-2">
                 <Image
                   src="https://fastly.picsum.photos/id/973/200/300.jpg?hmac=gFjS6R63ZUmM9pkLFyPxuEmsxvZ_e8VJxB3mcXpvTUQ"
@@ -296,7 +296,7 @@ export default async function ToolPage(props: PageProps) {
                   height={24}
                   alt="Salesforce"
                 />
-              </div>
+              </div> */}
 
               <h3 className="text-lg font-semibold mt-4">Language</h3>
               <div className="flex gap-2 mt-2 flex-wrap">
@@ -311,7 +311,7 @@ export default async function ToolPage(props: PageProps) {
                   )
                 )}
               </div>
-              <h3 className="text-lg font-semibold mt-4">Alternatives</h3>
+              {/* <h3 className="text-lg font-semibold mt-4">Alternatives</h3>
               <div className="flex gap-3 mt-2">
                 <Image
                   src="https://fastly.picsum.photos/id/973/200/300.jpg?hmac=gFjS6R63ZUmM9pkLFyPxuEmsxvZ_e8VJxB3mcXpvTUQ"
@@ -319,10 +319,10 @@ export default async function ToolPage(props: PageProps) {
                   height={24}
                   alt="Alternative"
                 />
-              </div>
+              </div> */}
             </div>
-          </div> 
-          
+          </div>
+
           {tool.videoUrl && (
             <iframe
               key={tool.videoUrl}
@@ -354,28 +354,30 @@ export default async function ToolPage(props: PageProps) {
           {/* 
           <div className="text-white rounded-lg max-w-full mx-auto">
             {/* Tags Section */}
-            {!!tool.topics.length && (
+          {!!tool.topics.length && (
             <>
-            <div className="flex items-center gap-3 mb-6">
-              <HashedIcon />
-              <h3 className="text-lg font-semibold">Tags</h3>
-            </div>
-            <div className="flex flex-wrap gap-2 mb-6">
-              {tool.topics.map(({ slug }) => (
-                <span
-                  key={slug}
-                  className="px-3 py-1 border border-gray-500 rounded-md text-sm"
-                >
-                  <Tag
+              <div className="flex items-center gap-3 mb-6">
+                <HashedIcon />
+                <h3 className="text-lg font-semibold">Tags</h3>
+              </div>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {tool.topics.map(({ slug }) => (
+                  <span
                     key={slug}
-                    href={`/topics/${slug}`}
-                    prefix={<HashIcon />}
+                    className="px-3 py-1 border border-gray-500 rounded-md text-sm"
                   >
-                    {slug}
-                  </Tag>
-                </span>
-              ))}
-            </div></>)}
+                    <Tag
+                      key={slug}
+                      href={`/topics/${slug}`}
+                      prefix={<HashIcon />}
+                    >
+                      {slug}
+                    </Tag>
+                  </span>
+                ))}
+              </div>
+            </>
+          )}
 
           {/* Reviews Section */}
           {/* <div className="flex items-center gap-3 mb-6">

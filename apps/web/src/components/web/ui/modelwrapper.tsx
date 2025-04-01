@@ -12,7 +12,7 @@ const ModalWrapper: React.FC = () => {
     <>
       <Button
         onClick={() => setModalVisible(true)}
-        className="bg-black text-white border border-white hover:border-gray-300"
+        className="rounded-[4px] bg-black text-white border border-white hover:border-gray-300"
       >
         Join Community
       </Button>
