@@ -8,8 +8,11 @@
 @source "../(web)/**/*.{js,ts,jsx,tsx,mdx}";
 
 @theme {
-  --font-system: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* --font-system: ui-sans-serif, system-ui, open-sans, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
+    --font-system: "Open Sans", ui-sans-serif, system-ui, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
 
   --header-height: 3.125rem;
   --header-top: 0rem;
@@ -71,6 +74,13 @@
     @apply border-border;
   }
 }
+@font-face {
+  font-family: 'RaelaGrotesque';
+  src: url('/fonts/RaelaGrotesque-Bold.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+}
+
 
 @utility prose {
   & [id] {
@@ -132,7 +142,16 @@
     @apply opacity-10;
   }
 }
-
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'RaelaGrotesque';
+  font-weight: 700;
+}
+p {
+  font-family: var(--font-sans);
+}
+label,li,span{
+  font-family: var(--font-sans);
+}
 a,
 button,
 label[for],

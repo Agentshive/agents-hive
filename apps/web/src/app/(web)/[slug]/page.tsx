@@ -5,6 +5,7 @@ import {
   Hash,
   StarIcon,
   GlobeIcon,
+  CheckIcon,
 } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -96,6 +97,7 @@ export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
 
 export default async function ToolPage(props: PageProps) {
   const tool = await getTool(props);
+  console.log(tool);
   const { title } = getMetadata(tool);
   const jsonLd: ImageObject[] = [];
 
@@ -120,6 +122,12 @@ export default async function ToolPage(props: PageProps) {
       caption: `A favicon of ${tool.name}`,
     });
   }
+
+  const featuresList = Array.isArray(tool.features)
+    ? tool.features
+    : tool.features
+    ? [tool.features]
+    : [];
 
   return (
     <>
@@ -184,9 +192,9 @@ export default async function ToolPage(props: PageProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
         <div>
           <div></div>
-          <div className="text-white p-0 rounded-xl flex flex-col mb-10 md:flex-row gap-6 w-full">
+          <div className="text-white p-0 rounded-[4px] flex flex-col mb-10 md:flex-row gap-6 w-full">
             <div
-              className="bg-[#1b1b1b] p-6 rounded-xl flex-grow"
+              className="bg-[#1b1b1b] p-6 rounded-[4px] flex-grow"
               style={{
                 clipPath:
                   "polygon(0 0, calc(100% - 42px) 0, 100% 42px, 100% 100%, 0 100%)",
@@ -267,7 +275,7 @@ export default async function ToolPage(props: PageProps) {
               </div>
             </div>
 
-            <div className="bg-[#1b1b1b] p-4 rounded-xl w-full md:w-80">
+            <div className="bg-[#1b1b1b] p-4 rounded-[4px] w-full md:w-80">
               {/* Skills Section */}
 
               <h3 className="text-lg font-semibold">Skills</h3>
@@ -351,6 +359,23 @@ export default async function ToolPage(props: PageProps) {
               <StackList stacks={tool.stacks} />
             </Stack>
           )}
+
+          {featuresList.length > 0 && (
+            <div>
+              <h2 className="text-2xl font-bold mb-4">Key Features</h2>
+              <ul className="space-y-3">
+                {featuresList.map((feature, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <div className="flex-shrink-0 mt-1">
+                      <CheckIcon className="text-green-400" size={16} />
+                    </div>
+                    <p className="text-gray-300">{feature}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           {/* 
           <div className="text-white rounded-lg max-w-full mx-auto">
             {/* Tags Section */}

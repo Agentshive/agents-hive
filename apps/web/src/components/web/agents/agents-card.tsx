@@ -57,7 +57,8 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
       <Link href={`/${tool.slug}`} className="group">
         <CardHeader className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Favicon src={tool.faviconUrl} title={tool.name} />
+            <Favicon src={tool.faviconUrl} title={tool.name} 
+            />
             <H4 as="h3" className="truncate">
               {tool.name}
             </H4>
@@ -70,7 +71,7 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
               )}
             </ToolBadges>
 
-            <button className="bg-black/50 p-2 rounded-full">
+            <button className="bg-black hover:bg-black  p-2 rounded-full">
               <ArrowUpRightIcon className="text-white w-4 h-4" />
             </button>
           </div>
@@ -141,7 +142,7 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
               {tool.category && (
                 <Badge
                   variant="outline"
-                  className="px-3 py-1 border border-gray-500 rounded-md text-sm"
+                  className="px-3 py-1 border border-gray-500 rounded-[4px] text-sm"
                 >
                   {tool.category}
                 </Badge>

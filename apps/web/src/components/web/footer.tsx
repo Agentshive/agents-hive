@@ -31,7 +31,7 @@ export const Footer = ({
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
         {/* Brand Section */}
         <div className="flex flex-col gap-4">
-          <Logo className="w-32 h-auto" />
+          <Logo className="mr-auto w-24 h-auto md:w-32 lg:w-40 xl:w-48" />
           <p className="text-sm text-muted">
             Discover the best AI agents from across the internet.
           </p>

@@ -29,12 +29,11 @@ export default function Home({ searchParams }: PageProps) {
       <section className="flex flex-col lg:flex-row items-center justify-between w-full py-6 lg:mt-[-80px] gap-8">
         <div className="flex flex-col gap-y-6 w-full lg:w-1/2 text-center lg:text-left">
           <div className="bg-[#131c0b] text-white text-xs px-4 py-2 rounded-[4px] border border-white w-fit mx-auto lg:mx-0">
-            Agents Marketplace
+          <p>Agents Marketplace </p>  
           </div>
           <Intro className="flex flex-col items-center lg:items-start">
             <IntroTitle
               className="lg:w-[751px] lg:h-[154px] lg:max-w-[45rem] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[120%] max-w-3xl"
-              style={{ fontFamily: "'raela-grotesque'" }}
             >
               AI Agent Marketplace & Community
             </IntroTitle>

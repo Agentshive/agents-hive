@@ -29,7 +29,7 @@ const CategoryCard = ({ category, ...props }: CategoryCardProps) => {
         clipPath:
           "polygon(0 0, calc(100% - 42px) 0, 100% 42px, 100% 100%, 0 100%)",
       }}
-      className="group hover:bg-orange-500/20 transition-colors duration-200"
+      className="group hover:bg-[#FF8A5A] transition-colors duration-200"
     >
       <Link href={`/categories/${category.slug}/list`}>
         <CardHeader>
@@ -48,14 +48,14 @@ const CategoryCard = ({ category, ...props }: CategoryCardProps) => {
         </CardHeader>
 
         {category && (
-          <CardDescription className="line-clamp-4 text-white group-hover:text-black">
+          <CardDescription className="line-clamp-4 pb-6 text-white group-hover:text-black">
             {`${category._count.tools} ${plur(
               "AI agent",
               category._count.tools
             )}`}
           </CardDescription>
         )}
-        <CardDescription className="line-clamp-4 text-white group-hover:text-black">
+        <CardDescription className="line-clamp-4 text-white raela-font group-hover:text-black">
           {category.description}
         </CardDescription>
       </Link>

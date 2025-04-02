@@ -147,7 +147,7 @@ export const Header = ({
           <NavLink href="/">Home</NavLink>
           <NavLink href="/categories">Categories</NavLink>
           <NavLink href="/agents-list">Agents</NavLink>
-          <NavLink href="/newsletter">News Letter</NavLink>
+          {/* <NavLink href="/newsletter">News Letter</NavLink> */}
         </nav>
 
         <Stack size="sm" className="max-sm:hidden">
