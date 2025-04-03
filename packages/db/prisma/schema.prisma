@@ -131,10 +131,11 @@ model Tool {
   description     String?
   content         String?
   technicalSpecifications String?
-  useCases        String?
+  useCases        String[]
   category        String
   price           Float?                   @default(0)
   features        String?
+  keyFeatures     String[]
   faviconUrl      String?
   screenshotUrl   String?
   videoUrl        String?
@@ -147,7 +148,7 @@ model Tool {
   x               String?
   linkedIn        String?
   benefits        String?
-  skills          String[]
+  idealFor        String[]
   integrations    String[]
   languages       String[]
   customerStories String?

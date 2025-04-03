@@ -6,6 +6,7 @@ import {
   StarIcon,
   GlobeIcon,
   CheckIcon,
+  CheckCircle,
 } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -40,6 +41,9 @@ import { StarsIcon } from "~/components/common/icons/star";
 import { GlobesIcon } from "~/components/common/icons/globe";
 import { HashedIcon } from "~/components/common/icons/hash";
 import { ReviewIcon } from "~/components/common/icons/reviews";
+import { FeatureIcon } from "~/components/common/icons/featureicon";
+import { TickIcon } from "~/components/common/icons/tickicon";
+import { Card } from "~/components/web/ui/card";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -278,16 +282,18 @@ export default async function ToolPage(props: PageProps) {
             <div className="bg-[#1b1b1b] p-4 rounded-[4px] w-full md:w-80">
               {/* Skills Section */}
 
-              <h3 className="text-lg font-semibold">Skills</h3>
+              <h3 className="text-lg font-semibold">Ideal for</h3>
               <div className="flex gap-2 mt-2 flex-wrap">
-                {(tool as any).skills?.map((skill: string, index: number) => (
-                  <span
-                    key={index}
-                    className="px-3 py-1 border border-gray-500 rounded-md text-sm"
-                  >
-                    {skill}
-                  </span>
-                ))}
+                {(tool as any).idealFor?.map(
+                  (idealFor: string, index: number) => (
+                    <span
+                      key={index}
+                      className="px-3 py-1 border border-gray-500 rounded-md text-sm"
+                    >
+                      {idealFor}
+                    </span>
+                  )
+                )}
               </div>
 
               {/* <h3 className="text-lg font-semibold mt-4">Integration</h3>
@@ -331,6 +337,131 @@ export default async function ToolPage(props: PageProps) {
             </div>
           </div>
 
+          <div>
+            <div className="bg-[#1b1b1b] p-6 rounded-lg">
+              <FeatureIcon />
+              <h2 className="text-xl font-bold mb-4">Key Features</h2>
+              <ul className="space-y-3">
+                {tool.keyFeatures ? (
+                  (Array.isArray(tool.keyFeatures)
+                    ? tool.keyFeatures
+                    : [tool.keyFeatures]
+                  ).map((feature, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <span className="text-green-400">
+                        <TickIcon />
+                      </span>
+                      <p className="text-gray-300">{feature}</p>
+                    </li>
+                  ))
+                ) : (
+                  <p className="text-gray-400">No features available.</p>
+                )}
+              </ul>
+
+              {/* Use Cases Section */}
+              <div className="bg-[#1b1b1b] p-6 rounded-lg">
+                <FeatureIcon />
+                <h2 className="text-xl font-bold mb-4">Use Cases</h2>
+                <ul className="space-y-3">
+                  {tool.useCases?.length ? (
+                    (Array.isArray(tool.useCases)
+                      ? tool.useCases
+                      : [tool.useCases]
+                    ).map((useCase, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <span className="text-green-400">
+                          <TickIcon />
+                        </span>
+                        <p className="text-gray-300">{useCase}</p>
+                      </li>
+                    ))
+                  ) : (
+                    <p className="text-gray-400">No use cases available.</p>
+                  )}
+                </ul>
+              </div>
+            </div>
+
+            {/* Additional Information Section */}
+            <div className="bg-[#1b1b1b] p-6 rounded-lg mb-6">
+              <h2 className="text-xl font-bold mb-4">Additional Information</h2>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <span className="text-green-400">
+                    <TickIcon />
+                  </span>
+                  <p className="text-gray-300">
+                    ✅ Compliance & Security: SOC 2 Compliance ✔ AICPA SOC
+                  </p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-400">
+                    <TickIcon />
+                  </span>
+                  <p className="text-gray-300">
+                    🏢 Business & Industry: Ideal for SMB | Mid Market |
+                    Enterprise
+                  </p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-400">
+                    <TickIcon />
+                  </span>
+                  <p className="text-gray-300">
+                    🔹 Industry Focus: Retail | E-commerce | SaaS
+                  </p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-400">
+                    <TickIcon />
+                  </span>
+                  <p className="text-gray-300">
+                    🔗 Integrations: Supported Platforms - Slack | Salesforce
+                  </p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-400">
+                    <TickIcon />
+                  </span>
+                  <p className="text-gray-300">
+                    🌍 Supported Languages: English | Spanish
+                  </p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-400">
+                    <TickIcon />
+                  </span>
+                  <p className="text-gray-300">🔄 Alternatives Available</p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-400">
+                    <TickIcon />
+                  </span>
+                  <p className="text-gray-300">
+                    🎯 Functions: Sales | Marketing
+                  </p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-400">
+                    <TickIcon />
+                  </span>
+                  <p className="text-gray-300">
+                    📩 Support: Email - Support@phella.ai
+                  </p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-400">
+                    <TickIcon />
+                  </span>
+                  <p className="text-gray-300">
+                    🎉 Deals: 30% G2 Discount Available
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
           {tool.videoUrl && (
             <iframe
               key={tool.videoUrl}
@@ -358,22 +489,6 @@ export default async function ToolPage(props: PageProps) {
               <H4 as="strong">Technical Stack:</H4>
               <StackList stacks={tool.stacks} />
             </Stack>
-          )}
-
-          {featuresList.length > 0 && (
-            <div>
-              <h2 className="text-2xl font-bold mb-4">Key Features</h2>
-              <ul className="space-y-3">
-                {featuresList.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <div className="flex-shrink-0 mt-1">
-                      <CheckIcon className="text-green-400" size={16} />
-                    </div>
-                    <p className="text-gray-300">{feature}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
           )}
 
           {/* 
