@@ -43,13 +43,14 @@ export const SubmitForm = ({
     values: {
       name: "",
       website: "",
-      repository: "",
-      submitterName: session?.user.name || "",
+      // repository: "",
+      // submitterName: session?.user.name || "",
       submitterEmail: session?.user.email || "",
-      submitterNote: "",
+      // submitterNote: "",
       newsletterOptIn: true,
-      category: "",
-      features: "",
+      // category: "",
+      // features: "",
+      linkedIn: "",
     },
   });
 
@@ -61,17 +62,11 @@ export const SubmitForm = ({
       posthog.capture("submit_tool", { slug: data.slug });
 
       if (data.publishedAt && data.publishedAt <= new Date()) {
-        if (data.isFeatured) {
-          toast.info(`${data.name} has already been published.`);
-        } else {
-          toast.custom((t) => <FeatureNudge tool={data} t={t} />, {
-            duration: Number.POSITIVE_INFINITY,
-          });
-        }
-        router.push(`/tools/${data.slug}`);
+        toast.success("Submitted successfully.");
+        router.push(`/`);
       } else {
         toast.success(`${data.name} has been submitted.`);
-        router.push(`/submit/${data.slug}`);
+        router.push(`/`);
       }
     },
   });
@@ -99,7 +94,7 @@ export const SubmitForm = ({
           <div className="grid grid-cols-2 gap-4">
             <FormField
               control={form.control}
-              name="submitterName"
+              name="name"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel isRequired>Agent Name:</FormLabel>
@@ -141,20 +136,6 @@ export const SubmitForm = ({
           </div>
         )}
 
-        {/* <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel isRequired>Name:</FormLabel>
-              <FormControl>
-                <Input type="text" size="lg" placeholder="PostHog" data-1p-ignore {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        /> */}
-
         <FormField
           control={form.control}
           name="website"
@@ -174,72 +155,10 @@ export const SubmitForm = ({
             </FormItem>
           )}
         />
-        {/* 
-        <FormField
-          control={form.control}
-          name="category"
-          render={({ field }) => (
-            <FormItem >
-              <FormLabel>Pricing Model:</FormLabel>
-              <FormControl>
-                <select
-                  {...field}
-                  className="border p-2 w-full rounded-md"
-                >
-                  <option value="">Free - No Payment Required</option>
-                  <option value="AI Agent Builders">Paid - Payment Required</option>
-
-                </select>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
 
         <FormField
           control={form.control}
-          name="category"
-          render={({ field }) => (
-            <FormItem >
-              <FormLabel>Category:</FormLabel>
-              <FormControl>
-                <select
-                  {...field}
-                  className="border p-2 w-full rounded-md"
-                >
-                  <option value="">Select a category</option>
-                  <option value="AI Agent Builders">AI Agent Builders</option>
-                  <option value="Coding">Coding</option>
-                  <option value="Personal Assistant">Personal Assistant</option>
-                  <option value="finance">Productivity</option>
-                </select>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        /> */}
-        {/* <FormField
-          control={form.control}
-          name="repository"
-          render={({ field }) => (
-            <FormItem >
-              <FormLabel isRequired>Repository URL:</FormLabel>
-              <FormControl>
-                <Input
-                  type="url"
-                  size="lg"
-                  placeholder="https://github.com/confillow"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        /> */}
-
-        <FormField
-          control={form.control}
-          name="repository"
+          name="linkedIn"
           render={({ field }) => (
             <FormItem className="col-span-full">
               <FormLabel isRequired>LinkedIn:</FormLabel>
@@ -256,81 +175,6 @@ export const SubmitForm = ({
             </FormItem>
           )}
         />
-        {/* 
-<FormField
-          control={form.control}
-          name="repository"
-          render={({ field }) => (
-            <FormItem >
-              <FormLabel isRequired>Twitter/X:</FormLabel>
-              <FormControl>
-                <Input
-                  type="url"
-                  size="lg"
-                  placeholder="https://x.com/confillow"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-         */}
-
-        {/* <FormField
-          control={form.control}
-          name="submitterNote"
-          render={({ field }) => (
-            <FormItem className="col-span-full">
-              <FormLabel>Suggest an alternative:</FormLabel>
-              <FormControl>
-                <Input
-                  type="text"
-                  size="lg"
-                  placeholder="Which well-known tool is this an alternative to?"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        /> */}
-        {/* <FormField
-          control={form.control}
-          name="category"
-          render={({ field }) => (
-            <FormItem className="col-span-full">
-              <FormLabel>Category:</FormLabel>
-              <FormControl>
-                <Input
-                  type="text"
-                  size="lg"
-                  placeholder="category"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        /> */}
-        {/* <FormField
-          control={form.control}
-          name="features"
-          render={({ field }) => (
-            <FormItem >
-              <FormLabel>Additional Resource:</FormLabel>
-              <FormControl>
-                <Input
-                  type="url"
-                  size="lg"
-                  placeholder="https://confillow.com/feed"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        /> */}
 
         <FormField
           control={form.control}
