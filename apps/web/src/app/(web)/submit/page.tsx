@@ -1,31 +1,29 @@
-import type { Metadata } from "next"
-import { SubmitForm } from "~/app/(web)/submit/form"
-import { Link } from "~/components/common/link"
-import { Card } from "~/components/web/ui/card"
-import { Intro, IntroDescription, IntroTitle } from "~/components/web/ui/intro"
-import { Prose } from "~/components/web/ui/prose"
-import { Section } from "~/components/web/ui/section"
-import { config } from "~/config"
-import { metadataConfig } from "~/config/metadata"
+import type { Metadata } from "next";
+import { SubmitForm } from "~/app/(web)/submit/form";
+import { Link } from "~/components/common/link";
+import { Card } from "~/components/web/ui/card";
+import { Intro, IntroDescription, IntroTitle } from "~/components/web/ui/intro";
+import { Prose } from "~/components/web/ui/prose";
+import { Section } from "~/components/web/ui/section";
+import { config } from "~/config";
+import { metadataConfig } from "~/config/metadata";
 
 export const metadata: Metadata = {
   title: "Submit your AI agent",
   description: `Help us grow the list of AI agents. Contribute to ${config.site.name} by submitting an AI agent.`,
   openGraph: { ...metadataConfig.openGraph, url: "/submit" },
   alternates: { ...metadataConfig.alternates, canonical: "/submit" },
-}
+};
 
 export default async function SubmitPage() {
   return (
     <>
-      <Intro>
-        <IntroTitle>{`${metadata.title}`}</IntroTitle>
-        <IntroDescription>{metadata.description}</IntroDescription>
-      </Intro>
-
       <Section>
         <Section.Content>
-          <SubmitForm />
+          <SubmitForm
+            title={`${metadata.title}`}
+            description={`${metadata.description}`}
+          />
         </Section.Content>
 
         <Section.Sidebar>
@@ -43,11 +41,11 @@ export default async function SubmitPage() {
                 {/* <li>
                   An <Link href="/alternatives">alternative to popular software</Link>
                 </li> */}
-              {/* </ul>
+          {/* </ul>
             </Prose>
-          </Card> */} 
+          </Card> */}
         </Section.Sidebar>
       </Section>
     </>
-  )
+  );
 }

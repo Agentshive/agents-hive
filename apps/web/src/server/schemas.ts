@@ -12,15 +12,16 @@ export const repositorySchema = z
 export const submitToolSchema = z.object({
   name: z.string().min(1, "Name is required"),
   website: z.string().min(1, "Website is required").url("Invalid URL").trim(),
-  repository: repositorySchema,
-  submitterName: z.string().min(1, "Your name is required"),
+  linkedIn: z.string().min(1, "LinkedIn is required").url("Invalid URL").trim(),
+  // repository: repositorySchema,
+  // submitterName: z.string().min(1, "Your name is required"),
   submitterEmail: z
     .string()
     .min(1, "Your email is required")
     .email("Invalid email address, please use a correct format."),
-  submitterNote: z.string().max(200),
-  category: z.string().max(200),
-  features: z.string().max(200),
+  // submitterNote: z.string().max(200),
+  // category: z.string().max(200),
+  // features: z.string().max(200),
   newsletterOptIn: z.boolean().optional().default(true),
 })
 

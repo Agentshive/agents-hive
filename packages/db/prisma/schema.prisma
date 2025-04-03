@@ -130,25 +130,38 @@ model Tool {
   tagline         String?
   description     String?
   content         String?
+  technicalSpecifications String?
+  useCases        String[]
   category        String
   price           Float?                   @default(0)
-  features        String
+  features        String?
+  keyFeatures     String[]
   faviconUrl      String?
   screenshotUrl   String?
-  isFeatured      Boolean                  @default(false)
-  isSelfHosted    Boolean                  @default(false)
+  videoUrl        String?
+  isFeatured      Boolean?                  @default(false)
+  isSelfHosted    Boolean?                  @default(false)
   submitterName   String?
   submitterEmail  String?
   submitterNote   String?
   hostingUrl      String?
+  x               String?
+  linkedIn        String?
+  benefits        String?
+  idealFor        String[]
+  integrations    String[]
+  languages       String[]
+  customerStories String?
+  openSourceInfo  String?
   discountCode    String?
+  form            String?
   discountAmount  String?
   firstCommitDate DateTime?
   lastCommitDate  DateTime?
-  status          ToolStatus               @default(Draft)
+  status          ToolStatus?               @default(Draft)
   publishedAt     DateTime?
-  createdAt       DateTime                 @default(now())
-  updatedAt       DateTime                 @updatedAt
+  createdAt       DateTime?                 @default(now())
+  updatedAt       DateTime?                 @updatedAt
   searchVector    Unsupported("tsvector")?
 
   // Relations
@@ -199,8 +212,8 @@ model Category {
   costSavings String?
   categoryNews String[] @default([])
   label     String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
 
   // Implicit relation  
   tools Tool[]

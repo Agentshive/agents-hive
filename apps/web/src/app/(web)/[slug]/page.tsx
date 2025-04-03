@@ -132,10 +132,10 @@ export default async function ToolPage(props: PageProps) {
                   href: "/categories",
                   name: "Categories",
                 },
-                {
-                  href: `/categories/${slugify(tool.category)}`,
-                  name: tool.category,
-                },
+                // {
+                //   href: `/categories/${slugify(tool.category)}`,
+                //   name: tool.category,
+                // },
                 {
                   href: `/${tool.slug}`,
                   name: tool.name,
@@ -267,21 +267,22 @@ export default async function ToolPage(props: PageProps) {
               </div>
             </div>
 
-            {/* <div className="bg-[#1b1b1b] p-4 rounded-xl w-full md:w-80">
+            <div className="bg-[#1b1b1b] p-4 rounded-xl w-full md:w-80">
+              {/* Skills Section */}
+
               <h3 className="text-lg font-semibold">Skills</h3>
               <div className="flex gap-2 mt-2 flex-wrap">
-                <span className="px-3 py-1 border border-gray-500 rounded-md text-sm">
-                  Prospecting
-                </span>{" "}
-                <span className="px-3 py-1 border border-gray-500 rounded-md text-sm">
-                  Personalization
-                </span>{" "}
-                <span className="px-3 py-1 border border-gray-500 rounded-md text-sm">
-                  Research
-                </span>
+                {(tool as any).skills?.map((skill: string, index: number) => (
+                  <span
+                    key={index}
+                    className="px-3 py-1 border border-gray-500 rounded-md text-sm"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
 
-              <h3 className="text-lg font-semibold mt-4">Integration</h3>
+              {/* <h3 className="text-lg font-semibold mt-4">Integration</h3>
               <div className="flex gap-3 mt-2">
                 <Image
                   src="https://fastly.picsum.photos/id/973/200/300.jpg?hmac=gFjS6R63ZUmM9pkLFyPxuEmsxvZ_e8VJxB3mcXpvTUQ"
@@ -295,19 +296,22 @@ export default async function ToolPage(props: PageProps) {
                   height={24}
                   alt="Salesforce"
                 />
-              </div>
+              </div> */}
 
               <h3 className="text-lg font-semibold mt-4">Language</h3>
               <div className="flex gap-2 mt-2 flex-wrap">
-                <span className="px-3 py-1 border border-gray-500 rounded-md text-sm">
-                  English
-                </span>
-                <span className="px-3 py-1 border border-gray-500 rounded-md text-sm">
-                  Spanish
-                </span>
+                {(tool as any).languages?.map(
+                  (language: string, index: number) => (
+                    <span
+                      key={index}
+                      className="px-3 py-1 border border-gray-500 rounded-md text-sm"
+                    >
+                      {language}
+                    </span>
+                  )
+                )}
               </div>
-
-              <h3 className="text-lg font-semibold mt-4">Alternatives</h3>
+              {/* <h3 className="text-lg font-semibold mt-4">Alternatives</h3>
               <div className="flex gap-3 mt-2">
                 <Image
                   src="https://fastly.picsum.photos/id/973/200/300.jpg?hmac=gFjS6R63ZUmM9pkLFyPxuEmsxvZ_e8VJxB3mcXpvTUQ"
@@ -315,24 +319,14 @@ export default async function ToolPage(props: PageProps) {
                   height={24}
                   alt="Alternative"
                 />
-              </div>
+              </div> */}
             </div>
-          </div> */}
           </div>
 
-          {tool.screenshotUrl && (
-            // <Image
-            //   key={tool.screenshotUrl}
-            //   src={tool.screenshotUrl}
-            //   alt={`A screenshot of ${tool.name}`}
-            //   width={1280}
-            //   height={1024}
-            //   loading="lazy"
-            //   className="aspect-video h-auto w-full rounded-md border object-cover object-top max-md:order-2"
-            // />
+          {tool.videoUrl && (
             <iframe
-              key={tool.screenshotUrl}
-              src={tool.screenshotUrl.replace("watch?v=", "embed/")}
+              key={tool.videoUrl}
+              src={tool.videoUrl.replace("watch?v=", "embed/")}
               title={`Video of ${tool.name}`}
               width="1280"
               height="720"
@@ -357,26 +351,36 @@ export default async function ToolPage(props: PageProps) {
               <StackList stacks={tool.stacks} />
             </Stack>
           )}
-
+          {/* 
           <div className="text-white rounded-lg max-w-full mx-auto">
             {/* Tags Section */}
-            <div className="flex items-center gap-3 mb-6">
-              <HashedIcon />
-              <h3 className="text-lg font-semibold">Tags</h3>
-            </div>
-            <div className="flex flex-wrap gap-2 mb-6">
-              {tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="px-3 py-1 border border-gray-500 rounded-md text-sm"
-                >
-                  #{tag}
-                </span>
-              ))}
-            </div>
+          {!!tool.topics.length && (
+            <>
+              <div className="flex items-center gap-3 mb-6">
+                <HashedIcon />
+                <h3 className="text-lg font-semibold">Tags</h3>
+              </div>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {tool.topics.map(({ slug }) => (
+                  <span
+                    key={slug}
+                    className="px-3 py-1 border border-gray-500 rounded-md text-sm"
+                  >
+                    <Tag
+                      key={slug}
+                      href={`/topics/${slug}`}
+                      prefix={<HashIcon />}
+                    >
+                      {slug}
+                    </Tag>
+                  </span>
+                ))}
+              </div>
+            </>
+          )}
 
-            {/* Reviews Section */}
-            <div className="flex items-center gap-3 mb-6">
+          {/* Reviews Section */}
+          {/* <div className="flex items-center gap-3 mb-6">
               <ReviewIcon />
               <h3 className="text-lg font-semibold">Reviews</h3>
             </div>
@@ -385,10 +389,10 @@ export default async function ToolPage(props: PageProps) {
               {ratings.overall} Ratings ({ratings.count})
             </h2>
             <p className="text-gray-400 text-sm mb-4">Overall Ratings</p>
-            <p className="text-gray-300 text-sm">{tool.description}</p>
+            <p className="text-gray-300 text-sm">{tool.description}</p> */}
 
-            {/* Ratings from different platforms */}
-            <div className="flex flex-wrap gap-4 mt-6">
+          {/* Ratings from different platforms */}
+          {/* <div className="flex flex-wrap gap-4 mt-6">
               {ratings.sources.map((source, index) => (
                 <div key={index} className="flex items-center gap-2">
                   <span className={source.color}>{source.icon}</span>
@@ -398,7 +402,7 @@ export default async function ToolPage(props: PageProps) {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Technical Stack Section */}
           {!!tool.stacks.length && (
