@@ -33,7 +33,7 @@ export default function Home({ searchParams }: PageProps) {
           </div>
           <Intro className="flex flex-col items-center lg:items-start">
             <IntroTitle
-              className="lg:w-[751px] lg:h-[154px] lg:max-w-[45rem] text-8xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[120%] max-w-3xl"
+              className="intro-title lg:w-[751px] lg:h-[154px] lg:max-w-[45rem] text-8xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[120%] max-w-3xl"
             >
               AI Agent Marketplace & Community
             </IntroTitle>

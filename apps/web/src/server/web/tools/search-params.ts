@@ -5,6 +5,7 @@ export const toolsSearchParams = {
   q: parseAsString.withDefault(""),
   alternative: parseAsArrayOf(parseAsString).withDefault([]),
   category: parseAsArrayOf(parseAsString).withDefault([]),
+  price: parseAsArrayOf(parseAsString).withDefault([]),
   stack: parseAsArrayOf(parseAsString).withDefault([]),
   license: parseAsArrayOf(parseAsString).withDefault([]),
   page: parseAsInteger.withDefault(1),

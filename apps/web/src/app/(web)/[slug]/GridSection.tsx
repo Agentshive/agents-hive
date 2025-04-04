@@ -66,10 +66,10 @@ export const GridSection = ({
       
       case 'functionsSupportDeals':
         return (
-          <div className="flex flex-col gap-6 h-full">
+          <div className="flex flex-col gap-6">
             {/* Functions */}
             <div>
-              <h2 className="text-xl font-bold mb-2 text-white">Functions</h2>
+              <h2 className="text-xl font-bold mb-8 text-white">Functions</h2>
               <div className="flex flex-wrap gap-2">
                 {(Array.isArray(functions) ? functions : [functions])?.map(
                   (func, index) => (

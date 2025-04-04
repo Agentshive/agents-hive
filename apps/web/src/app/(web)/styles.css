@@ -74,47 +74,27 @@
     @apply border-border;
   }
 }
-@font-face {
-  font-family: 'Raelaregular';
-  src: url('/fonts/RaelaGrotesque-Regular') format('ttf');
-  font-weight: 900;
-  font-display: swap;
-}
 
 @font-face {
-  font-family: 'Raelabold';
-  src: url('/fonts/RaelaGrotesque-SemiBold.ttf') format('ttf');
-  font-weight: 800;
+  font-family: 'raela_grotesquebold';
+  src: url('/fonts/raelagrotesque-bold-webfont.woff2') format('woff2'),
+       url('/fonts/raelagrotesque-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
 }
 
 
-@font-face {
-  font-family: 'RaelaThin';
-  src: url('/fonts/RaelaGrotesque-Thin') format('ttf');
-  font-weight: 900;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Raelablack';
-  src: url('/fonts/RaelaGrotesque-Black.ttf') format('ttf');
-  font-weight: 700;
-}
 
 
 @font-face {
-  font-family: 'Raelaextrabold';
-  src: url('/fonts/RaelaGrotesque-ExtraBold.ttf') format('ttf');
-  font-weight: 900;
-  font-display: swap;
-}
+  font-family: 'raela_grotesqueextra_bold';
+  src: url('/fonts/raelagrotesque-extrabold-webfont.woff2') format('woff2'),
+       url('/fonts/raelagrotesque-extrabold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 
-@font-face {
-  font-family: 'Raelaextralight';
-  src: url('/fonts/RaelaGrotesque-ExtraLight.ttf') format('ttf');
-  font-weight: 700;
 }
-
 
 
 @utility prose {
@@ -178,29 +158,50 @@
   }
 }
 body {
-  font-family: 'Raelabold', sans-serif;
+  font-family: 'raela_grotesqueextra_bold';
 }
 a{
-  font-family: 'Raelabold', sans-serif;
+  font-family: 'raela_grotesqueextra_bold';
   font-weight: 900;
 }
 label {
-  font-family: 'Raelabold', sans-serif;
-  font-weight: 900;
+  font-family: 'raela_grotesqueextra_bold';
+  font-weight: 700;
   
 }
 button {
-  font-family: 'Raelaextrabold';
+  font-family: 'raela_grotesqueextra_bold';
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Raelabold', serif;
-  font-weight: 900;
-}
-p {
-  font-family: 'open-sans', sans-serif;
+  font-family: 'raela_grotesqueextra_bold';
   font-weight: 900;
 }
 
+.intro-title {
+  width: 751px;
+  height: 154px;
+  flex-grow: 0;
+  font-family: 'raela_grotesqueextra_bold';
+  font-size: 64px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+}
+p{
+  font-family: 'open-sans';
+  font-weight: 400;
+}
+h1 {
+  @apply text-5xl;
+  @apply font-bold;
+  @apply leading-tight;
+  @apply tracking-tight;
+  @apply text-foreground;
+}
 a,
 button,
 label[for],
