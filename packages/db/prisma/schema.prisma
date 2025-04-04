@@ -133,7 +133,8 @@ model Tool {
   technicalSpecifications String?
   useCases        String[]
   category        String
-  price           Float?                   @default(0)
+  price           String?                   @default(0)
+  cost            Float?
   features        String?
   keyFeatures     String[]
   faviconUrl      String?
