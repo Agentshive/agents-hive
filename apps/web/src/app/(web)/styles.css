@@ -75,11 +75,46 @@
   }
 }
 @font-face {
-  font-family: 'RaelaGrotesque';
-  src: url('/fonts/RaelaGrotesque-Bold.woff') format('woff');
-  font-weight: 700;
+  font-family: 'Raelaregular';
+  src: url('/fonts/RaelaGrotesque-Regular') format('ttf');
+  font-weight: 900;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'Raelabold';
+  src: url('/fonts/RaelaGrotesque-SemiBold.ttf') format('ttf');
+  font-weight: 800;
+}
+
+
+@font-face {
+  font-family: 'RaelaThin';
+  src: url('/fonts/RaelaGrotesque-Thin') format('ttf');
+  font-weight: 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Raelablack';
+  src: url('/fonts/RaelaGrotesque-Black.ttf') format('ttf');
+  font-weight: 700;
+}
+
+
+@font-face {
+  font-family: 'Raelaextrabold';
+  src: url('/fonts/RaelaGrotesque-ExtraBold.ttf') format('ttf');
+  font-weight: 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Raelaextralight';
+  src: url('/fonts/RaelaGrotesque-ExtraLight.ttf') format('ttf');
+  font-weight: 700;
+}
+
 
 
 @utility prose {
@@ -142,16 +177,30 @@
     @apply opacity-10;
   }
 }
+body {
+  font-family: 'Raelabold', sans-serif;
+}
+a{
+  font-family: 'Raelabold', sans-serif;
+  font-weight: 900;
+}
+label {
+  font-family: 'Raelabold', sans-serif;
+  font-weight: 900;
+  
+}
+button {
+  font-family: 'Raelaextrabold';
+}
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'RaelaGrotesque';
-  font-weight: 700;
+  font-family: 'Raelabold', serif;
+  font-weight: 900;
 }
 p {
-  font-family: var(--font-sans);
+  font-family: 'open-sans', sans-serif;
+  font-weight: 900;
 }
-label,li,span{
-  font-family: var(--font-sans);
-}
+
 a,
 button,
 label[for],

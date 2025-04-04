@@ -67,7 +67,7 @@ export const Header = ({
     >
       <div className="absolute top-0 inset-x-0 h-[calc(var(--header-top)+var(--header-height)+2rem)] pointer-events-none bg-linear-to-b from-background via-background to-transparent lg:h-[calc(var(--header-top)+var(--header-height)+3rem)]" />
 
-      <div className="relative flex flex-nowrap items-center py-12 gap-x-3 text-base h-[var(--header-height)] isolate duration-300 lg:gap-4">
+      <div className="relative flex flex-nowrap items-center py-14 lg:top-35px gap-x-3 text-base h-[var(--header-height)] isolate duration-300 lg:gap-4">
         <button
           type="button"
           onClick={() => setNavOpen(!isNavOpen)}
@@ -187,7 +187,7 @@ export const Header = ({
           <Button
             suffix={<ArrowRight />}
             asChild
-            className="rounded-[4px] bg-white"
+            className="ml-6 p-3 rounded-[4px] bg-white"
           >
             <Link href="/submit">Submit</Link>
           </Button>

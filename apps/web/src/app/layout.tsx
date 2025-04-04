@@ -4,7 +4,6 @@ import type { PropsWithChildren } from "react";
 import { Toaster } from "~/components/common/toaster";
 import { config } from "~/config";
 import { geist } from "~/lib/fonts";
-import { myLocalFont } from "~/components/common/font/fontloader";
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.site.url),
@@ -46,7 +45,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       suppressHydrationWarning
     >
       <body
-        className={`${myLocalFont.className} min-h-dvh flex flex-col bg-background text-foreground font-sans`}
+        className={` min-h-dvh flex flex-col bg-background text-foreground font-sans`}
       >
         <NuqsAdapter>{children}</NuqsAdapter>
         <Toaster />

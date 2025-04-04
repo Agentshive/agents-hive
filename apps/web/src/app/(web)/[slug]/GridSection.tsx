@@ -1,0 +1,117 @@
+import { FeatureIcon } from "~/components/common/icons/featureicon";
+import { TickIcon } from "~/components/common/icons/tickicon";
+
+
+type GridSectionType = 'features' | 'useCases' | 'industry' | 'functionsSupportDeals';
+
+interface GridSectionProps {
+  type: GridSectionType;
+  title?: string;
+  items?: string | string[];
+  functions?: string | string[];
+  support?: string;
+  deals?: string;
+  fullWidth?: boolean;
+}
+
+export const GridSection = ({
+  type,
+  title = '',
+  items,
+  functions,
+  support,
+  deals,
+  fullWidth = false
+}: GridSectionProps) => {
+  const renderContent = () => {
+    switch (type) {
+      case 'features':
+      case 'useCases':
+        return (
+          <ul className="space-y-3">
+            {items ? (
+              (Array.isArray(items) ? items : [items]).map((item, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <span className="text-green-400">
+                    <TickIcon />
+                  </span>
+                  <p className="text-gray-300">{item}</p>
+                </li>
+              ))
+            ) : (
+              <p className="text-gray-400">
+                No {type === 'features' ? 'features' : 'use cases'} available.
+              </p>
+            )}
+          </ul>
+        );
+      
+      case 'industry':
+        return (
+          <div className="flex flex-wrap gap-2">
+            {items ? (
+              (Array.isArray(items) ? items : [items]).map((item, index) => (
+                <span
+                  key={index}
+                  className="bg-gray-700 text-gray-300 px-3 py-1 rounded-md"
+                >
+                  {item}
+                </span>
+              ))
+            ) : (
+              <p className="text-gray-400">No industries specified.</p>
+            )}
+          </div>
+        );
+      
+      case 'functionsSupportDeals':
+        return (
+          <div className="flex flex-col gap-6 h-full">
+            {/* Functions */}
+            <div>
+              <h2 className="text-xl font-bold mb-2 text-white">Functions</h2>
+              <div className="flex flex-wrap gap-2">
+                {(Array.isArray(functions) ? functions : [functions])?.map(
+                  (func, index) => (
+                    <button
+                      key={index}
+                      className="border border-gray-500 text-white px-3 py-1 rounded-md hover:bg-gray-700 transition"
+                    >
+                      {func}
+                    </button>
+                  )
+                ) || <p className="text-gray-400">No functions specified.</p>}
+              </div>
+            </div>
+
+            {/* Support */}
+            <div>
+              <h2 className="text-xl font-bold mb-2 text-white">Support</h2>
+              <p className="text-gray-300">{support || "No support information available."}</p>
+            </div>
+
+            {/* Deals */}
+            <div>
+              <h2 className="text-xl font-bold mb-2 text-white">Deals</h2>
+              <p className="text-gray-300">{deals || "No deals currently available."}</p>
+            </div>
+          </div>
+        );
+      
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className={`bg-[#1b1b1b] p-6 rounded-lg shadow-md ${fullWidth ? 'w-full' : ''}`}>
+      {type !== 'functionsSupportDeals' && (
+        <div className="flex items-center gap-3 mb-4">
+          <FeatureIcon />
+          <h2 className="text-xl font-bold">{title}</h2>
+        </div>
+      )}
+      {renderContent()}
+    </div>
+  );
+};

@@ -151,6 +151,12 @@ model Tool {
   idealFor        String[]
   integrations    String[]
   languages       String[]
+  support         String?
+  functions       String[]
+  deals           String?
+  industry        String[]
+  freeTrial       String?
+  isPopular       Boolean?
   customerStories String?
   openSourceInfo  String?
   discountCode    String?

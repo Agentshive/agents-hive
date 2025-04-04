@@ -44,6 +44,8 @@ import { ReviewIcon } from "~/components/common/icons/reviews";
 import { FeatureIcon } from "~/components/common/icons/featureicon";
 import { TickIcon } from "~/components/common/icons/tickicon";
 import { Card } from "~/components/web/ui/card";
+import { GridSection } from "./GridSection";
+import { SubscriptionCard } from './SubscriptionCard';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -64,6 +66,34 @@ const ratings = {
     { rating: 3.8, color: "text-green-500", icon: "🟢" },
   ],
 };
+
+const growthPlanFeatures = [
+  {
+    text: "50,000 Credits",
+  },
+  {
+    text: "1 Sequencing User",
+    subFeatures: ["$100 / seat / mo for additional sequencing users"],
+  },
+  {
+    text: "3 Unity Managed Gmail Mailboxes",
+    subFeatures: ["$20 / mailbox / mo for additional mailboxes"],
+  },
+  {
+    text: "Onboarding + Support",
+  },
+];
+
+const proPlanFeatures = [
+  {
+    text: "100,000 Credits",
+  },
+  {
+    text: "3 Sequencing Users",
+    subFeatures: ["$90 / seat / mo for additional sequencing users"],
+  },
+  // ... add more features
+];
 
 const getTool = cache(async ({ params }: PageProps) => {
   const { slug } = await params;
@@ -195,10 +225,9 @@ export default async function ToolPage(props: PageProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
         <div>
-          <div></div>
           <div className="text-white p-0 rounded-[4px] flex flex-col mb-10 md:flex-row gap-6 w-full">
             <div
-              className="bg-[#1b1b1b] p-6 rounded-[4px] flex-grow"
+              className="bg-[#1b1b1b] p-6 rounded-[4px] flex-grow w-[420]"
               style={{
                 clipPath:
                   "polygon(0 0, calc(100% - 42px) 0, 100% 42px, 100% 100%, 0 100%)",
@@ -279,7 +308,7 @@ export default async function ToolPage(props: PageProps) {
               </div>
             </div>
 
-            <div className="bg-[#1b1b1b] p-4 rounded-[4px] w-full md:w-80">
+            <div className="bg-[#1b1b1b] p-4 rounded-[4px] w-[500px] md:w-80">
               {/* Skills Section */}
 
               <h3 className="text-lg font-semibold">Ideal for</h3>
@@ -337,130 +366,273 @@ export default async function ToolPage(props: PageProps) {
             </div>
           </div>
 
-          <div>
-            <div className="bg-[#1b1b1b] p-6 rounded-lg">
-              <FeatureIcon />
-              <h2 className="text-xl font-bold mb-4">Key Features</h2>
-              <ul className="space-y-3">
-                {tool.keyFeatures ? (
-                  (Array.isArray(tool.keyFeatures)
-                    ? tool.keyFeatures
-                    : [tool.keyFeatures]
-                  ).map((feature, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <span className="text-green-400">
-                        <TickIcon />
-                      </span>
-                      <p className="text-gray-300">{feature}</p>
-                    </li>
-                  ))
-                ) : (
-                  <p className="text-gray-400">No features available.</p>
-                )}
-              </ul>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+  <div className="lg:col-span-2">
+    <div className="text-white p-0 rounded-[4px] flex flex-col md:flex-row gap-6 w-full ">
+      <div
+        className="bg-[#1b1b1b] p-6 rounded-[4px] flex-grow w-[420]"
+        style={{
+          clipPath:
+            "polygon(0 0, calc(100% - 42px) 0, 100% 42px, 100% 100%, 0 100%)",
+        }}
+      >
+        <div className="flex flex-1 flex-col items-start gap-4 max-md:order-1 md:gap-6">
+          <div className="flex w-full flex-col items-start gap-y-4">
+            <Stack className="w-full">
+              <FaviconImage src={tool.faviconUrl} title={tool.name} />
 
-              {/* Use Cases Section */}
-              <div className="bg-[#1b1b1b] p-6 rounded-lg">
-                <FeatureIcon />
-                <h2 className="text-xl font-bold mb-4">Use Cases</h2>
-                <ul className="space-y-3">
-                  {tool.useCases?.length ? (
-                    (Array.isArray(tool.useCases)
-                      ? tool.useCases
-                      : [tool.useCases]
-                    ).map((useCase, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <span className="text-green-400">
-                          <TickIcon />
-                        </span>
-                        <p className="text-gray-300">{useCase}</p>
-                      </li>
-                    ))
-                  ) : (
-                    <p className="text-gray-400">No use cases available.</p>
-                  )}
-                </ul>
+              <div className="flex flex-1">
+                <H4 className="!leading-snug truncate pr-2">
+                  {tool.name}
+                </H4>
+                <StarsIcon />
+                <GlobesIcon />
               </div>
-            </div>
+            </Stack>
 
-            {/* Additional Information Section */}
-            <div className="bg-[#1b1b1b] p-6 rounded-lg mb-6">
-              <h2 className="text-xl font-bold mb-4">Additional Information</h2>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3">
-                  <span className="text-green-400">
-                    <TickIcon />
-                  </span>
-                  <p className="text-gray-300">
-                    ✅ Compliance & Security: SOC 2 Compliance ✔ AICPA SOC
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-green-400">
-                    <TickIcon />
-                  </span>
-                  <p className="text-gray-300">
-                    🏢 Business & Industry: Ideal for SMB | Mid Market |
-                    Enterprise
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-green-400">
-                    <TickIcon />
-                  </span>
-                  <p className="text-gray-300">
-                    🔹 Industry Focus: Retail | E-commerce | SaaS
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-green-400">
-                    <TickIcon />
-                  </span>
-                  <p className="text-gray-300">
-                    🔗 Integrations: Supported Platforms - Slack | Salesforce
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-green-400">
-                    <TickIcon />
-                  </span>
-                  <p className="text-gray-300">
-                    🌍 Supported Languages: English | Spanish
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-green-400">
-                    <TickIcon />
-                  </span>
-                  <p className="text-gray-300">🔄 Alternatives Available</p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-green-400">
-                    <TickIcon />
-                  </span>
-                  <p className="text-gray-300">
-                    🎯 Functions: Sales | Marketing
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-green-400">
-                    <TickIcon />
-                  </span>
-                  <p className="text-gray-300">
-                    📩 Support: Email - Support@phella.ai
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-green-400">
-                    <TickIcon />
-                  </span>
-                  <p className="text-gray-300">
-                    🎉 Deals: 30% G2 Discount Available
-                  </p>
-                </li>
-              </ul>
-            </div>
+            {tool.description && (
+              <IntroDescription>{tool.description}</IntroDescription>
+            )}
           </div>
+        </div>
+        <div className="flex items-center gap-2 mt-3"></div>
+        <div className="mt-4 pt-4 border-t border-gray-700">
+          <div className="flex justify-between items-center mt-4">
+            <ToolAlternatives alternatives={tool.alternatives} />
+
+            <Stack size="sm" className="w-full">
+              {tool.website && (
+                <Button suffix={<ArrowUpRightIcon />} asChild>
+                  <ExternalLink
+                    href={tool.website}
+                    rel={
+                      tool.isFeatured ? "noopener noreferrer" : undefined
+                    }
+                    eventName="click_website"
+                    eventProps={{ url: tool.website }}
+                  >
+                    Visit {tool.name}
+                  </ExternalLink>
+                </Button>
+              )}
+
+              {tool.hostingUrl && (
+                <Button
+                  variant="secondary"
+                  suffix={<ArrowUpRightIcon />}
+                  asChild
+                >
+                  <ExternalLink
+                    href={tool.hostingUrl}
+                    eventName="click_ad"
+                    eventProps={{
+                      url: tool.hostingUrl,
+                      type: "ToolPage",
+                    }}
+                  >
+                    Self-host with Easypanel
+                  </ExternalLink>
+                </Button>
+              )}
+
+              {tool.discountAmount && (
+                <p className="ml-auto flex-1 pl-2 text-sm text-end text-balance text-green-600 dark:text-green-400">
+                  {tool.discountCode
+                    ? `Use code ${tool.discountCode} for ${tool.discountAmount}!`
+                    : `Get ${tool.discountAmount} with our link!`}
+                </p>
+              )}
+            </Stack>
+
+            <span className="text-orange-400 font-bold">
+              ${tool.price}/mon
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div className="lg:col-span-1 mb-16 h-full">
+  <div className="bg-[#1b1b1b] p-4 rounded-[4px] w-full h-full ">
+      {/* Skills Section */}
+
+      <h3 className="text-lg font-semibold">Ideal for</h3>
+      <div className="flex gap-2 mt-2 flex-wrap">
+        {(tool as any).idealFor?.map(
+          (idealFor: string, index: number) => (
+            <span
+              key={index}
+              className="px-3 py-1 border border-gray-500 rounded-md text-sm"
+            >
+              {idealFor}
+            </span>
+          )
+        )}
+      </div>
+
+      <h3 className="text-lg font-semibold mt-4">Language</h3>
+      <div className="flex gap-2 mt-2 flex-wrap">
+        {(tool as any).languages?.map(
+          (language: string, index: number) => (
+            <span
+              key={index}
+              className="px-3 py-1 border border-gray-500 rounded-md text-sm"
+            >
+              {language}
+            </span>
+          )
+        )}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+      <GridSection 
+        type="features" 
+        title="Key Features" 
+        items={tool.keyFeatures} 
+      />
+      
+      <GridSection 
+        type="useCases" 
+        title="Use Cases" 
+        items={tool.useCases} 
+      />
+      
+      <div className="flex flex-col gap-6">
+        <GridSection 
+          type="industry" 
+          title="Industry" 
+          items={tool.industry} 
+          fullWidth 
+        />
+        
+        <GridSection 
+          type="functionsSupportDeals" 
+          functions={tool.functions} 
+          support={tool.support} 
+          deals={tool.deals} 
+          fullWidth 
+        />
+      </div>
+    </div>
+
+
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+  {/* First Column - Key Features */}
+  <div className="bg-[#1b1b1b] p-6 rounded-lg shadow-md">
+
+ <div className="flex items-center gap-3 mb-4"> {/* Added flex container */}
+    <FeatureIcon />
+    <h2 className="text-xl font-bold">Key Features</h2> {/* Removed mb-4 from here */}
+  </div>
+    <ul className="space-y-3">
+      {tool.keyFeatures ? (
+        (Array.isArray(tool.keyFeatures)
+          ? tool.keyFeatures
+          : [tool.keyFeatures]
+        ).map((feature, index) => (
+          <li key={index} className="flex items-start gap-3">
+            <span className="text-green-400">
+              <TickIcon />
+            </span>
+            <p className="text-gray-300">{feature}</p>
+          </li>
+        ))
+      ) : (
+        <p className="text-gray-400">No features available.</p>
+      )}
+    </ul>
+  </div>
+
+  {/* Second Column - Use Cases */}
+  <div className="bg-[#1b1b1b] p-6 rounded-lg shadow-md">
+  <div className="flex items-center gap-3 mb-4"> {/* Added flex container */}
+    <FeatureIcon />
+    <h2 className="text-xl font-bold">use Cases</h2> {/* Removed mb-4 from here */}
+  </div>
+    <ul className="space-y-3">
+      {tool.useCases?.length ? (
+        (Array.isArray(tool.useCases)
+          ? tool.useCases
+          : [tool.useCases]
+        ).map((useCase, index) => (
+          <li key={index} className="flex items-start gap-3">
+            <span className="text-green-400">
+              <TickIcon />
+            </span>
+            <p className="text-gray-300">{useCase}</p>
+          </li>
+        ))
+      ) : (
+        <p className="text-gray-400">No use cases available.</p>
+      )}
+    </ul>
+  </div>
+
+  {/* Third Column - Split into two parts */}
+  <div className="flex flex-col gap-6">
+    {/* Top part - Industry */}
+    <div className="bg-[#1b1b1b] p-6 rounded-lg w-full">
+      <h2 className="text-xl font-bold mb-4 text-white">Industry</h2>
+      <div className="flex flex-wrap gap-2">
+        {tool.industry ? (
+          (Array.isArray(tool.industry)
+            ? tool.industry
+            : [tool.industry]
+          ).map((industry, index) => (
+            <span
+              key={index}
+              className="bg-gray-700 text-gray-300 px-3 py-1 rounded-md"
+            >
+              {industry}
+            </span>
+          ))
+        ) : (
+          <p className="text-gray-400">No industries specified.</p>
+        )}
+      </div>
+    </div>
+
+    {/* Bottom part - Functions, Support, Deals */}
+    <div className="bg-[#1b1b1b] p-6 rounded-lg w-full flex-1">
+      <div className="flex flex-col gap-6 h-full">
+        {/* Functions Section */}
+        <div>
+          <h2 className="text-xl font-bold mb-2 text-white">Functions</h2>
+          <div className="flex flex-wrap gap-2">
+            {(Array.isArray(tool.functions) ? tool.functions : [tool.functions])?.map(
+              (func, index) => (
+                <button
+                  key={index}
+                  className="border border-gray-500 text-white px-3 py-1 rounded-md hover:bg-gray-700 transition"
+                >
+                  {func}
+                </button>
+              )
+            ) || <p className="text-gray-400">No functions specified.</p>}
+          </div>
+        </div>
+
+        {/* Support Section */}
+        <div>
+          <h2 className="text-xl font-bold mb-2 text-white">Support</h2>
+          <p className="text-gray-300">{tool.support || "No support information available."}</p>
+        </div>
+
+        {/* Deals Section */}
+        <div>
+          <h2 className="text-xl font-bold mb-2 text-white">Deals</h2>
+          <p className="text-gray-300">{tool.deals || "No deals currently available."}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
           {tool.videoUrl && (
             <iframe
@@ -474,6 +646,35 @@ export default async function ToolPage(props: PageProps) {
               allowFullScreen
             />
           )}
+
+<div className="min-h-screen bg-black py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          Choose Your Plan
+        </h1>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Growth Plan */}
+          <SubscriptionCard
+            title="Growth"
+            price="Starting from $1460 per month, billed annually"
+            description="For teams looking to get started with signal data"
+            features={growthPlanFeatures}
+          />
+
+          {/* Pro Plan */}
+          <SubscriptionCard
+            title="Pro"
+            price="Starting from $2490 per month, billed annually"
+            description="For growing teams with more advanced needs"
+            features={proPlanFeatures}
+            ctaLabel="Get Started"
+          />
+
+          {/* Add more plans as needed */}
+        </div>
+      </div>
+    </div>
 
           {tool.content && (
             <Markdown code={tool.content} className="max-md:order-5 mt-10" />
