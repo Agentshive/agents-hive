@@ -1,5 +1,6 @@
 import { FeatureIcon } from "~/components/common/icons/featureicon";
 import { TickIcon } from "~/components/common/icons/tickicon";
+import { UsecaseIcon } from "~/components/common/icons/usecases";
 
 
 type GridSectionType = 'features' | 'useCases' | 'industry' | 'functionsSupportDeals';
@@ -9,8 +10,8 @@ interface GridSectionProps {
   title?: string;
   items?: string | string[];
   functions?: string | string[];
-  support?: string;
-  deals?: string;
+  support?: string | string[];
+  deals?: string | string[];
   fullWidth?: boolean;
 }
 
@@ -48,7 +49,7 @@ export const GridSection = ({
       
       case 'industry':
         return (
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap pb-[25%] gap-2">
             {items ? (
               (Array.isArray(items) ? items : [items]).map((item, index) => (
                 <span
@@ -69,7 +70,7 @@ export const GridSection = ({
           <div className="flex flex-col gap-6">
             {/* Functions */}
             <div>
-              <h2 className="text-xl font-bold mb-8 text-white">Functions</h2>
+              <h2 className="text-xl font-bold text-white">Functions</h2>
               <div className="flex flex-wrap gap-2">
                 {(Array.isArray(functions) ? functions : [functions])?.map(
                   (func, index) => (
@@ -104,14 +105,20 @@ export const GridSection = ({
   };
 
   return (
-    <div className={`bg-[#1b1b1b] p-6 rounded-lg shadow-md ${fullWidth ? 'w-full' : ''}`}>
-      {type !== 'functionsSupportDeals' && (
-        <div className="flex items-center gap-3 mb-4">
-          <FeatureIcon />
-          <h2 className="text-xl font-bold">{title}</h2>
-        </div>
-      )}
-      {renderContent()}
-    </div>
-  );
-};
+<div className={`bg-[#1b1b1b] p-6 rounded-lg shadow-md ${fullWidth ? 'w-full' : ''}`}>
+{type !== 'functionsSupportDeals' && type !== 'industry' && (
+  <div className="flex items-center gap-3 mb-4">
+    {type === 'features' && <FeatureIcon />}
+    {type === 'useCases' && <UsecaseIcon />}
+    <h2 className="text-xl font-bold">{title}</h2>
+  </div>
+)}
+
+{type === 'industry' && title && (
+  <h2 className="text-xl font-bold mb-4">{title}</h2>
+)}
+
+{renderContent()}
+</div>
+);
+}

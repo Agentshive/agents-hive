@@ -55,9 +55,9 @@ const CategoryCard = ({ category, ...props }: CategoryCardProps) => {
             )}`}
           </CardDescription>
         )}
-        <CardDescription className="line-clamp-4 text-white raela-font group-hover:text-black">
-          {category.description}
-        </CardDescription>
+      <CardDescription className="line-clamp-4 text-white group-hover:text-black custom-font">
+  {category.description}
+</CardDescription>
       </Link>
     </Card>
   );

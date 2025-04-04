@@ -34,8 +34,10 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
     // { label: "Reviews", value: formatNumber(tool.reviews), icon: "" },
 
     { label: "Category", value: tool.category, icon: "" },
+    { label: "Price", value: tool.price, icon: "" },
     { label: "Features", value: tool.features, icon: "" },
-    { label: "Price", value: `₹${tool.price}`, icon: "" },
+    { label: "Cost", value: tool.cost === 0 ? "Free" : `$${tool.cost}/mon`, icon: "" },
+
     // {
     //   label: "Last commit",
     //   value:
@@ -139,20 +141,32 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
             </div>
 
             <div className="flex justify-between items-center w-full border-t border-gray-500 p-2">
-              {tool.category && (
-                <Badge
-                  variant="outline"
-                  className="px-3 py-1 border border-gray-500 rounded-[4px] text-sm"
-                >
-                  {tool.category}
-                </Badge>
-              )}
+            {tool.category && (
+  <div className="flex items-center gap-2">
+    <Badge
+      variant="outline"
+      className="px-3 py-1 border border-gray-500 rounded-[4px] text-sm"
+    >
+      {tool.category}
+    </Badge>
 
-              {tool.price !== undefined && (
-                <div className="text-orange-400 font-bold">
-                  {tool.price === 0 ? "Free" : `₹${tool.price}`}
-                </div>
-              )}
+    {tool.price && (
+      <Badge
+       variant="outline"
+        className="px-3 py-1 border border-gray-500 rounded-[4px] text-sm"
+      >
+        {tool.price}
+      </Badge>
+    )}
+  </div>
+)}
+
+
+{tool.cost !== undefined && (
+  <div className="text-orange-400 font-bold">
+    {tool.cost === 0 ? "Free" : `$${tool.cost}/mon`}
+  </div>
+)}
             </div>
           </Stack>
         </div>

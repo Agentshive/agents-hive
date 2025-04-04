@@ -306,8 +306,8 @@ export default async function ToolPage(props: PageProps) {
             </Stack>
 
             <span className="text-orange-400 font-bold">
-              ${tool.price}/mon
-            </span>
+  {tool.cost === 0 ? 'Free' : `$${tool.cost}/mon`}
+</span>
           </div>
         </div>
       </div>
@@ -422,10 +422,6 @@ export default async function ToolPage(props: PageProps) {
         </div>
       </div>
     </div>
-
-          {tool.content && (
-            <Markdown code={tool.content} className="max-md:order-5 mt-10" />
-          )}
 
           {/* Stacks */}
           {!!tool.stacks.length && (
