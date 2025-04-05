@@ -2,8 +2,11 @@ import { FeatureIcon } from "~/components/common/icons/featureicon";
 import { TickIcon } from "~/components/common/icons/tickicon";
 import { UsecaseIcon } from "~/components/common/icons/usecases";
 
-
-type GridSectionType = 'features' | 'useCases' | 'industry' | 'functionsSupportDeals';
+type GridSectionType =
+  | "features"
+  | "useCases"
+  | "industry"
+  | "functionsSupportDeals";
 
 interface GridSectionProps {
   type: GridSectionType;
@@ -17,17 +20,17 @@ interface GridSectionProps {
 
 export const GridSection = ({
   type,
-  title = '',
+  title = "",
   items,
   functions,
   support,
   deals,
-  fullWidth = false
+  fullWidth = false,
 }: GridSectionProps) => {
   const renderContent = () => {
     switch (type) {
-      case 'features':
-      case 'useCases':
+      case "features":
+      case "useCases":
         return (
           <ul className="space-y-3">
             {items ? (
@@ -41,20 +44,20 @@ export const GridSection = ({
               ))
             ) : (
               <p className="text-gray-400">
-                No {type === 'features' ? 'features' : 'use cases'} available.
+                No {type === "features" ? "features" : "use cases"} available.
               </p>
             )}
           </ul>
         );
-      
-      case 'industry':
+
+      case "industry":
         return (
-          <div className="flex flex-wrap pb-[25%] gap-2">
+          <div className="flex flex-wrap mb-2 gap-2">
             {items ? (
               (Array.isArray(items) ? items : [items]).map((item, index) => (
                 <span
                   key={index}
-                  className="bg-gray-700 text-gray-300 px-3 py-1 rounded-md"
+                  className="px-3 py-1 border border-white rounded-md text-sm"
                 >
                   {item}
                 </span>
@@ -64,22 +67,22 @@ export const GridSection = ({
             )}
           </div>
         );
-      
-      case 'functionsSupportDeals':
+
+      case "functionsSupportDeals":
         return (
           <div className="flex flex-col gap-6">
             {/* Functions */}
             <div>
-              <h2 className="text-xl font-bold text-white">Functions</h2>
+              <h2 className="text-xl font-bold text-white mb-2">Functions</h2>
               <div className="flex flex-wrap gap-2">
                 {(Array.isArray(functions) ? functions : [functions])?.map(
                   (func, index) => (
-                    <button
+                    <span
                       key={index}
-                      className="border border-gray-500 text-white px-3 py-1 rounded-md hover:bg-gray-700 transition"
+                      className="px-3 py-1 border border-white rounded-md text-sm"
                     >
                       {func}
-                    </button>
+                    </span>
                   )
                 ) || <p className="text-gray-400">No functions specified.</p>}
               </div>
@@ -88,37 +91,45 @@ export const GridSection = ({
             {/* Support */}
             <div>
               <h2 className="text-xl font-bold mb-2 text-white">Support</h2>
-              <p className="text-gray-300">{support || "No support information available."}</p>
+              <p className="text-gray-300">
+                {support || "No support information available."}
+              </p>
             </div>
 
             {/* Deals */}
             <div>
               <h2 className="text-xl font-bold mb-2 text-white">Deals</h2>
-              <p className="text-gray-300">{deals || "No deals currently available."}</p>
+              <p className="text-gray-300">
+                {deals || "No deals currently available."}
+              </p>
             </div>
           </div>
         );
-      
+
       default:
         return null;
     }
   };
 
   return (
-<div className={`bg-[#1b1b1b] p-6 rounded-lg shadow-md ${fullWidth ? 'w-full' : ''}`}>
-{type !== 'functionsSupportDeals' && type !== 'industry' && (
-  <div className="flex items-center gap-3 mb-4">
-    {type === 'features' && <FeatureIcon />}
-    {type === 'useCases' && <UsecaseIcon />}
-    <h2 className="text-xl font-bold">{title}</h2>
-  </div>
-)}
+    <div
+      className={`bg-[#1b1b1b] p-6 rounded-lg shadow-md ${
+        fullWidth ? "w-full" : ""
+      }`}
+    >
+      {type !== "functionsSupportDeals" && type !== "industry" && (
+        <div className="flex items-center gap-3 mb-4">
+          {type === "features" && <FeatureIcon />}
+          {type === "useCases" && <UsecaseIcon />}
+          <h2 className="text-xl font-bold">{title}</h2>
+        </div>
+      )}
 
-{type === 'industry' && title && (
-  <h2 className="text-xl font-bold mb-4">{title}</h2>
-)}
+      {type === "industry" && title && (
+        <h2 className="text-xl font-bold mb-4">{title}</h2>
+      )}
 
-{renderContent()}
-</div>
-);
-}
+      {renderContent()}
+    </div>
+  );
+};

@@ -67,38 +67,3 @@ export const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
     </div>
   );
 };
-
-// Example usage in a page:
-/*
-import { SubscriptionCard } from '@/components/subscription/SubscriptionCard';
-
-const SubscriptionPage = () => {
-  const growthPlanFeatures = [
-    {
-      text: "50,000 Credits",
-    },
-    {
-      text: "1 Sequencing User",
-      subFeatures: ["$100 / seat / mo for additional sequencing users"],
-    },
-    {
-      text: "3 Unity Managed Gmail Mailboxes",
-      subFeatures: ["$20 / mailbox / mo for additional mailboxes"],
-    },
-    {
-      text: "Onboarding + Support",
-    },
-  ];
-
-  return (
-    <div className="container mx-auto p-4">
-      <SubscriptionCard
-        title="Growth"
-        price="Starting from $1460 per month, billed annually"
-        description="For teams looking to get started with signal data"
-        features={growthPlanFeatures}
-      />
-    </div>
-  );
-};
-*/

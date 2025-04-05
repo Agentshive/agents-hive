@@ -75,23 +75,18 @@ export const SubmitForm = ({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit((data) => execute(data))}
-        // className={cx("grid w-full gap-5 sm:grid-cols-2", className)}
-
-        // className={cx("grid w-full gap-5 sm:grid-cols-2 bg-[#1b1b1b]", className)}
         className={cx(
-          "grid w-full max-w-2xl gap-2 bg-[#1b1b1b] p-6 mx-60 space-y-0",
+          "w-full lg:w-[929px] mx-auto h-[623px] lg:top-[188px] lg:left-auto top-0 left-0 rounded-[16px] p-[37px_40px] gap-[10px] bg-[#1b1b1b]",
           className
         )}
-        noValidate
-        {...props}
       >
         <div className="mb-6">
-          <h1 className="text-2xl font-bold text-white mb-0">{title}</h1>
-          <p className="text-gray-400 text-sm">{description}</p>
+          <h1 className="text-2xl font-bold text-white mb-6">{title}</h1>
+          <p className="text-gray-400 text-sm mb-6">{description}</p>
         </div>
-        <div className="space-y-2"></div>
+        <div className="space-y-20"></div>
         {!session?.user && (
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-20">
             <FormField
               control={form.control}
               name="name"

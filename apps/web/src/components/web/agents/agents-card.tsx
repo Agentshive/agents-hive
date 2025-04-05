@@ -9,6 +9,7 @@ import {
 import type { ComponentProps } from "react";
 import { H4 } from "~/components/common/heading";
 import { GtwosIcon } from "~/components/common/icons/gtwos";
+import { StarsIcon } from "~/components/common/icons/star";
 import { Link } from "~/components/common/link";
 import { Skeleton } from "~/components/common/skeleton";
 import { Stack } from "~/components/common/stack";
@@ -36,7 +37,11 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
     { label: "Category", value: tool.category, icon: "" },
     { label: "Price", value: tool.price, icon: "" },
     { label: "Features", value: tool.features, icon: "" },
-    { label: "Cost", value: tool.cost === 0 ? "Free" : `$${tool.cost}/mon`, icon: "" },
+    {
+      label: "Cost",
+      value: tool.cost === 0 ? "Free" : `$${tool.cost}/mon`,
+      icon: "",
+    },
 
     // {
     //   label: "Last commit",
@@ -59,11 +64,13 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
       <Link href={`/${tool.slug}`} className="group">
         <CardHeader className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Favicon src={tool.faviconUrl} title={tool.name} 
-            />
+            <Favicon src={tool.faviconUrl} title={tool.name} />
+
             <H4 as="h3" className="truncate">
               {tool.name}
             </H4>
+
+            {tool.isPopular && <StarsIcon />}
           </div>
 
           <div className="flex items-center gap-3 ml-auto">
@@ -141,32 +148,26 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
             </div>
 
             <div className="flex justify-between items-center w-full border-t border-gray-500 p-2">
-            {tool.category && (
-  <div className="flex items-center gap-2">
-    <Badge
-      variant="outline"
-      className="px-3 py-1 border border-gray-500 rounded-[4px] text-sm"
-    >
-      {tool.category}
-    </Badge>
+              {tool.category && (
+                <div className="flex items-center gap-2">
+                  {tool.category && (
+                    <span className="px-3 py-1 border border-white rounded-[4px] text-sm">
+                      {tool.category}
+                    </span>
+                  )}
+                  {tool.price && (
+                    <span className="px-3 py-1 border border-white rounded-[4px] text-sm">
+                      {tool.price}
+                    </span>
+                  )}
+                </div>
+              )}
 
-    {tool.price && (
-      <Badge
-       variant="outline"
-        className="px-3 py-1 border border-gray-500 rounded-[4px] text-sm"
-      >
-        {tool.price}
-      </Badge>
-    )}
-  </div>
-)}
-
-
-{tool.cost !== undefined && (
-  <div className="text-orange-400 font-bold">
-    {tool.cost === 0 ? "Free" : `$${tool.cost}/mon`}
-  </div>
-)}
+              {tool.cost !== undefined && (
+                <div className="text-orange-400 font-bold">
+                  {tool.cost === 0 ? "" : `$${tool.cost}/mon`}
+                </div>
+              )}
             </div>
           </Stack>
         </div>

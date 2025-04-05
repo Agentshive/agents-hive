@@ -77,6 +77,7 @@ export const toolManyPayload = Prisma.validator<Prisma.ToolSelect>()({
   faviconUrl: true,
   price: true,
   isFeatured: true,
+  isPopular: true,
   deals: true,
   support: true,
   cost: true,

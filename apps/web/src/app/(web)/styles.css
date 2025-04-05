@@ -10,8 +10,8 @@
 @theme {
   /* --font-system: ui-sans-serif, system-ui, open-sans, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
-    --font-system: "Open Sans", ui-sans-serif, system-ui, "Apple Color Emoji",
-  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-system: "Open Sans", ui-sans-serif, system-ui, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 
   --header-height: 3.125rem;
@@ -51,6 +51,7 @@
     from {
       left: -90%;
     }
+
     to {
       left: 90%;
     }
@@ -66,6 +67,7 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -78,7 +80,7 @@
 @font-face {
   font-family: 'raela_grotesquebold';
   src: url('/fonts/raelagrotesque-bold-webfont.woff2') format('woff2'),
-       url('/fonts/raelagrotesque-bold-webfont.woff') format('woff');
+    url('/fonts/raelagrotesque-bold-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 
@@ -90,7 +92,7 @@
 @font-face {
   font-family: 'raela_grotesqueextra_bold';
   src: url('/fonts/raelagrotesque-extrabold-webfont.woff2') format('woff2'),
-       url('/fonts/raelagrotesque-extrabold-webfont.woff') format('woff');
+    url('/fonts/raelagrotesque-extrabold-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 
@@ -102,7 +104,7 @@
     @apply relative;
   }
 
-  & [id] > a[tabindex="-1"] {
+  & [id]>a[tabindex="-1"] {
     @apply opacity-0;
     @apply absolute;
     @apply right-full;
@@ -112,34 +114,36 @@
     @apply mr-0;
   }
 
-  & [id] > a[tabindex="-1"]:after {
+  & [id]>a[tabindex="-1"]:after {
     @apply content-["#"];
   }
 
-  & [id]:hover > a[tabindex="-1"] {
+  & [id]:hover>a[tabindex="-1"] {
     @apply opacity-25;
   }
 
-  & [id]:hover > a[tabindex="-1"]:hover {
+  & [id]:hover>a[tabindex="-1"]:hover {
     @apply opacity-100;
   }
 }
 
 @layer base {
+
   /* @media (prefers-color-scheme: dark) { */
-    :root {
-      --color-primary: hsl(15 63% 50%);
-      --color-background: hsl(0, 0%, 0%);
-      --color-muted: hsl(0 0% 60%);
-      --color-secondary: hsl(0 0% 70%);
-      --color-foreground: hsl(0 0% 87%);
+  :root {
+    --color-primary: hsl(15 63% 50%);
+    --color-background: hsl(0, 0%, 0%);
+    --color-muted: hsl(0 0% 60%);
+    --color-secondary: hsl(0 0% 70%);
+    --color-foreground: hsl(0 0% 87%);
 
-      --color-card: hsl(0 0% 11%);
-      --color-card-dark: hsl(0 0% 13%);
+    --color-card: hsl(0 0% 11%);
+    --color-card-dark: hsl(0 0% 13%);
 
-      --color-border: hsl(0 0% 18%);
-      --color-border-dark: hsl(0 0% 20%);
-    }
+    --color-border: hsl(0 0% 18%);
+    --color-border-dark: hsl(0 0% 20%);
+  }
+
   /* } */
 
   @media (prefers-reduced-motion) {
@@ -157,26 +161,54 @@
     @apply opacity-10;
   }
 }
+
 .custom-font {
   font-family: 'raela_grotesqueextra_bold';
 }
+
 body {
   font-family: 'raela_grotesqueextra_bold';
 }
-a{
+
+a {
   font-family: 'raela_grotesqueextra_bold';
+  font-size: 16px;
   font-weight: 700;
 }
+
 label {
   font-family: 'raela_grotesqueextra_bold';
-  font-weight: 700;
-  
+  font-size: 16px;
+  font-weight: 600;
+
 }
+
 button {
   font-family: 'raela_grotesqueextra_bold';
+  font-size: 16px;
   font-weight: 600;
 }
-h1, h2, h3, h4, h5, h6 {
+
+h6 {
+  font-family: 'raela_grotesqueextra_bold';
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+}
+
+h5 {
+  font-family: 'raela_grotesqueextra_bold';
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: -0.02em;
+}
+
+h1,
+h2,
+h3,
+h4 {
   font-family: 'raela_grotesqueextra_bold';
   font-weight: 900;
 }
@@ -195,19 +227,26 @@ h1, h2, h3, h4, h5, h6 {
   text-align: left;
   color: #fff;
 }
+
 button.tool-card {
   width: 131px;
-  height: auto; /* Hug content height */
-  min-height: 50px; /* Minimum height */
+  height: auto;
+  /* Hug content height */
+  min-height: 50px;
+  /* Minimum height */
 }
+
 p {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   font-size: 16px;
-  line-height: 130%; /* 20.8px for 16px base */
-  margin-bottom: 8px; /* Paragraph spacing */
+  line-height: 130%;
+  /* 20.8px for 16px base */
+  margin-bottom: 8px;
+  /* Paragraph spacing */
   letter-spacing: 0%;
 }
+
 h1 {
   @apply text-5xl;
   @apply font-bold;
@@ -215,6 +254,7 @@ h1 {
   @apply tracking-tight;
   @apply text-foreground;
 }
+
 a,
 button,
 label[for],
@@ -226,11 +266,11 @@ label[for],
 }
 
 svg.lucide:not([class*="stroke"]) {
-  @apply stroke-[1.75]!;
+  @apply stroke-[1.75] !;
 }
 
 svg.lucide:not([class*="size-"]):not([class*="h-"]) {
-  @apply size-[1em]!;
+  @apply size-[1em] !;
 }
 
 [href] svg[class*="arrow-up-right"],
@@ -260,5 +300,3 @@ select:not([size]) {
   @apply bg-[length:1.25em_1.25em];
   @apply pr-10;
 }
-
-
