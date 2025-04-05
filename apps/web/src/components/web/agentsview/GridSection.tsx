@@ -52,7 +52,7 @@ export const GridSection = ({
 
       case "industry":
         return (
-          <div className="flex flex-wrap mb-2 gap-2">
+          <div className="flex flex-wrap py-[10%] mb-2 gap-2">
             {items ? (
               (Array.isArray(items) ? items : [items]).map((item, index) => (
                 <span

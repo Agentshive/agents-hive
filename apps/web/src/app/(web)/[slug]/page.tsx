@@ -49,6 +49,7 @@ import { SubscriptionCard } from "../../../components/web/agentsview/Subscriptio
 import ToolMainCard from "../../../components/web/agentsview/toolmaincard";
 import ToolSidebar from "../../../components/web/agentsview/toolsidebar";
 import { FreeTrialIcon } from "~/components/common/icons/freetrial";
+import KeyFeatures from "~/components/web/agentsview/feat";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -334,11 +335,14 @@ export default async function ToolPage(props: PageProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-            <GridSection
+            {/* <GridSection
               type="features"
               title="Key Features"
               items={tool.keyFeatures}
-            />
+            /> */}
+          
+      <KeyFeatures />
+   
 
             <GridSection
               type="useCases"
