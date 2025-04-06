@@ -165,7 +165,7 @@ body {
 }
 a{
   font-family: 'raela_grotesqueextra_bold';
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
 }
 label {
@@ -173,11 +173,6 @@ label {
   font-size: 16px;
   font-weight: 600;
   
-}
-button {
-  font-family: 'raela_grotesqueextra_bold';
-  font-size: 16px;
-  font-weight: 600;
 }
 h6 {
   font-family: 'raela_grotesqueextra_bold';
@@ -198,24 +193,21 @@ h1, h2, h3, h4 {
   font-weight: 900;
 }
 
-.intro-title {
-  width: 751px;
-  height: 154px;
-  flex-grow: 0;
-  font-family: 'raela_grotesqueextra_bold';
-  font-size: 64px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.2;
-  letter-spacing: normal;
-  text-align: left;
-  color: #fff;
-}
-button.tool-card {
-  width: 131px;
-  height: auto; /* Hug content height */
-  min-height: 50px; /* Minimum height */
+@media (min-width: 1024px) {
+  .intro-title {
+    width: 751px;
+    height: 154px;
+    flex-grow: 0;
+    font-family: 'raela_grotesqueextra_bold';
+    font-size: 64px;
+    font-weight: 800;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: left;
+    color: #fff;
+  }
 }
 p {
   font-family: 'Open Sans', sans-serif;
@@ -225,15 +217,7 @@ p {
   margin-bottom: 8px; /* Paragraph spacing */
   letter-spacing: 0%;
 }
-h1 {
-  @apply text-5xl;
-  @apply font-bold;
-  @apply leading-tight;
-  @apply tracking-tight;
-  @apply text-foreground;
-}
 a,
-button,
 label[for],
 [href] [class*="group-hover"] {
   @apply transition;

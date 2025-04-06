@@ -1,7 +1,6 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { posthog } from "posthog-js";
 import type { HTMLAttributes } from "react";
@@ -19,6 +18,7 @@ import {
   FormMessage,
 } from "~/components/common/form";
 import { Hint } from "~/components/common/hint";
+import { ArrowRightIcon } from "~/components/common/icons/arrowrighticon";
 import { FeatureNudge } from "~/components/web/feature-nudge";
 import { Button } from "~/components/web/ui/button";
 import { Input } from "~/components/web/ui/input";
@@ -43,13 +43,8 @@ export const SubmitForm = ({
     values: {
       name: "",
       website: "",
-      // repository: "",
-      // submitterName: session?.user.name || "",
       submitterEmail: session?.user.email || "",
-      // submitterNote: "",
       newsletterOptIn: true,
-      // category: "",
-      // features: "",
       linkedIn: "",
     },
   });
@@ -57,8 +52,6 @@ export const SubmitForm = ({
   const { error, execute, isPending } = useServerAction(submitTool, {
     onSuccess: ({ data }) => {
       form.reset();
-
-      // Capture event
       posthog.capture("submit_tool", { slug: data.slug });
 
       if (data.publishedAt && data.publishedAt <= new Date()) {
@@ -76,30 +69,81 @@ export const SubmitForm = ({
       <form
         onSubmit={form.handleSubmit((data) => execute(data))}
         className={cx(
-          "w-full lg:w-[929px] mx-auto h-[623px] lg:top-[188px] lg:left-auto top-0 left-0 rounded-[16px] p-[37px_40px] gap-[10px] bg-[#1b1b1b]",
+          "w-full max-w-[929px] mx-auto rounded-[16px] p-6 lg:p-[37px_40px] bg-[#1b1b1b]",
+          "flex flex-col gap-6", // Added flex layout with gap
           className
         )}
+        {...props}
       >
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-white mb-6">{title}</h1>
-          <p className="text-gray-400 text-sm mb-6">{description}</p>
+        <div className="space-y-2">
+          <h1 className="text-2xl font-bold text-white">{title}</h1>
+          <p className="text-gray-400 text-sm">{description}</p>
         </div>
-        <div className="space-y-20"></div>
-        {!session?.user && (
-          <div className="grid grid-cols-2 gap-20">
+
+        <div className="space-y-6">
+          {" "}
+          {/* Changed from space-y-20 to space-y-6 */}
+          {!session?.user && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {" "}
+              {/* Responsive grid */}
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel isRequired>Agent Name:</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="text"
+                        size="lg"
+                        placeholder="John Doe"
+                        className="bg-[#1b1b1b] w-full" // Added w-full
+                        data-1p-ignore
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="submitterEmail"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel isRequired>Contact Email:</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="email"
+                        size="lg"
+                        placeholder="john@doe.com"
+                        className="bg-[#1b1b1b] w-full" // Added w-full
+                        data-1p-ignore
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          )}
+          <div className="space-y-6">
+            {" "}
+            {/* Added space between fields */}
             <FormField
               control={form.control}
-              name="name"
+              name="website"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel isRequired>Agent Name:</FormLabel>
+                  <FormLabel isRequired>Website URL:</FormLabel>
                   <FormControl>
                     <Input
-                      type="text"
+                      type="url"
                       size="lg"
-                      placeholder="John Doe"
-                      className="bg-[#1b1b1b]"
-                      data-1p-ignore
+                      placeholder="https://posthog.com"
+                      className="bg-[#1b1b1b] w-full" // Added w-full
                       {...field}
                     />
                   </FormControl>
@@ -107,20 +151,18 @@ export const SubmitForm = ({
                 </FormItem>
               )}
             />
-
             <FormField
               control={form.control}
-              name="submitterEmail"
+              name="linkedIn"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel isRequired>Contact Email:</FormLabel>
+                  <FormLabel isRequired>LinkedIn:</FormLabel>
                   <FormControl>
                     <Input
-                      type="email"
+                      type="url"
                       size="lg"
-                      placeholder="john@doe.com"
-                      className="bg-[#1b1b1b]"
-                      data-1p-ignore
+                      placeholder="https://linkedin.com/confillow"
+                      className="bg-[#1b1b1b] w-full" // Added w-full
                       {...field}
                     />
                   </FormControl>
@@ -129,68 +171,29 @@ export const SubmitForm = ({
               )}
             />
           </div>
-        )}
+          <FormField
+            control={form.control}
+            name="newsletterOptIn"
+            render={({ field }) => (
+              <FormItem className="flex flex-row items-center space-x-2 space-y-0">
+                <FormControl>
+                  <Checkbox
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+                <FormLabel className="font-normal">
+                  I'd like to receive free email updates
+                </FormLabel>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
 
-        <FormField
-          control={form.control}
-          name="website"
-          render={({ field }) => (
-            <FormItem className="col-span-full">
-              <FormLabel isRequired>Website URL:</FormLabel>
-              <FormControl>
-                <Input
-                  type="url"
-                  size="lg"
-                  placeholder="https://posthog.com"
-                  className="bg-[#1b1b1b]"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="linkedIn"
-          render={({ field }) => (
-            <FormItem className="col-span-full">
-              <FormLabel isRequired>LinkedIn:</FormLabel>
-              <FormControl>
-                <Input
-                  type="url"
-                  size="lg"
-                  placeholder="https://linkedin.com/confillow"
-                  className="bg-[#1b1b1b]"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="newsletterOptIn"
-          render={({ field }) => (
-            <FormItem className="flex-row items-center col-span-full">
-              <FormControl>
-                <Checkbox
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                />
-              </FormControl>
-              <FormLabel className="font-normal">
-                I'd like to receive free email updates
-              </FormLabel>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <div className="col-span-full mt-4">
+        <div className="mt-2">
+          {" "}
+          {/* Reduced margin-top */}
           <Button
             variant="primary"
             isPending={isPending}
@@ -199,12 +202,12 @@ export const SubmitForm = ({
           >
             <span className="flex items-center justify-center gap-2 w-full">
               Submit
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRightIcon className="w-4 h-4" />
             </span>
           </Button>
         </div>
 
-        {error && <Hint className="col-span-full">{error.message}</Hint>}
+        {error && <Hint>{error.message}</Hint>}
       </form>
     </Form>
   );

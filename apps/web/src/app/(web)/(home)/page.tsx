@@ -17,7 +17,8 @@ import { ToolFiltersProvider } from "~/contexts/tool-filter-context";
 import { Homeimage } from "~/components/common/icons/homeimg";
 import { InternalLink } from "~/components/web/internalLink";
 import { Button } from "~/components/web/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRightIcon } from "~/components/common/icons/arrowrighticon";
+import { H1 } from "~/components/common/heading";
 
 type PageProps = {
   searchParams: Promise<SearchParams>;
@@ -31,10 +32,14 @@ export default function Home({ searchParams }: PageProps) {
           <div className="bg-[#131c0b] text-white text-xs px-4 py-2 rounded-[4px] border border-white w-fit mx-auto lg:mx-0">
             <p>Agents Marketplace </p>
           </div>
+
           <Intro className="flex flex-col items-center lg:items-start">
-            <IntroTitle className="intro-title lg:w-[751px] lg:h-[154px] lg:max-w-[45rem] text-8xl sm:text-2xl md:text-2xl lg:text-2xl font-extrabold leading-[120%] max-w-3xl">
-              AI Agent Marketplace & Community
-            </IntroTitle>
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+              <span className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] lg:font-extrabold lg:leading-[1.2] lg:w-[751px] lg:h-[154px] text-white">
+                AI Agent Marketplace & Community
+              </span>
+            </div>
+
             <IntroDescription className="text-sm sm:text-base lg:text-md mt-2 max-w-2xl leading-relaxed">
               The software we know and consume has undergone a radical
               transformation in the past year, largely driven by the emergence
@@ -48,19 +53,20 @@ export default function Home({ searchParams }: PageProps) {
               className="rounded-[4px] bg-white"
             >
               <InternalLink href={`/agents-list`} eventName="click_website">
-                <span className="flex items-center justify-center gap-2 w-full">
+                <span className="flex items-center justify-center w-full">
                   Explore Agents
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRightIcon className="w-4 h-4" />
                 </span>
               </InternalLink>
             </Button>
             <ModalWrapper />
           </div>
         </div>
-        <div className="w-full lg:w-1/2 flex justify-center">
-          <Homeimage className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl h-auto" />
+        <div className="w-full lg:w-1/2 flex sm-my-[-720px] md-my-[-720px] justify-center">
+          <Homeimage className="w-full max-w-sm sm:max-w-md  md:max-w-lg lg:max-w-xl" />
         </div>
       </section>
+
       <Suspense fallback={<ToolQuerySkeleton />}>
         <CategoryListing />
       </Suspense>

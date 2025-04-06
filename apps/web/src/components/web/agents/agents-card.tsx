@@ -1,13 +1,8 @@
 import { formatNumber } from "@curiousleaf/utils";
 import { formatDistanceToNowStrict } from "date-fns";
-import {
-  ArrowUpRightIcon,
-  GitForkIcon,
-  StarIcon,
-  TimerIcon,
-} from "lucide-react";
 import type { ComponentProps } from "react";
 import { H4 } from "~/components/common/heading";
+import { ArrowUpRightIcon } from "~/components/common/icons/arrowuprighticon";
 import { GtwosIcon } from "~/components/common/icons/gtwos";
 import { StarsIcon } from "~/components/common/icons/star";
 import { Link } from "~/components/common/link";
@@ -80,7 +75,7 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
               )}
             </ToolBadges>
 
-            <button className="bg-black hover:bg-black  p-2 rounded-full">
+            <button className="bg-black hover:bg-black  rounded-full">
               <ArrowUpRightIcon className="text-white w-4 h-4" />
             </button>
           </div>

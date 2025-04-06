@@ -14,7 +14,7 @@ export const Logo = ({ className, ...props }: ComponentProps<typeof Stack>) => {
         {/* <LogoSymbol className="duration-300! ease-in-out! will-change-transform group-hover/logo:rotate-90" /> */}
       {/* <Favicon src="/agents-hive-favicon.png" className=" opacity-500 w-12 h-12 " /> */}
         {/* className="animate-pulse opacity-50 */}
-        <Headericon  className=" opacity-500 w-2 h-90" />
+        <Headericon />
 {/* 
         <span className="font-normal text-2xl">{config.site.name}</span> */}
       </Link>

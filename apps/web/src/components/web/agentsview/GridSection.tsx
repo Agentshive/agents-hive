@@ -32,32 +32,36 @@ export const GridSection = ({
       case "features":
       case "useCases":
         return (
-          <ul className="space-y-3">
-            {items ? (
-              (Array.isArray(items) ? items : [items]).map((item, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <span className="text-green-400">
-                    <TickIcon />
-                  </span>
-                  <p className="text-gray-300">{item}</p>
-                </li>
-              ))
-            ) : (
-              <p className="text-gray-400">
-                No {type === "features" ? "features" : "use cases"} available.
-              </p>
-            )}
-          </ul>
+          <div className="flex">
+            <div className="w-px bg-gray-600 mr-4 ml-4"></div>
+
+            <ul className="space-y-3">
+              {items ? (
+                (Array.isArray(items) ? items : [items]).map((item, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <span className="text-green-400">
+                      <TickIcon />
+                    </span>
+                    <p className="text-gray-300">{item}</p>
+                  </li>
+                ))
+              ) : (
+                <p className="text-gray-400">
+                  No {type === "features" ? "features" : "use cases"} available.
+                </p>
+              )}
+            </ul>
+          </div>
         );
 
       case "industry":
         return (
-          <div className="flex flex-wrap py-[10%] mb-2 gap-2">
+          <div className="flex pb-[25%] flex-wrap mb-2 gap-2">
             {items ? (
               (Array.isArray(items) ? items : [items]).map((item, index) => (
                 <span
                   key={index}
-                  className="px-3 py-1 border border-white rounded-md text-sm"
+                  className="px-3 py-1  border border-white rounded-md text-sm"
                 >
                   {item}
                 </span>

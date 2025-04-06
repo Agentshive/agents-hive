@@ -1,7 +1,7 @@
 import { formatNumber } from "@curiousleaf/utils";
 import { AtSignIcon, RssIcon } from "lucide-react";
 import type { HTMLAttributes } from "react";
-import { H5, H6 } from "~/components/common/heading";
+import {  H5 } from "~/components/common/heading";
 import { BrandXIcon } from "~/components/common/icons/brand-x";
 import { BrandLinkedInIcon } from "~/components/common/icons/brand-linkedin";
 import { Stack } from "~/components/common/stack";
@@ -74,7 +74,7 @@ export const Footer = ({
 
         {/* Top Categories Section */}
         <div className="flex flex-col gap-2">
-          <H6 as="strong">Top Categories</H6>
+          <H5 as="strong">Top Categories</H5>
           <NavLink href="/">Customer Service</NavLink>
           <NavLink href="/">HR</NavLink>
           <NavLink href="/">Design</NavLink>
@@ -87,7 +87,7 @@ export const Footer = ({
 
         {/* Navigation Section */}
         <div className="flex flex-col gap-2">
-          <H6 as="strong">Navigation</H6>
+          <H5 as="strong">Navigation</H5>
           <NavLink href="/categories">All categories</NavLink>
           <NavLink href="/agents-list">All agents</NavLink>
           <NavLink href="/">All tags</NavLink>
@@ -99,7 +99,7 @@ export const Footer = ({
 
         {/* Collaboration Section */}
         <div className="flex flex-col gap-2">
-          <H6 as="strong">Collaboration</H6>
+          <H5 as="strong">Collaboration</H5>
           <NavLink href="mailto:hello@agentshive.ai">
             hello@agentshive.ai
           </NavLink>

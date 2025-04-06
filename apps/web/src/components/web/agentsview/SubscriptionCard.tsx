@@ -1,35 +1,65 @@
-// components/subscription/SubscriptionCard.tsx
-import React from 'react';
+import React from "react";
 
 interface SubscriptionFeature {
   text: string;
   subFeatures?: string[];
+  highlight?: boolean;
 }
 
 interface SubscriptionCardProps {
   title: string;
-  price: string;
+  subtitle?: string;
+  price?: string;
+  billingInfo?: string;
   description: string;
   features: SubscriptionFeature[];
   ctaLabel: string;
   emailPlaceholder: string;
+  isCustom?: boolean;
 }
 
 export const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
   title,
+  subtitle,
   price,
+  billingInfo,
   description,
   features,
   ctaLabel = "Talk to sales",
   emailPlaceholder = "What's your work email?",
+  isCustom = false,
 }) => {
   return (
-    <div className="bg-black rounded-lg shadow-md p-6 max-w-md w-full border border-gray-200">
+    <div className="bg-[#212121] rounded-lg shadow-md p-6 w-full">
       {/* Header Section */}
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">{title}</h2>
-        <p className="text-lg font-semibold text-gray-700 mb-2">{price}</p>
-        <p className="text-gray-600">{description}</p>
+        <div className="flex justify-between items-start">
+          <div>
+            <h2 className="text-2xl font-bold text-white mb-1">{title}</h2>
+            {subtitle && (
+              <h3
+                className={`text-lg ${
+                  isCustom ? "text-white" : "text-white"
+                } mb-2`}
+              >
+                {subtitle}
+              </h3>
+            )}
+          </div>
+          {isCustom && (
+            <span className="bg-[#212121]text-white text-xs font-medium px-2.5 py-0.5 rounded">
+              Custom
+            </span>
+          )}
+        </div>
+
+        {price && (
+          <p className="text-xl font-semibold text-white  mb-1">{price}</p>
+        )}
+        {billingInfo && (
+          <p className="text-sm text-white  mb-3">{billingInfo}</p>
+        )}
+        <p className="text-white ">{description}</p>
       </div>
 
       {/* Email Input */}
@@ -37,25 +67,27 @@ export const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
         <input
           type="email"
           placeholder={emailPlaceholder}
-          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+          className="w-full px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-white bg-[#333333]"
         />
       </div>
 
       {/* CTA Button */}
-      <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 transition mb-8 font-medium">
+      <button className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 text-white    text-gray-700 mb-12">
         {ctaLabel}
       </button>
 
       {/* Features List */}
       <ul className="space-y-4">
         {features.map((feature, index) => (
-          <li key={index} className="text-gray-700">
+          <li key={index} className="text-white ">
             <div className="flex items-start">
               <span className="mr-2">•</span>
-              <span>{feature.text}</span>
+              <span className={feature.highlight ? "font-semibold" : ""}>
+                {feature.text}
+              </span>
             </div>
             {feature.subFeatures && (
-              <ul className="mt-2 ml-6 space-y-2 text-gray-500">
+              <ul className="mt-2 ml-6 space-y-2 text-white ">
                 {feature.subFeatures.map((subFeature, subIndex) => (
                   <li key={subIndex}>{subFeature}</li>
                 ))}

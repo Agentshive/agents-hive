@@ -13,8 +13,8 @@ import { Card, CardDescription, CardHeader } from "../ui/card";
 import { Favicon } from "../ui/favicon";
 import { H4 } from "~/components/common/heading";
 import { Button } from "~/components/web/ui/button";
-import { ArrowUpRightIcon } from "lucide-react";
 import { ExternalLink } from "~/components/web/external-link";
+import { ArrowUpRightIcon } from "~/components/common/icons/arrowuprighticon";
 
 type CategoryCardProps = ComponentProps<typeof CardSimple> & {
   category: CategoryMany;
@@ -41,9 +41,9 @@ const CategoryCard = ({ category, ...props }: CategoryCardProps) => {
             {category.name}
           </H4>
           <div className="flex items-center gap-3 ml-auto">
-            <Button className="bg-black  hover:bg-black  p-2 rounded-full">
-              <ArrowUpRightIcon className="text-white w-4 h-4 hover:bg-black " />
-            </Button>
+            <button className="bg-black hover:bg-black  rounded-full">
+              <ArrowUpRightIcon className="text-white w-4 h-4" />
+            </button>
           </div>
         </CardHeader>
 
@@ -55,9 +55,9 @@ const CategoryCard = ({ category, ...props }: CategoryCardProps) => {
             )}`}
           </CardDescription>
         )}
-      <CardDescription className="line-clamp-4 text-white group-hover:text-black custom-font">
-  {category.description}
-</CardDescription>
+        <CardDescription className="line-clamp-4 text-white group-hover:text-black custom-font">
+          {category.description}
+        </CardDescription>
       </Link>
     </Card>
   );

@@ -9,7 +9,6 @@ import {
   SearchIcon,
   ServerIcon,
   TagIcon,
-  ArrowRight,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { type HTMLAttributes, Suspense, useEffect, useState } from "react";
@@ -31,6 +30,7 @@ import { Logo } from "~/components/web/ui/logo";
 import { NavLink, navLinkVariants } from "~/components/web/ui/nav-link";
 import { config } from "~/config";
 import { cx } from "~/utils/cva";
+import { ArrowRightIcon } from "../common/icons/arrowrighticon";
 
 export const Header = ({
   className,
@@ -185,9 +185,9 @@ export const Header = ({
 
         <Stack size="sm">
           <Button
-            suffix={<ArrowRight />}
+            suffix={<ArrowRightIcon />}
             asChild
-            className="ml-6 p-3 rounded-[4px] bg-white"
+            className="ml-6 rounded-[4px] bg-white"
           >
             <Link href="/submit">Submit</Link>
           </Button>

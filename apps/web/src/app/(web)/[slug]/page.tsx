@@ -1,5 +1,4 @@
 import {
-  ArrowUpRightIcon,
   HashIcon,
   Star,
   Hash,
@@ -49,6 +48,7 @@ import { SubscriptionCard } from "../../../components/web/agentsview/Subscriptio
 import ToolMainCard from "../../../components/web/agentsview/toolmaincard";
 import ToolSidebar from "../../../components/web/agentsview/toolsidebar";
 import { FreeTrialIcon } from "~/components/common/icons/freetrial";
+import { ArrowRightIcon } from "~/components/common/icons/arrowrighticon";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -199,24 +199,23 @@ export default async function ToolPage(props: PageProps) {
                   <div className="flex flex-1 flex-col gap-4">
                     <div className="flex w-full flex-col  gap-y-4">
                       <div className="flex justify-between items-center mb-2">
-                        <div className="flex items-center gap-2">
-                          <span className="px-4 py-2 border border-white rounded-md text-sm">
+                        <div className="flex items-center justify-between w-full flex-wrap gap-2">
+                          <span className="px-4 py-2 border border-white rounded-md text-sm text-white whitespace-nowrap">
                             {tool.category}
                           </span>
-                        </div>
 
-                        {/* Free trial info on the right */}
-                        <div
-                          className="rounded-[30px] px-4 py-2 flex items-end border border-orange-500"
-                          style={{
-                            background:
-                              "linear-gradient(to right,rgb(63, 27, 6) 5%, #37140100 30%, #000000 100%)",
-                          }}
-                        >
-                          <FreeTrialIcon className="text-orange-500 mr-2" />
-                          <span className="text-white text-sm font-medium">
-                            {tool.freeTrial} free trial
-                          </span>
+                          <div
+                            className="flex items-center gap-1 px-3 py-1.5 sm:px-4 sm:py-2 border border-orange-500 rounded-[30px] whitespace-nowrap"
+                            style={{
+                              background:
+                                "linear-gradient(to right, rgb(63, 27, 6) 5%, #37140100 30%, #000000 100%)",
+                            }}
+                          >
+                            <FreeTrialIcon className="text-orange-500 w-4 h-4 sm:w-5 sm:h-5" />
+                            <span className="text-white text-xs sm:text-sm font-medium">
+                              {tool.freeTrial} free trial
+                            </span>
+                          </div>
                         </div>
                       </div>
                       <Stack className="w-full">
@@ -245,7 +244,7 @@ export default async function ToolPage(props: PageProps) {
                         {/* Added two prominent buttons similar to the image */}
 
                         {tool.website && (
-                          <Button suffix={<ArrowUpRightIcon />} asChild>
+                          <Button suffix={<ArrowRightIcon />} asChild>
                             <ExternalLink
                               href={tool.website}
                               rel={
@@ -264,7 +263,7 @@ export default async function ToolPage(props: PageProps) {
                         {tool.hostingUrl && (
                           <Button
                             variant="secondary"
-                            suffix={<ArrowUpRightIcon />}
+                            suffix={<ArrowRightIcon className="text-black" />}
                             asChild
                           >
                             <ExternalLink
@@ -453,29 +452,28 @@ export default async function ToolPage(props: PageProps) {
           )}
 
           {/* Reviews Section */}
-          {/* <div className="flex items-center gap-3 mb-6">
-              <ReviewIcon />
-              <h3 className="text-lg font-semibold">Reviews</h3>
-            </div>
+          <div className="flex items-center gap-3 mb-6">
+            <ReviewIcon />
+            <h3 className="text-lg font-semibold">Reviews</h3>
+          </div>
 
-            <h2 className="text-2xl font-bold">
-              {ratings.overall} Ratings ({ratings.count})
-            </h2>
-            <p className="text-gray-400 text-sm mb-4">Overall Ratings</p>
-            <p className="text-gray-300 text-sm">{tool.description}</p> */}
+          <h2 className="text-2xl font-bold">
+            {ratings.overall} Ratings ({ratings.count})
+          </h2>
+          <p className="text-gray-400 text-sm mb-4">Overall Ratings</p>
+          <p className="text-gray-300 text-sm">{tool.description}</p>
 
           {/* Ratings from different platforms */}
-          {/* <div className="flex flex-wrap gap-4 mt-6">
-              {ratings.sources.map((source, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <span className={source.color}>{source.icon}</span>
-                  <p>
-                    {source.rating} Ratings ({ratings.count})
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div> */}
+          <div className="flex flex-wrap gap-4 mt-6">
+            {ratings.sources.map((source, index) => (
+              <div key={index} className="flex items-center gap-2">
+                <span className={source.color}>{source.icon}</span>
+                <p>
+                  {source.rating} Ratings ({ratings.count})
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>
