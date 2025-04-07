@@ -30,7 +30,7 @@ const IntroTitle = ({ size = "h1", ...props }: HeadingProps) => {
 
 const IntroDescription = ({ className, ...props }: ComponentProps<"h2">) => {
   return (
-    <h2
+    <p
       className={cx(
         "max-w-2xl text-pretty text-secondary md:text-lg *:[&[href]]:underline *:[&[href]]:hover:text-primary",
         className,

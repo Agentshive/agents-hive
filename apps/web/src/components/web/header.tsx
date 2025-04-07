@@ -9,7 +9,6 @@ import {
   SearchIcon,
   ServerIcon,
   TagIcon,
-  ArrowRight,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { type HTMLAttributes, Suspense, useEffect, useState } from "react";
@@ -31,6 +30,7 @@ import { Logo } from "~/components/web/ui/logo";
 import { NavLink, navLinkVariants } from "~/components/web/ui/nav-link";
 import { config } from "~/config";
 import { cx } from "~/utils/cva";
+import { ArrowRightIcon } from "../common/icons/arrowrighticon";
 
 export const Header = ({
   className,
@@ -67,7 +67,7 @@ export const Header = ({
     >
       <div className="absolute top-0 inset-x-0 h-[calc(var(--header-top)+var(--header-height)+2rem)] pointer-events-none bg-linear-to-b from-background via-background to-transparent lg:h-[calc(var(--header-top)+var(--header-height)+3rem)]" />
 
-      <div className="relative flex flex-nowrap items-center py-12 gap-x-3 text-base h-[var(--header-height)] isolate duration-300 lg:gap-4">
+      <div className="relative flex flex-nowrap items-center py-14 lg:top-35px gap-x-3 text-base h-[var(--header-height)] isolate duration-300 lg:gap-4">
         <button
           type="button"
           onClick={() => setNavOpen(!isNavOpen)}
@@ -147,7 +147,7 @@ export const Header = ({
           <NavLink href="/">Home</NavLink>
           <NavLink href="/categories">Categories</NavLink>
           <NavLink href="/agents-list">Agents</NavLink>
-          <NavLink href="/newsletter">News Letter</NavLink>
+          {/* <NavLink href="/newsletter">News Letter</NavLink> */}
         </nav>
 
         <Stack size="sm" className="max-sm:hidden">
@@ -185,9 +185,9 @@ export const Header = ({
 
         <Stack size="sm">
           <Button
-            suffix={<ArrowRight />}
+            suffix={<ArrowRightIcon />}
             asChild
-            className="rounded-[4px] bg-white"
+            className="ml-6 rounded-[4px] bg-white"
           >
             <Link href="/submit">Submit</Link>
           </Button>

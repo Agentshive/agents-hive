@@ -1,14 +1,10 @@
 import { formatNumber } from "@curiousleaf/utils";
 import { formatDistanceToNowStrict } from "date-fns";
-import {
-  ArrowUpRightIcon,
-  GitForkIcon,
-  StarIcon,
-  TimerIcon,
-} from "lucide-react";
 import type { ComponentProps } from "react";
 import { H4 } from "~/components/common/heading";
+import { ArrowUpRightIcon } from "~/components/common/icons/arrowuprighticon";
 import { GtwosIcon } from "~/components/common/icons/gtwos";
+import { StarsIcon } from "~/components/common/icons/star";
 import { Link } from "~/components/common/link";
 import { Skeleton } from "~/components/common/skeleton";
 import { Stack } from "~/components/common/stack";
@@ -34,8 +30,14 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
     // { label: "Reviews", value: formatNumber(tool.reviews), icon: "" },
 
     { label: "Category", value: tool.category, icon: "" },
+    { label: "Price", value: tool.price, icon: "" },
     { label: "Features", value: tool.features, icon: "" },
-    { label: "Price", value: `₹${tool.price}`, icon: "" },
+    {
+      label: "Cost",
+      value: tool.cost === 0 ? "Free" : `$${tool.cost}/mon`,
+      icon: "",
+    },
+
     // {
     //   label: "Last commit",
     //   value:
@@ -58,9 +60,12 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
         <CardHeader className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Favicon src={tool.faviconUrl} title={tool.name} />
+
             <H4 as="h3" className="truncate">
               {tool.name}
             </H4>
+
+            {tool.isPopular && <StarsIcon />}
           </div>
 
           <div className="flex items-center gap-3 ml-auto">
@@ -70,7 +75,7 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
               )}
             </ToolBadges>
 
-            <button className="bg-black/50 p-2 rounded-full">
+            <button className="bg-black hover:bg-black  rounded-full">
               <ArrowUpRightIcon className="text-white w-4 h-4" />
             </button>
           </div>
@@ -139,17 +144,23 @@ const ToolCard = ({ className, tool, isRelated, ...props }: ToolCardProps) => {
 
             <div className="flex justify-between items-center w-full border-t border-gray-500 p-2">
               {tool.category && (
-                <Badge
-                  variant="outline"
-                  className="px-3 py-1 border border-gray-500 rounded-md text-sm"
-                >
-                  {tool.category}
-                </Badge>
+                <div className="flex items-center gap-2">
+                  {tool.category && (
+                    <span className="px-3 py-1 border border-white rounded-[4px] text-sm">
+                      {tool.category}
+                    </span>
+                  )}
+                  {tool.price && (
+                    <span className="px-3 py-1 border border-white rounded-[4px] text-sm">
+                      {tool.price}
+                    </span>
+                  )}
+                </div>
               )}
 
-              {tool.price !== undefined && (
+              {tool.cost !== undefined && (
                 <div className="text-orange-400 font-bold">
-                  {tool.price === 0 ? "Free" : `₹${tool.price}`}
+                  {tool.cost === 0 ? "" : `$${tool.cost}/mon`}
                 </div>
               )}
             </div>

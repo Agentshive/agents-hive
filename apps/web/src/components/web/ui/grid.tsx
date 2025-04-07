@@ -16,7 +16,7 @@ const gridVariants = cva({
   },
 
   defaultVariants: {
-    size: "lg",
+    size: "xl",
   },
   
 })

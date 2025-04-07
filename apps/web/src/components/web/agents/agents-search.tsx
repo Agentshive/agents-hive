@@ -55,7 +55,7 @@ export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
   ];
 
   const selectedCategory = getFilterValues("category") || [];
-  const selectedPrice = getFilterValues("price") || [];
+  const selectedPrice = getFilterValues("stack") || [];
   const selectedRatings = getFilterValues("ratings") || [];
 
   const onCategorySelect = (selectedItems: string[]) => {
@@ -64,9 +64,9 @@ export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
     });
   };
   const onPriceSelect = (selectedItems: string[]) => {
-    // updateFilters({
-    //   category: selectedItems,
-    // });
+    updateFilters({
+      stack: selectedItems,
+    });
   };
   const onRatingsSelect = (selectedItems: string[]) => {
     // updateFilters({
@@ -103,7 +103,7 @@ export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
             onChange={onRatingsSelect}
             label="Ratings"
           />
-        </div>
+        </div>*/}
 
         <div className="min-w-28">
           <MultiSelect
@@ -112,7 +112,7 @@ export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
             onChange={onPriceSelect}
             label="Price"
           />
-        </div> */}
+        </div> 
         <div className="min-w-20">
           <MultiSelect
             options={categories}

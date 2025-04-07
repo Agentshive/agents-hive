@@ -1,4 +1,4 @@
-![AgentsHive](https://agentshive.ai/opengraph.png)
+![AgentsHive]()
 
 <p align="center"></p>
 

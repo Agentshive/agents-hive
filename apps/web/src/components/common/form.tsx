@@ -72,7 +72,7 @@ const FormItem = ({ className, ...props }: ComponentProps<"div">) => {
 
   return (
     <FormItemContext.Provider value={{ id }}>
-      <div className={cx("flex flex-col items-start gap-2", className)} {...props} />
+      <div className={cx("flex flex-col items-start gap-4 mb-8", className)} {...props} />
     </FormItemContext.Provider>
   )
 }
