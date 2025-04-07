@@ -55,7 +55,7 @@ export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
   ];
 
   const selectedCategory = getFilterValues("category") || [];
-  const selectedPrice = getFilterValues("price") || [];
+  const selectedPrice = getFilterValues("stack") || [];
   const selectedRatings = getFilterValues("ratings") || [];
 
   const onCategorySelect = (selectedItems: string[]) => {
@@ -65,7 +65,7 @@ export const ToolSearch = ({ placeholder }: ToolSearchProps) => {
   };
   const onPriceSelect = (selectedItems: string[]) => {
     updateFilters({
-      price: selectedItems,
+      stack: selectedItems,
     });
   };
   const onRatingsSelect = (selectedItems: string[]) => {
