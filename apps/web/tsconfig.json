@@ -20,6 +20,6 @@
       "content-collections": ["./.content-collections/generated"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/scripts/fetchAgentDetails.mjs", "src/app/scripts/constants.mjs"],
   "exclude": ["node_modules"]
 }
