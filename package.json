@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo dev",
+    "dev": "node apps/web/src/app/scripts/fetchAgentDetails.mjs && turbo dev",
     "start": "turbo start",
     "lint": "bun biome lint --apply .",
     "check": "bun biome check --apply .",
@@ -32,6 +32,11 @@
     "@types/node-fetch": "^2.6.12",
     "inngest": "^3.31.7",
     "nodemailer": "^6.10.0",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "@supabase/supabase-js": "^2.49.1",
+    "@types/papaparse": "^5.3.15",
+    "inngest": "^3.31.7",
+    "papaparse": "^5.5.2",
+    "xlsx": "^0.18.5"
   }
 }

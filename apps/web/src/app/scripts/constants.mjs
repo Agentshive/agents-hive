@@ -54,12 +54,13 @@ export const getPromptBase = (agentName) => {
 17. Category Tags: Provide relevant industry and technology tags that categorize this AI agent (e.g., AI, NLP, Automation, Voice Assistance, CRM), separated by commas. Please provide the answer starting with "Category Tags: ".`;
 };
 
-export const getPromptBaseV2 = (agentName) => {
-  return `You are a software AI Agent analyst. Given the name of a tool, your job is to extract and return comprehensive information in the following structured JSON format.
+export const getPromptBaseV2 = (agentName, website) => {
+  return `You are a software AI Agent analyst. Given the name of a AI agent, your job is to extract and return comprehensive information in the following structured JSON format.
 
 Please fill out all applicable fields. If any field is unknown, use null or an empty array where appropriate. Do not invent values. Do not omit fields.
 
-Tool Name: ${agentName}
+Agent Name: ${agentName}
+Agent Website: ${website}
 
 Return the output in the following JSON structure:
 
